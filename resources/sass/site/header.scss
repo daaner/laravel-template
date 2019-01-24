@@ -46,6 +46,12 @@ header {
       font-size: 1.2em;
       height: 0;
       overflow: hidden;
+      box-shadow: 0 3px 5px 0 rgba($black, 0.1);
+      transition: box-shadow $trans;
+
+      &:hover {
+        box-shadow: 0 3px 5px 0 rgba($black, 0.3);
+      }
 
       &.show {
         height: auto;

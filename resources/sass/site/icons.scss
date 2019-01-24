@@ -12,7 +12,7 @@
   width: 1em;
 
   @each $key, $value in $colors_palette {
-    &.icon-#{$key} {
+    &.icon-#{"" + $key} {
       background-color: #{$value};
     }
   }

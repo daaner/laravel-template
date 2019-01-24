@@ -24,7 +24,6 @@ footer {
         text-align: center;
       }
     }
-
   }
 
   .terms {
@@ -35,6 +34,7 @@ footer {
     display: flex;
     flex-direction: row;
   }
+
   @media screen and (max-width: 736px) {
     padding: $spacer*2 0 $spacer;
 
@@ -43,7 +43,7 @@ footer {
       text-align: center;
       .copyright {
         font-size: 10px;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: space-between;
       }
     }
@@ -71,6 +71,5 @@ footer {
       flex-direction: row;
       justify-content: center;
     }
-
   }
 }

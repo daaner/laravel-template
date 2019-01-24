@@ -1,23 +1,27 @@
 {{-- Guest menu --}}
 <ul id="mobilemenu">
   <li>
-    <a href="#">Guest menu -
+    <a href="{{ URL::to('/') }}">Guest menu -
       {{ __('site.menu.main') }}
     </a>
   </li>
 
   <li>
-    <a href="#">
-      {{ __('site.about') }}
+    <a href="{{ URL::to('/icons') }}">
+      {{ __('site.menu.icons') }}
     </a>
   </li>
 
   <li>
     <a href="#">
-      {{ __('site.help') }}
+      {{ __('site.menu.about') }} (#)
+    </a>
+  </li>
+
+  <li>
+    <a href="#">
+      {{ __('site.menu.help') }} (#)
     </a>
   </li>
 
 </ul>
-
-<a href="javascript:document.getElementById('mobilemenu').classList.toggle('show');" class="menu-button" ><i class="icon bars"></i></a>

@@ -1,6 +1,7 @@
 .rounded {
   border-radius: $radius !important;
 }
+
 @each $size, $value in (1: $border-1, 2: $border-2, 3: $border-3, 0: 0) {
   .b-#{$size} {
     border: $value solid !important;
@@ -22,9 +23,10 @@
     border-right: $value solid !important;
   }
 }
+
 //border-colors
 @each $key, $value in $colors_palette {
-  &.b-#{$key} {
+  .b-#{"" + $key} {
     border-color: #{$value}!important;
   }
 }

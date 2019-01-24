@@ -14,14 +14,14 @@ $colors_palette: (
 
 //text-primary...
 @each $key, $value in $colors_palette {
-  .text-#{$key} {
+  .text-#{"" + $key} {
     color: #{$value}!important;
   }
 }
 
 //bg-primary...
 @each $key, $value in $colors_palette {
-  .bg-#{$key} {
+  .bg-#{"" + $key} {
     background-color: #{$value} !important;
   }
 }

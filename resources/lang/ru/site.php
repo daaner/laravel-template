@@ -1,7 +1,7 @@
 <?php
 
 return [
-  'title' => 'Google - Длинное описание',
+  'title' => 'Google - Длинное название сайта',
   'title2' => 'Google',
   'description' => 'Google - поиск сайтов, документаций и всего остального.',
   'desc' => 'Поиск сайтов',
@@ -13,6 +13,7 @@ return [
     'profile' => 'Личный кабинет',
     'about' => 'О нас',
     'admin' => 'Админка',
+    'icons' => 'Иконки',
   ],
 
   'header' => [

@@ -22,7 +22,6 @@
     <div id="app">
       <header>
         @include('layouts.header')
-        @yield('menu')
       </header>
 
       @yield('body')
@@ -31,12 +30,12 @@
     </div>
 
     {{-- // == if need jQuery --}}
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
       if(typeof jQuery == 'undefined'){
         document.write('<script src="{{ URL::to('/') }}/js/jquery-3.3.1.min.js"><\/script>');
       }
-    </script>
+    </script> --}}
 
     <script type="text/javascript" src="{{ mix('js/script.js') }}"></script>
     @yield('script')

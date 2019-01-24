@@ -1,23 +1,23 @@
-@if (env('GOOGLE_ANALYTIC'))
+@if (config('app.google_analytic'))
   {{-- <!-- Global site tag (gtag.js) - Google Analytics --> --}}
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('GOOGLE_ANALYTIC') }}"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('app.google_analytic') }}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', '{{ env('GOOGLE_ANALYTIC') }}');
+    gtag('config', '{{ config('app.google_analytic') }}');
   </script>
 @endif
 
-@if (env('YANDEX_METRIC'))
+@if (config('app.yandex_metric'))
   {{-- <!-- Yandex.Metrika counter --> --}}
   <script type="text/javascript" >
   (function (d, w, c) {
     (w[c] = w[c] || []).push(function() {
       try {
-        w.yaCounter{{ env('YANDEX_METRIC') }} = new Ya.Metrika2({
-          id:{{ env('YANDEX_METRIC') }},
+        w.yaCounter{{ config('app.yandex_metric') }} = new Ya.Metrika2({
+          id:{{ config('app.yandex_metric') }},
           clickmap:true,
           trackLinks:true,
           accurateTrackBounce:true,

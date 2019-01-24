@@ -1,23 +1,27 @@
 {{-- User menu --}}
 <ul id="mobilemenu">
   <li>
-    <a href="#">User menu -
+    <a href="{{ URL::to('/') }}">User menu -
       {{ __('site.menu.main') }}
     </a>
   </li>
 
   <li>
-    <a href="#">
-      {{ __('site.profile') }}
+    <a href="{{ URL::to('/icons') }}">
+      {{ __('site.menu.icons') }}
     </a>
   </li>
 
   <li>
     <a href="#">
-      {{ __('site.admin') }}
+      {{ __('site.menu.profile') }} (#)
+    </a>
+  </li>
+
+  <li>
+    <a href="#">
+      {{ __('site.menu.admin') }} (#)
     </a>
   </li>
 
 </ul>
-
-<a href="javascript:document.getElementById('mobilemenu').classList.toggle('show');" class="menu-button" ><i class="icon bars"></i></a>

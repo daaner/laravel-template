@@ -12,17 +12,17 @@
 - Добавлен CDN jquery + локальная замена ему
 
 - Добавлено и закомментировано (нужно подтянуть модуль yarn или npm)
-  * Vue -- `npm i -s vue`
-  * VueX и store -- `npm i -s vuex`
-  * VueAxios -- `npm i -s vue-axios`
-  * VueTheMask -- `npm i -s vue-the-mask`
-  * cookies -- `npm i -s js-cookie`
-  * vue-moment -- `npm i -s vue-moment`
+  * Vue -- `npm i vue --save`
+  * VueX и store -- `npm i vuex --save`
+  * VueAxios -- `npm i vue-axios --save`
+  * VueTheMask -- `npm i vue-the-mask --save`
+  * cookies -- `npm i js-cookie --save`
+  * vue-moment -- `npm i vue-moment --save`
   * Bearer token
-  * Element.io -- `npm i -s element-ui`
-  * popper -- `npm i -s popper`
-  * lodash -- `npm i -s lodash`
-  * jquery -- `npm i -s jquery`
+  * Element.io -- `npm i element-ui --save`
+  * popper -- `npm i popper --save`
+  * lodash -- `npm i lodash --save`
+  * jquery -- `npm i jquery --save`
 
 
 Возникнут вопросы или предложения - пишите мне в телеграмм `@neodaan`

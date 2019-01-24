@@ -7,7 +7,7 @@
   border-radius: $radius;
 
   @each $key, $value in $colors_palette {
-    &.label-#{$key} {
+    &.label-#{"" + $key} {
       background-color: #{$value};
     }
   }

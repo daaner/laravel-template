@@ -28,7 +28,7 @@ textarea {
 
 //.scroll-primary, etc
 @each $key, $value in $colors_palette {
-  .scroll-#{$key} {
+  .scroll-#{"" + $key} {
     &::-webkit-scrollbar-thumb {
       background-color: #{$value};
     }
