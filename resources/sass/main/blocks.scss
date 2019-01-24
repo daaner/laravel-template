@@ -1,0 +1,26 @@
+hr {
+  background-color: $light-gray;
+  border: none;
+  height: 2px;
+}
+
+.block-flex {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 100%;
+  flex-wrap: wrap;
+}
+
+.block-display {
+  display: block;
+}
+
+.block-none {
+  display: none;
+}
+
+section {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+}

@@ -1,0 +1,14 @@
+.label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: $spacer /3;
+  height: $spacer /3;
+  border-radius: $radius;
+
+  @each $key, $value in $colors_palette {
+    &.label-#{$key} {
+      background-color: #{$value};
+    }
+  }
+}

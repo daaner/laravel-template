@@ -1,0 +1,14 @@
+.static {
+  padding: $spacer *4 0;
+
+  .title {
+    margin-bottom: $spacer *3;
+    pading-bottom: $spacer;
+    border-bottom: 1px solid $medium-gray;
+  }
+
+  .info {
+    text-indent: 1em;
+    line-height: 1.6;
+  }
+}

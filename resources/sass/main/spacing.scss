@@ -1,0 +1,61 @@
+.margin-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+@each $size, $value in (
+  0: $spacing-0,
+  1: $spacing-1,
+  2: $spacing-2,
+  3: $spacing-3,
+  4: $spacing-4,
+  5: $spacing-5,
+  6: $spacing-6,
+  7: $spacing-7,
+  8: $spacing-8,
+  9: $spacing-9
+  ) {
+
+  //padding
+  .p-#{$size} {
+    padding: $value;
+  }
+
+  .pt-#{$size} {
+    padding-top: $value;
+  }
+
+  .pb-#{$size} {
+    padding-bottom: $value;
+  }
+
+  .pl-#{$size} {
+    padding-left: $value;
+  }
+
+  .pr-#{$size} {
+    padding-right: $value;
+  }
+
+  //margin
+  .m-#{$size} {
+    margin: $value;
+  }
+
+  .mt-#{$size} {
+    margin-top: $value;
+  }
+
+  .mb-#{$size} {
+    margin-bottom: $value;
+  }
+
+  .ml-#{$size} {
+    margin-left: $value;
+  }
+
+  .mr-#{$size} {
+    margin-right: $value;
+  }
+}

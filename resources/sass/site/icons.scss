@@ -1,0 +1,67 @@
+@mixin url($url) {
+  -webkit-mask: url('/images/svg/#{$url}.svg') no-repeat 50% 50%;
+  mask: url('/images/svg/#{$url}.svg') no-repeat 50% 50%;
+  display: inline-block;
+}
+
+.icon {
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  background-color: currentColor;
+  height: 1em;
+  width: 1em;
+
+  @each $key, $value in $colors_palette {
+    &.icon-#{$key} {
+      background-color: #{$value};
+    }
+  }
+
+  &.x15 {
+    height: 1.5em;
+    width: 1.5em;
+  }
+
+  &.x2 {
+    height: 2em;
+    width: 2em;
+  }
+
+  &.x3 {
+    height: 3em;
+    width: 3em;
+  }
+
+  &.x4 {
+    height: 4em;
+    width: 4em;
+  }
+
+  //icons
+  &.bell {@include url('bell');}
+  &.bell_empty {@include url('bell_empty');}
+  &.bars {@include url('bars');}
+  &.pencil {@include url('pencil');}
+  &.trash {@include url('trash');}
+  &.chevron_down {@include url('chevron_down');}
+  &.chevron_up {@include url('chevron_up');}
+  &.chevron_left {@include url('chevron_left');}
+  &.chevron_right {@include url('chevron_right');}
+
+
+  // if need
+  // \public\images\svg\1.svg
+  // ...
+  // \public\images\svg\100500.svg
+  // @for $i from 1 through 100500 {
+
+  @for $i from 1 through 2 {
+    &.icon#{$i} {
+      @include url('#{$i}');
+    }
+  }
+
+
+
+
+}

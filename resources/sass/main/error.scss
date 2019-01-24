@@ -1,0 +1,13 @@
+.errors {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  flex: 1;
+
+  h2 small {
+    display: block;
+    margin-bottom: 2em;
+  }
+}

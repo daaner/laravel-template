@@ -1,0 +1,52 @@
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+
+  small {
+    color: $text-muted;
+    font-size: 65%;
+    font-weight: 400;
+    margin-left: 0.5em;
+  }
+}
+
+.h1,
+h1 {
+  font-size: $font-size *2.5;
+}
+
+.h2,
+h2 {
+  font-size: $font-size *2;
+}
+
+.h3,
+h3 {
+  font-size: $font-size *1.7;
+}
+
+.h4,
+h4 {
+  font-size: $font-size *1.5;
+}
+
+.h5,
+h5 {
+  font-size: $font-size *1.35;
+}
+
+.h6,
+h6 {
+  font-size: $font-size;
+}

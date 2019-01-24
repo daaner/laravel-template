@@ -1,0 +1,24 @@
+ol,
+ul {
+  padding-left: 1rem;
+  margin-left: 0.5rem;
+}
+
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+.list-inline {
+  padding-left: 0;
+  list-style: none;
+
+  & > li {
+    display: inline-block;
+    margin-right: 0.5em;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

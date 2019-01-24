@@ -1,0 +1,66 @@
+.auth {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    z-index: -1;
+    background-color: $white;
+  }
+
+  .auth-section,
+  header {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 736px) {
+    text-align: center;
+    background-color: $white;
+
+    header {
+      background-color: $bg-gray;
+    }
+
+    .auth-section .container {
+      flex-direction: column;
+    }
+  }
+
+
+  .auth_form {
+    min-height: 60vh;
+
+    .hcar_block {
+      max-width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+
+      @media screen and (max-width: 768px) {
+        max-width: 100%;
+      }
+    }
+  }
+  .auth-form {
+    margin-top: $spacer *2;
+  }
+
+  .el-form-item__label {
+    font-weight: 700;
+
+    &::before {
+      content: ""!important;
+    }
+  }
+
+  #tab-forgot {
+    visibility: hidden;
+  }
+
+}

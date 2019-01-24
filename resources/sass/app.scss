@@ -1,0 +1,21 @@
+// Variables
+@import 'variables';
+
+
+//add colors array '$colors_palette'
+@import 'main/colors';
+
+@import 'main/normalize';
+@import 'main/fix';
+
+//custom fonts
+@import 'fonts';
+
+//main
+@import 'main';
+
+//other
+@import 'other';
+
+//site
+@import 'site';

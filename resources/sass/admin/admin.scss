@@ -1,0 +1,94 @@
+/* Admin custom CSS */
+header .navbar-right i {
+  margin-right: 5px;
+}
+
+#lng ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+#lng li {
+  padding: 5px;
+  font-size: 1.1em;
+  font-weight: 400;
+}
+
+#lng li.active {
+  font-weight: 700;
+}
+
+#lng li:hover {
+  background-color: #efefef;
+}
+
+#lng li a {
+  color: #ccc;
+}
+
+#lng li.active a {
+  color: #3c8dbc;
+}
+
+.main-header {
+  a.lng {
+    text-transform: uppercase;
+  }
+}
+/* Add */
+.th-center th {
+  text-align: center;
+  vertical-align: middle!important;
+}
+
+.th-center td,
+tr td {
+  vertical-align: middle!important;
+}
+
+.row-relatedlink {
+  line-height: 1!important;
+}
+
+.row-relatedlink a {
+  color: #043694;
+  font-size: 0.9em;
+}
+
+li.tab-delete {
+  float: right!important;
+}
+
+li.tab-delete a {
+  color: #ca4440!important;
+}
+
+.nav-tabs-custom > .nav-tabs > li.tab-delete.active {
+  border-top-color: #ca4440;
+}
+/* FIX */
+.text-muted {
+  color: #ccc!important;
+}
+
+.form-element-files__image {
+  background: #efefef!important;
+}
+
+.form-element-files__image > img {
+  height: 100%;
+}
+
+.form-element-date .input-group,
+.form-element-timestamp .input-group {
+  width: auto!important;
+}
+
+.dataTables_filter {
+  label {
+    margin-top: 0.5em;
+    margin-right: 0.5em;
+  }
+}
+@import "widget";

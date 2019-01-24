@@ -1,0 +1,53 @@
+//palette
+$primary: #427bfd;
+$secondary: #707070;
+$alert: #fbde1e;
+$warning: #ec942d;
+$success: #299567;
+$info: #6cb966;
+
+$black: #111111;
+$white: #ffffff;
+$red: #b72162;
+
+//other colors
+$bg-gray: #f9f9f9 !default;
+
+$light-gray: #e4e4e4 !default;
+$medium-gray: #aaaaaa !default;
+$gray: #333333 !default;
+$dark-gray: #1c1c1c !default;
+$text-muted: $medium-gray;
+
+//other variables
+$main-color: $black;
+$trans: 0.5s !default;
+$spacer: 1em !default;
+$padding: 15px !default;
+$radius: 5px !default;
+$font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
+$font-size: 14px !default;
+$line-height: 1.44 !default;
+$table-cell-padding: .75rem !default;
+$btn-padding-side: $spacer *3 !default;
+
+//spacing
+$spacing-0: 0!important !default;
+$spacing-1: 0.125rem !default;
+$spacing-2: 0.25rem !default;
+$spacing-3: 0.5rem !default;
+$spacing-4: 0.75rem !default;
+$spacing-5: 1rem !default;
+$spacing-6: 1.5rem !default;
+$spacing-7: 2rem !default;
+$spacing-8: 2.5rem !default;
+$spacing-9: 3rem !default;
+
+//border
+$border-1: 1px !default;
+$border-2: 2px !default;
+$border-3: 3px !default;
+
+//scroll-bar main and textarea/multi-select
+$scrollbar-size: 0.5rem !default;
+$scrollbar-size-textarea: 0.3rem !default;

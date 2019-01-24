@@ -1,0 +1,39 @@
+$colors_palette: (
+  primary: $primary,
+  secondary: $secondary,
+  success: $success,
+  warning: $warning,
+  alert: $alert,
+  white: $white,
+  info: $info,
+  red: $red,
+  gray: $gray,
+  black: $black,
+)
+!default;
+
+//text-primary...
+@each $key, $value in $colors_palette {
+  .text-#{$key} {
+    color: #{$value}!important;
+  }
+}
+
+//bg-primary...
+@each $key, $value in $colors_palette {
+  .bg-#{$key} {
+    background-color: #{$value} !important;
+  }
+}
+
+.text-muted {
+  color: $text-muted !important;
+}
+.text-normal {
+  color: $main-color !important;
+}
+
+//transparent
+.bg-transparent {
+  background-color: transparent !important;
+}

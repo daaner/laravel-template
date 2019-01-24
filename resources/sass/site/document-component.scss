@@ -1,0 +1,125 @@
+.document-component {
+    width: 100%;
+
+
+    .add-new-document{
+        font-size: 1.2em;
+        color: $primary;
+        i{
+            opacity: 0.8;
+        }
+        span{
+            cursor: pointer;
+        }
+    }
+    .upload-document{
+        .el-form-item__content{
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    .datepicker{
+        display: flex;
+        border-bottom: 1px solid;
+        border-color: $medium-gray;
+        margin-bottom: $spacer;
+    }
+    .dtapicker-title{
+        padding-top: 0.7em;
+        width: 50%;
+    }
+
+    .el-dialog .el-date-editor{
+        width: 100%;
+    }
+
+    .el-checkbox-group{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .el-checkbox + .el-checkbox{
+        margin-left: 0;
+    }
+
+    .radio-car{
+        margin-bottom: -1em;
+    }
+
+    .upload-demo{
+        border-bottom: 1px solid;
+        border-color: lighten($medium-gray, 20%);
+        margin-bottom: 1em;
+    }
+
+
+}
+
+.document-list {
+    margin-left: -1em;
+    margin-right: -1em;
+    padding: 0;
+    margin-top: $spacer *3;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: space-between;
+    .document-item {
+        cursor: pointer;
+        width: calc(100%/3 - 2em);
+        min-height: 5em;
+        border: 1px solid;
+        border-color: lighten($medium-gray, 20%);
+        background-color: $white;
+        padding: $spacer /3;
+        margin: $spacer;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-content: space-between;
+        &:hover{
+            border-color: $primary;
+        }
+
+        @media (max-width: 1024px) {
+            width: 23%;
+        }
+
+        @media (max-width: 736px) {
+            width: calc(100%/2 - 2em);
+            margin-bottom: $spacer * 3;
+        }
+
+        @media (max-width: 375px) {
+            width: 100%;
+            margin-bottom: $spacer * 3
+        }
+        .document-right{
+            padding: 1em;
+            margin-top: 0.5em;
+            color: $primary;
+        }
+        .document-left{
+            display: flex;
+        }
+        .document{
+            font-size: 3em;
+            opacity: 0.4;
+        }
+        .document-data{
+            padding-left: 1em;
+            padding-top: 0.5em;
+            .bottom-document-data{
+                color: rgba(0, 0, 0, 0.54);
+                font-size: 0.9em;
+            }
+        }
+
+    }
+}

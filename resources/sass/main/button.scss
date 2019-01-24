@@ -1,0 +1,122 @@
+.btn {
+    padding: $spacer/2 $btn-padding-side;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border-radius: $spacer *2;
+    background-color: transparent;
+    transition: $trans;
+    color: $primary;
+    position: relative;
+    min-width: 8em;
+    line-height: 1.5;
+
+    &:focus,
+    &:hover {
+        text-decoration: none;
+        color: transparentize($primary, .2);
+    }
+
+    &.disabled,
+    &:disabled {
+        opacity: 0.5;
+        cursor: no-drop;
+        // color: $white;
+    }
+
+  &-deleted {
+    right: 2em;
+    opacity: 0.5;
+  }
+
+  @media screen and (max-width: 736px) {
+    min-width: 100%;
+    margin-bottom: 1em;
+  }
+}
+//btn-colors
+@each $key, $value in $colors_palette {
+  .btn-outline-#{$key} {
+    color: #{$value};
+    border-color: #{$value};
+    border: 1px solid;
+      &:hover {
+          color: darken($value, 20%);
+      }
+  }
+
+  &.btn-#{$key} {
+    background-color: #{$value};
+    color: $white;
+    // border-color: #{$value};
+
+    &:not(:disabled):not(.disabled):focus,
+    &:not(:disabled):not(.disabled):hover {
+      background-color: darken($value, 10%);
+      color: $white;
+    }
+
+    &:not(:disabled):not(.disabled).active,
+    &:not(:disabled):not(.disabled):active {
+      background-color: desaturate($value, 10%);
+      border-color: transparent;
+
+      &:focus,
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+}
+
+.btn-white {
+  color: $primary;
+
+  .btn-after,
+  .btn-pre {
+    background-color: darken($white, 5%)!important;
+  }
+
+  &:hover {
+    color: transparentize($primary, .2);
+    background-color: $white !important;
+  }
+
+  &.disabled,
+  &:disabled {
+    color: $primary;
+  }
+}
+
+.btn-black {
+  &:hover {
+    background-color: lighten($black, 10%)!important;
+  }
+}
+
+
+.btn-outline-white {
+  &:hover {
+    color: darken($white, 20%);
+  }
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.btn-center{
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  &.btn-block {
+    width: 100%;
+  }
+}
