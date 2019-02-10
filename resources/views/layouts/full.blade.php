@@ -11,7 +11,7 @@
 
 {{-- Footer --}}
 @section('footer')
-  <footer class="bg-white">
+  <footer class="bg-secondary">
     @include('layouts.footer-full')
     @include('layouts.footer')
   </footer>

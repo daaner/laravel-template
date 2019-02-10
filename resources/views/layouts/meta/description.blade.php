@@ -1,6 +1,6 @@
-<meta name="robots" content="index,follow">
+{{-- <meta name="robots" content="index,follow"> --}}
 {{-- for dev --}}
-{{-- <meta name="robots" content="noindex, nofollow"> --}}
+<meta name="robots" content="noindex, nofollow">
 
 @hasSection ('description')
   @php

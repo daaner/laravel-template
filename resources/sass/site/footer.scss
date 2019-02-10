@@ -10,26 +10,6 @@ footer {
     width: 100%;
   }
 
-  .footer_top {
-    margin-bottom: 7em;
-
-    .title {
-      font-size: 42px;
-      line-height: 1;
-      font-weight: 700;
-    }
-
-    @media screen and (max-width: 768px) {
-      .links {
-        text-align: center;
-      }
-    }
-  }
-
-  .terms {
-    margin-left: auto;
-  }
-
   .copyright {
     display: flex;
     flex-direction: row;
@@ -48,22 +28,6 @@ footer {
       }
     }
 
-    .footer_top {
-      &, & .links {
-        margin-bottom: $spacer *2;
-      }
-    }
-
-    .terms {
-      margin-left: inherit;
-      margin-bottom: $spacer;
-      order: 1;
-    }
-
-    .copyright {
-      order: 2;
-      flex-direction: column;
-    }
   }
 
   @media screen and (max-width: 414px) {

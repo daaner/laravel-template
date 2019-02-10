@@ -7,15 +7,6 @@ header {
   justify-content: center;
   align-items: center;
 
-  .top_title {
-    padding-left: $spacer *1.5;
-    padding-right: $spacer *3;
-  }
-
-    .notification-menu {
-        padding-left: $spacer;
-    }
-
   .menu-button {
     display: none;
     padding: $spacer /2;
@@ -34,8 +25,8 @@ header {
     flex: 1;
     width: calc(100% - 210px);
   }
-  @media (max-width: 736px) {
 
+  @media (max-width: 736px) {
     .mmenu {
       position: absolute;
       top: 100%;
@@ -74,27 +65,7 @@ header {
       display: block;
     }
   }
-.right-menu {
-    @media (max-width: 1200px) and (min-width: 736px) {
-        ul {
-            flex-direction: column !important;
-        }
 
-    }
-
-    @media (max-width: 1200px) and (min-width: 1025px) {
-        .notification-menu {
-            padding-left: $spacer *2.3;
-            position: static;
-        }
-
-        .top_title {
-            padding-left: $spacer *3;
-            padding-right: $spacer *3;
-        }
-
-    }
-}
 
   ul {
     display: flex;
@@ -111,6 +82,7 @@ header {
       a {
         padding: 0.4em $btn-padding-side;
         border-bottom: 1px solid transparent;
+
         @media (max-width: 1024px) {
           padding: 0.4em $btn-padding-side /2;
           text-align: center;
