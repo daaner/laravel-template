@@ -6,10 +6,18 @@
     </a>
   </li>
 
-  <li>
-    <a href="{{ URL::to('/icons') }}">
-      {{ __('site.menu.icons') }}
+  <li class="dropdown-menu">
+    <a >
+      {{ __('site.menu.information') }}
     </a>
+      <ul>
+        <li>
+          <a href="URL::to('/icons')">{{ __('site.menu.icons') }}</a>
+        </li>
+        <li>
+          <a href="URL::to('/content')">{{ __('site.menu.content') }}</a>
+        </li>
+      </ul>
   </li>
 
   <li>

@@ -9,23 +9,33 @@
   @endif
 @endsection
 
-{{-- Footer --}}
-@section('footer')
-  <footer class="bg-secondary">
-    @include('layouts.footer-full')
-    @include('layouts.footer')
-  </footer>
+
+{{-- Body --}}
+@section('body')
+  <section role="main" class="main-content">
+    @yield('top')
+
+    @hasSection ('content')
+      <div class="container @yield('content-class')">
+        @yield('content')
+      </div>
+    @endif
+
+    @hasSection ('container-fluid')
+      <div class="container-fluid @yield('content-fluid-class')">
+        @yield('content-fluid')
+      </div>
+    @endif
+
+    @yield('bottom')
+  </section>
 @endsection
 
 
-@section('body')
-
-  @yield('top')
-  <div class="container">
-    <section role="main" class="main-content">
-      @yield('content')
-    </section>
-  </div>
-  @yield('bottom')
-
+{{-- Footer --}}
+@section('footer')
+  <footer class="bg-secondary @yield('footer-class')">
+    @include('layouts.footer-full')
+    @include('layouts.footer')
+  </footer>
 @endsection

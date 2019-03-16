@@ -5,13 +5,14 @@
     white-space: nowrap;
     vertical-align: middle;
     user-select: none;
-    border-radius: $spacer *2;
+    border-radius: $radius;
     background-color: transparent;
     transition: $trans;
     color: $primary;
     position: relative;
     min-width: 8em;
     line-height: 1.5;
+    margin-bottom: $spacer /2;
 
     &:focus,
     &:hover {
@@ -25,11 +26,6 @@
         cursor: no-drop;
         // color: $white;
     }
-
-  &-deleted {
-    right: 2em;
-    opacity: 0.5;
-  }
 
   @media screen and (max-width: 736px) {
     min-width: 100%;

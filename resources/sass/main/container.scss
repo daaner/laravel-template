@@ -2,18 +2,31 @@
 .container-fluid {
   display: flex;
   width: 100%;
-  flex-direction: 100%;
-  align-items: center;
+  flex-direction: column;
+  align-items: baseline;
   padding-right: $padding;
   padding-left: $padding;
   margin-right: auto;
   margin-left: auto;
   position: relative;
+
+  &.row {
+    flex-direction: row;
+  }
+
+  &.no-padding {
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
 
 .container {
   @media (min-width: 1200px) {
     max-width: (1170px - $padding *2);
+
+    &.no-padding {
+      max-width: 1200px;
+    }
   }
   @media (max-width: 1200px) {
     max-width: 100%;
@@ -23,4 +36,5 @@
 .main-content {
   min-height: 60vh;
   max-width: 100%;
+  margin-bottom: $spacer *2;
 }

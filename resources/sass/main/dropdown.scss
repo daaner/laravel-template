@@ -1,0 +1,38 @@
+.dropdown-menu {
+  position: relative;
+
+  ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: darken($white, 5%);
+    height: 0;
+    transition: $trans *5;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: baseline;
+    min-width: 15em;
+    max-width: 30em;
+
+    li {
+      display: block;
+      width: 100%;
+
+      &:hover {
+        background-color: darken($white, 8%);
+      }
+
+      a {
+        display: block;
+        padding: $spacer;
+      }
+    }
+  }
+
+
+  &:hover {
+    ul {
+      height: inherit;
+    }
+  }
+}

@@ -19,3 +19,6 @@ Route::get('/', function () {
 Route::get('/icons', function () {
     return view('icons');
 });
+Route::get('/content', function () {
+    return view('content');
+});

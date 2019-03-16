@@ -2,6 +2,28 @@
   font-size: 1.25em;
 }
 
+mark {
+  background-color: rgba($warning, 30%);
+  padding: 0.2em;
+}
+
+// Blockquotes
+.blockquote {
+  margin-bottom: $spacer;
+  font-size: 120%;
+}
+
+.blockquote-footer {
+  display: block;
+  padding: 0;
+  font-size: 80%; // back to default font-size
+  color: $text-muted;
+
+  &::before {
+    content: "\2014 \00A0"; // em dash, nbsp
+  }
+}
+
 .nowrap {
   white-space: nowrap;
 }

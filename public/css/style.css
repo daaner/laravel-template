@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 .text-primary {
   color: #427bfd !important;
 }
@@ -569,7 +571,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: monospace, monospace;
+  font-family: monospace;
   font-size: 1em;
 }
 
@@ -583,7 +585,7 @@ pre {
   padding: 0.5em;
   display: block;
   width: 100%;
-  font-family: Courier;
+  font-family: monospace;
 }
 
 figure {
@@ -834,14 +836,15 @@ body {
   flex-direction: column;
   align-content: space-around;
   justify-content: space-between;
+  word-break: break-word;
 }
 
 .container,
 .container-fluid {
   display: flex;
   width: 100%;
-  flex-direction: 100%;
-  align-items: center;
+  flex-direction: column;
+  align-items: baseline;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -849,9 +852,24 @@ body {
   position: relative;
 }
 
+.container.row,
+.container-fluid.row {
+  flex-direction: row;
+}
+
+.container.no-padding,
+.container-fluid.no-padding {
+  padding-right: 0;
+  padding-left: 0;
+}
+
 @media (min-width: 1200px) {
   .container {
     max-width: 1140px;
+  }
+
+  .container.no-padding {
+    max-width: 1200px;
   }
 }
 
@@ -864,6 +882,7 @@ body {
 .main-content {
   min-height: 60vh;
   max-width: 100%;
+  margin-bottom: 2em;
 }
 
 .text-left {
@@ -932,6 +951,21 @@ h6 small {
   margin-left: 0.5em;
 }
 
+.h1.underline,
+.h2.underline,
+.h3.underline,
+.h4.underline,
+.h5.underline,
+.h6.underline,
+h1.underline,
+h2.underline,
+h3.underline,
+h4.underline,
+h5.underline,
+h6.underline {
+  border-bottom: 2px solid;
+}
+
 .h1,
 h1 {
   font-size: 35px;
@@ -960,6 +994,42 @@ h5 {
 .h6,
 h6 {
   font-size: 14px;
+}
+
+.dropdown-menu {
+  position: relative;
+}
+
+.dropdown-menu ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f2f2f2;
+  height: 0;
+  transition: 2.5s;
+  overflow: hidden;
+  flex-direction: column;
+  align-items: baseline;
+  min-width: 15em;
+  max-width: 30em;
+}
+
+.dropdown-menu ul li {
+  display: block;
+  width: 100%;
+}
+
+.dropdown-menu ul li:hover {
+  background-color: #ebebeb;
+}
+
+.dropdown-menu ul li a {
+  display: block;
+  padding: 1em;
+}
+
+.dropdown-menu:hover ul {
+  height: inherit;
 }
 
 .rounded {
@@ -1099,6 +1169,27 @@ h6 {
   font-size: 1.25em;
 }
 
+mark {
+  background-color: rgba(236, 148, 45, 0.3);
+  padding: 0.2em;
+}
+
+.blockquote {
+  margin-bottom: 1em;
+  font-size: 120%;
+}
+
+.blockquote-footer {
+  display: block;
+  padding: 0;
+  font-size: 80%;
+  color: #aaaaaa;
+}
+
+.blockquote-footer::before {
+  content: "— ";
+}
+
 .nowrap {
   white-space: nowrap;
 }
@@ -1137,13 +1228,14 @@ h6 {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  border-radius: 2em;
+  border-radius: 5px;
   background-color: transparent;
   transition: 0.5s;
   color: #427bfd;
   position: relative;
   min-width: 8em;
   line-height: 1.5;
+  margin-bottom: 0.5em;
 }
 
 .btn:focus,
@@ -1156,11 +1248,6 @@ h6 {
 .btn:disabled {
   opacity: 0.5;
   cursor: no-drop;
-}
-
-.btn-deleted {
-  right: 2em;
-  opacity: 0.5;
 }
 
 @media screen and (max-width: 736px) {
@@ -1560,6 +1647,7 @@ input[type=button].btn-block {
   justify-content: center;
   text-align: center;
   flex: 1;
+  width: 100%;
 }
 
 .errors h2 small {
@@ -2056,6 +2144,14 @@ hr {
 
 .block-display {
   display: block;
+}
+
+.block-inline {
+  display: inline-block;
+}
+
+.w100 {
+  width: 100%;
 }
 
 .block-none {

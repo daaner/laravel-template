@@ -14,6 +14,8 @@ return [
     'about' => 'О нас',
     'admin' => 'Админка',
     'icons' => 'Иконки',
+    'information' => 'Информация',
+    'content' => 'Разметка',
   ],
 
   'header' => [
