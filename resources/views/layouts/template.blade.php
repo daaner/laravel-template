@@ -29,6 +29,8 @@
       @yield('footer')
     </div>
 
+    @include('layouts.other.backtotop')
+
     {{-- // == if need jQuery --}}
     {{-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript">

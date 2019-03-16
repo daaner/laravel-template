@@ -1988,7 +1988,12 @@ process.umask = function() { return 0; };
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // == VueAxios
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); //Vanilla
+
+
+__webpack_require__(/*! ./vanilla/mmenu */ "./resources/js/vanilla/mmenu.js");
+
+__webpack_require__(/*! ./vanilla/backtotop */ "./resources/js/vanilla/backtotop.js"); // == VueAxios
 // import VueAxios from 'vue-axios'
 // Vue.use(VueAxios, axios)
 // == VueTheMask
@@ -2058,6 +2063,82 @@ var token = document.head.querySelector('meta[name="csrf-token"]');
 if (token) {
   window.axios.defaults.headers.common["X-CSRF-TOKEN"] = token.content;
 }
+
+/***/ }),
+
+/***/ "./resources/js/vanilla/backtotop.js":
+/*!*******************************************!*\
+  !*** ./resources/js/vanilla/backtotop.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/** Scroll to top button implementation in vanilla JavaScript (ES6 - ECMAScript 6) **/
+var intervalId = 0; // Needed to cancel the scrolling when we're at the top of the page
+
+var $scrollButton = document.querySelector('.backtotop'); // Reference to our scroll button
+
+function scrollStep() {
+  // Check if we're at the top already. If so, stop scrolling by clearing the interval
+  if (window.pageYOffset === 0) {
+    clearInterval(intervalId);
+  }
+
+  window.scroll(0, window.pageYOffset - 50);
+}
+
+function trackScroll() {
+  var scrolled = window.pageYOffset;
+  var coords = document.documentElement.clientHeight;
+
+  if (scrolled > coords) {
+    $scrollButton.classList.add('show');
+  }
+
+  if (scrolled < coords) {
+    $scrollButton.classList.remove('show');
+  }
+}
+
+function scrollToTop() {
+  // Call the function scrollStep() every 16.66 millisecons
+  intervalId = setInterval(scrollStep, 10.66);
+} // When the DOM is loaded, this click handler is added to our scroll button
+
+
+$scrollButton.addEventListener('click', scrollToTop);
+window.addEventListener('scroll', trackScroll);
+
+/***/ }),
+
+/***/ "./resources/js/vanilla/mmenu.js":
+/*!***************************************!*\
+  !*** ./resources/js/vanilla/mmenu.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var hamburger = document.querySelector('.menu-button');
+var menu = document.querySelector('#mobilemenu');
+
+var toggleMenu = function toggleMenu() {
+  menu.classList.toggle('show');
+};
+
+hamburger.addEventListener('click', function (e) {
+  e.stopPropagation();
+  toggleMenu();
+});
+document.addEventListener('click', function (e) {
+  var target = e.target;
+  var its_menu = target == menu || menu.contains(target);
+  var its_hamburger = target == hamburger;
+  var menu_is_active = menu.classList.contains('show');
+
+  if (!its_menu && !its_hamburger && menu_is_active) {
+    toggleMenu();
+  }
+});
 
 /***/ }),
 

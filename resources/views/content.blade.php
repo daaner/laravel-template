@@ -2,7 +2,7 @@
 
 @section('title', __('site.title'))
 
-@section('body_class', 'body_custom_class')
+@section('content-class', 'overflow')
 
 {{-- ========== Addition blocks ========== --}}
 @section('description')

@@ -31,5 +31,15 @@
       {{ __('site.menu.help') }} (#)
     </a>
   </li>
+  <li>
+    <a href="#">
+      {{ __('site.menu.help') }} (#)
+    </a>
+  </li>
+  <li>
+    <a href="#">
+      {{ __('site.menu.help') }} (#)
+    </a>
+  </li>
 
 </ul>

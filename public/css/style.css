@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Montserrat);@charset "UTF-8";
 
 .text-primary {
   color: #427bfd !important;
@@ -809,6 +809,7 @@ fieldset {
 }
 
 html {
+  width: 100%;
   box-sizing: border-box;
   position: relative;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1025,7 +1026,50 @@ h6 {
 
 .dropdown-menu ul li a {
   display: block;
-  padding: 1em;
+  padding: 1em 1.5em;
+}
+
+@media (max-width: 812px) {
+  .dropdown-menu {
+    flex-direction: column;
+  }
+
+  .dropdown-menu ul {
+    max-width: 100%;
+    width: 100%;
+    position: relative;
+  }
+}
+
+.dropdown-menu > a {
+  position: relative;
+}
+
+.dropdown-menu > a::after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  margin-left: 1em;
+  width: 1em;
+  height: 1em;
+  margin-top: -0.5em;
+  background: url("/images/svg/chevron_down.svg") no-repeat 50% 50%;
+  transition: -webkit-transform 0.25s;
+  transition: transform 0.25s;
+  transition: transform 0.25s, -webkit-transform 0.25s;
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
+
+@media (max-width: 1024px) {
+  .dropdown-menu > a::after {
+    margin-left: 0.5em;
+  }
+}
+
+.dropdown-menu:hover > a::after {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 .dropdown-menu:hover ul {
@@ -1216,6 +1260,10 @@ mark {
 
 .absolute {
   position: absolute !important;
+}
+
+.overflow {
+  overflow: hidden;
 }
 
 .btn {
@@ -2154,6 +2202,10 @@ hr {
   width: 100%;
 }
 
+.w50 {
+  width: 50%;
+}
+
 .block-none {
   display: none;
 }
@@ -2170,14 +2222,11 @@ ul {
   margin-left: 0.5rem;
 }
 
+.list-inline,
 .list-unstyled {
-  padding-left: 0;
   list-style: none;
-}
-
-.list-inline {
+  margin-left: 0;
   padding-left: 0;
-  list-style: none;
 }
 
 .list-inline > li {
@@ -2271,6 +2320,7 @@ header .menu-button {
   display: none;
   padding: 0.5em;
   margin-left: auto;
+  line-height: 1;
 }
 
 header .logo img {
@@ -2284,7 +2334,11 @@ header .mmenu {
   width: calc(100% - 210px);
 }
 
-@media (max-width: 736px) {
+header .mmenu ul {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 812px) {
   header .mmenu {
     position: absolute;
     top: 100%;
@@ -2297,10 +2351,6 @@ header .mmenu {
     overflow: hidden;
     box-shadow: 0 3px 5px 0 rgba(17, 17, 17, 0.1);
     transition: box-shadow 0.5s;
-  }
-
-  header .mmenu:hover {
-    box-shadow: 0 3px 5px 0 rgba(17, 17, 17, 0.3);
   }
 
   header .mmenu.show {
@@ -2334,13 +2384,11 @@ header ul {
 header ul li {
   display: inline-flex;
   align-items: center;
-  line-height: 1;
-  transition: 0.5s;
 }
 
 header ul li a {
   padding: 0.4em 3em;
-  border-bottom: 1px solid transparent;
+  white-space: nowrap;
 }
 
 @media (max-width: 1024px) {
@@ -2348,10 +2396,6 @@ header ul li a {
     padding: 0.4em 1.5em;
     text-align: center;
   }
-}
-
-header ul li a.active {
-  border-bottom-color: currentColor;
 }
 
 footer {
@@ -2394,6 +2438,24 @@ footer .copyright {
     flex-direction: row;
     justify-content: center;
   }
+}
+
+.backtotop {
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  padding: 0.5em;
+  background-color: #e4e4e4;
+  border-radius: 50%;
+  line-height: 1;
+  transition: 0.5s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.backtotop.show {
+  opacity: 1;
+  visibility: visible;
 }
 
 .icon {

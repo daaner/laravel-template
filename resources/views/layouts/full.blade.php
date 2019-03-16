@@ -22,7 +22,7 @@
     @endif
 
     @hasSection ('container-fluid')
-      <div class="container-fluid @yield('content-fluid-class')">
+      <div class="container-fluid @yield('content-class')">
         @yield('content-fluid')
       </div>
     @endif

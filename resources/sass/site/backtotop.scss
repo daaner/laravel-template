@@ -1,0 +1,17 @@
+.backtotop {
+  position: fixed;
+  bottom: $spacer;
+  right: $spacer;
+  padding: $spacer /2;
+  background-color: $light-gray;
+  border-radius: 50%;
+  line-height: 1;
+  transition: $trans;
+  visibility: hidden;
+  opacity: 0;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+}

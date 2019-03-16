@@ -1,4 +1,9 @@
-require('./bootstrap')
+require('./bootstrap');
+
+//Vanilla
+require('./vanilla/mmenu');
+require('./vanilla/backtotop');
+
 
 // == VueAxios
 // import VueAxios from 'vue-axios'

@@ -11,6 +11,7 @@ header {
     display: none;
     padding: $spacer /2;
     margin-left: auto;
+    line-height: 1;
   }
 
   .logo {
@@ -24,9 +25,12 @@ header {
     justify-content: space-between;
     flex: 1;
     width: calc(100% - 210px);
-  }
 
-  @media (max-width: 736px) {
+    ul {
+      flex-wrap: wrap;
+    }
+  }
+  @media (max-width: 812px) {
     .mmenu {
       position: absolute;
       top: 100%;
@@ -39,10 +43,6 @@ header {
       overflow: hidden;
       box-shadow: 0 3px 5px 0 rgba($black, 0.1);
       transition: box-shadow $trans;
-
-      &:hover {
-        box-shadow: 0 3px 5px 0 rgba($black, 0.3);
-      }
 
       &.show {
         height: auto;
@@ -65,8 +65,7 @@ header {
       display: block;
     }
   }
-
-
+  
   ul {
     display: flex;
     flex-direction: row;
@@ -76,20 +75,13 @@ header {
     li {
       display: inline-flex;
       align-items: center;
-      line-height: 1;
-      transition: 0.5s;
-
+      // line-height: 1;
       a {
         padding: 0.4em $btn-padding-side;
-        border-bottom: 1px solid transparent;
-
+        white-space: nowrap;
         @media (max-width: 1024px) {
           padding: 0.4em $btn-padding-side /2;
           text-align: center;
-        }
-
-        &.active {
-          border-bottom-color: currentColor;
         }
       }
     }

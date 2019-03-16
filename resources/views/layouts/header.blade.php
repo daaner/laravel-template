@@ -7,5 +7,5 @@
     @yield('menu')
   </div>
 
-  <a href="javascript:document.getElementById('mobilemenu').classList.toggle('show');" class="menu-button" ><i class="icon bars"></i></a>
+  <a class="menu-button"><i class="icon bars"></i></a>
 </div>

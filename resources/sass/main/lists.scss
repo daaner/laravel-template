@@ -4,15 +4,14 @@ ul {
   margin-left: 0.5rem;
 }
 
+.list-inline,
 .list-unstyled {
-  padding-left: 0;
   list-style: none;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .list-inline {
-  padding-left: 0;
-  list-style: none;
-
   & > li {
     display: inline-block;
     margin-right: 0.5em;
