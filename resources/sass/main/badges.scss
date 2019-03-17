@@ -1,0 +1,59 @@
+$label_size: 5px !default;
+
+.badge {
+  position: relative;
+  background-color: $primary;
+  border-radius: $radius;
+  font-size: 80%;
+  padding: $spacer /3 $spacer /2;
+  margin-left: $spacer /2;
+  display: inline-flex;
+  justify-content: center;
+  min-width: 2em;
+  color: $white;
+  font-weight: 700;
+
+  @each $key, $value in $colors_palette {
+    &.badge-#{"" + $key} {
+      background-color: #{$value};
+    }
+  }
+
+  &-alert,
+  &-white {
+    color: $black;
+  }
+}
+
+.label {
+  position: relative;
+  margin-right: $label_size;
+
+  &::after {
+    position: absolute;
+    content: '';
+    top: -$label_size /2;
+    right: -$label_size;
+    width: $label_size;
+    height: $label_size;
+    border-radius: 100%;
+    background-color: $primary;
+  }
+
+  &-x2 {
+    &::after {
+      top: -$label_size;
+      right: -$label_size *2;
+      width: $label_size *2;
+      height: $label_size *2;
+    }
+  }
+
+  @each $key, $value in $colors_palette {
+    &.label-#{"" + $key} {
+      &::after {
+        background-color: #{$value};
+      }
+    }
+  }
+}

@@ -17,6 +17,9 @@
         <li>
           <a href="URL::to('/content')">{{ __('site.menu.content') }}</a>
         </li>
+        <li>
+          <a href="URL::to('/content2')">{{ __('site.menu.content2') }}</a>
+        </li>
       </ul>
   </li>
 

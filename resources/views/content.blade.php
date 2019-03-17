@@ -36,6 +36,7 @@
     <li><a href="#border">Borders</a></li>
     <li><a href="#paddings">Paddings</a></li>
     <li><a href="#margins">Margins</a></li>
+    <li><a href="#badges">Badges & Labels</a></li>
   </ul>
   <br>
   <hr><br>
@@ -72,13 +73,9 @@
   @include('debug.margins')
   <hr><br>
 
-
-
-
-
-
-
-
+  {{-- Badges --}}
+  @include('debug.badges')
+  <hr><br>
 
 
 @endsection

@@ -12,4 +12,12 @@
   <p class="h5">Header 5 classes <small>small</small></p>
   <h6>Header 6 <small>header small</small></h6>
   <p class="h6">Header 6 classes <small>small</small></p>
+
+  <br>
+
+  <p>
+    <span class="h3 underline">Header underline <small>small</small></span>
+  </p>
+  <br>
+
 </div>

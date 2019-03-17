@@ -16,6 +16,7 @@ return [
     'icons' => 'Иконки',
     'information' => 'Информация',
     'content' => 'Разметка',
+    'content2' => 'Разметка 2',
   ],
 
   'header' => [

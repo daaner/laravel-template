@@ -16,9 +16,13 @@ Route::get('/', function () {
 });
 
 
+//dev
 Route::get('/icons', function () {
     return view('icons');
 });
 Route::get('/content', function () {
     return view('content');
+});
+Route::get('/content2', function () {
+    return view('content2');
 });

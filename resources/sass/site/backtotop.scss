@@ -10,6 +10,10 @@
   visibility: hidden;
   opacity: 0;
 
+  i {
+    display: flex!important;
+  }
+
   &.show {
     opacity: 1;
     visibility: visible;

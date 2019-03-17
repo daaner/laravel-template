@@ -19,6 +19,9 @@ $gray: #333333 !default;
 $dark-gray: #1c1c1c !default;
 $text-muted: $medium-gray;
 
+//Count grid column
+$columns: 12 !default;
+
 //other variables
 $main-color: $black;
 $trans: 0.5s !default;

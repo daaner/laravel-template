@@ -1,3 +1,9 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:focus textarea:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -14,5 +20,14 @@ textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus {
 input,
 textarea {
   caret-color: $black;
+}
+
+input,
+select,
+textarea {
   background-color: transparent;
+  border: 1px solid $medium-gray;
+  border-radius: $radius;
+  padding: $spacer /3 $spacer /2;
+  width: 100%;
 }
