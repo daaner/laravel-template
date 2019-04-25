@@ -28,6 +28,7 @@
   <div class="container">
     <span class="h3 mr-5">Section - TOP</span>
     Can be null
+    {{ dump($test) }}
   </div>
 @endsection
 
