@@ -16,13 +16,13 @@
     @yield('top')
 
     @hasSection ('content')
-      <div class="container @yield('content-class')">
+      <div class="container @yield('content_class')">
         @yield('content')
       </div>
     @endif
 
     @hasSection ('container-fluid')
-      <div class="container-fluid @yield('content-class')">
+      <div class="container-fluid @yield('content_class')">
         @yield('content-fluid')
       </div>
     @endif
@@ -34,7 +34,7 @@
 
 {{-- Footer --}}
 @section('footer')
-  <footer class="bg-secondary @yield('footer-class')">
+  <footer class="bg-secondary @yield('footer_class')">
     @include('layouts.footer-full')
     @include('layouts.footer')
   </footer>

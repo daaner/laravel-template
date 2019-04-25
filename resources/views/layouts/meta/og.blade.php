@@ -4,18 +4,21 @@
   <meta name="image" content="@yield('og_image')"/>
   <meta property="og:image" content="@yield('og_image')"/>
   <meta property="twitter:image" content="@yield('og_image')"/>
+  <meta itemprop="image" content="@yield('og_image')" />
+  <meta property="vk:image" content="@yield('og_image')"/>
 @endif
 @hasSection ('og_image_alt')
   <meta property="og:image:alt" content="@yield('og_image_alt')"/>
   <meta property="twitter:image:alt" content="@yield('og_image_alt')"/>
 @else
-  <meta property="og:image:alt" content="{{ trans('site.title') }}"/>
-  <meta property="twitter:image:alt" content="{{ trans('site.title') }}"/>
+  <meta property="og:image:alt" content="{{ __('site.title') }}"/>
+  <meta property="twitter:image:alt" content="{{ __('site.title') }}"/>
 @endif
 
 
 <meta name="image" content="{{ URL::to('/images/og_image.jpg') }}"/>
 <meta name="image" content="{{ URL::to('/images/no_image.jpg') }}"/>
+<meta itemprop="image" content="{{ URL::to('/images/no_image.jpg') }}" />
 <meta property="og:image" content="{{ URL::to('/images/og_image.jpg') }}"/>
 <meta property="og:image" content="{{ URL::to('/images/no_image.jpg') }}"/>
 <meta property="og:image:width" content="1200">
@@ -24,4 +27,4 @@
 <meta property="twitter:image" content="{{ URL::to('/images/no_image.jpg') }}"/>
 
 <meta property="og:type" content="website" />
-<meta property="og:site_name" content="{{ trans('site.title') }}"/>
+<meta property="og:site_name" content="{{ __('site.title') }}"/>

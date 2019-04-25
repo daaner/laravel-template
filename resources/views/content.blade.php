@@ -1,26 +1,7 @@
 @extends('layouts.full')
 
-@section('title', __('site.title'))
-
-@section('content-class', 'overflow')
-
-{{-- ========== Addition blocks ========== --}}
-@section('description')
-  Description. Can be empty
-@endsection
-
-{{-- If need Canonical. Can be empty --}}
-{{-- /profile or $data->url --}}
-{{-- !Short path! --}}
-@section('canonical', '/content')
-
-@section('script')
-  {{-- Link to addition scripts for this page --}}
-@endsection
-
-@section('style')
-  {{-- Link to addition style for this page --}}
-@endsection
+@section('title', 'Content 1')
+@section('content_class', 'overflow')
 
 
 {{-- ========== Main blocks ========== --}}

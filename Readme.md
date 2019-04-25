@@ -24,6 +24,31 @@
   * lodash -- `npm i lodash --save`
   * jquery -- `npm i jquery --save`
 
+## Blade секции для разных нужд
+- `@section('title', 'Заголовок страницы')`
+- `@section('description', 'Описание')`
+- `@section('canonical', 'каноническая ссылка')`
+- `@section('body_class', 'клас для body')`
+- `@section('content_class', 'класс главного контента')`
+- `@section('footer_class', 'класс футера')`
+- `@section('og_image', 'ОГ изображение')`
+- `@section('og_image_alt', 'Альт ОГ изображения')`
+
+```
+  @section('style')
+    добавление стилей
+  @endsection
+
+  @section('script')
+    добавление скриптов
+  @endsection
+
+  дополнительная разметка ld-json (только данные массивом через запятую)
+  @section('ldjson')
+    "@context": "http://schema.org2",
+    "@type": "WebSite2",
+  @endsection
+```
 
 Возникнут вопросы или предложения - пишите мне в телеграмм `@neodaan`
 

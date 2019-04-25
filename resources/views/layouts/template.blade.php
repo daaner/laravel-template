@@ -14,6 +14,7 @@
     <link href="{{ mix('css/style.css') }}" rel="stylesheet">
     @yield('style')
     @include('layouts.meta.metric')
+    @include('layouts.meta.ldjson')
   </head>
 
   <body class="@yield('body_class')">

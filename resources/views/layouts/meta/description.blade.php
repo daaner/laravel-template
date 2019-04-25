@@ -10,8 +10,12 @@
   <meta name="description" content="{{ $description }}">
   <meta property="og:description" content="{{ $description }}">
   <meta property="twitter:description" content="{{ $description }}">
+  <meta itemprop="description" content="{{ $description }}" />
+  <meta property="vk:description" content="{{ $description }}">
 @else
   <meta name="description" content="{{ __('site.description') }}">
   <meta property="og:description" content="{{ __('site.description') }}">
   <meta property="twitter:description" content="{{ __('site.description') }}">
+  <meta itemprop="description" content="{{ __('site.description') }}" />
+  <meta property="vk:description" content="{{ __('site.description') }}">
 @endif

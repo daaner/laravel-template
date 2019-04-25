@@ -2,25 +2,41 @@
 
 @section('title', __('site.title'))
 
-@section('content-class', 'body_custom_class')
 
 {{-- ========== Addition blocks ========== --}}
-@section('description')
-  Description. Can be empty
-@endsection
+@section('description', 'Description. Can be empty')
 
 {{-- If need Canonical. Can be empty --}}
-{{-- /profile or $data->url --}}
-{{-- !Short path! --}}
-@section('canonical', '/profile')
+@section('canonical', 'http://www.site.com/profile')
+
+
+{{-- body class --}}
+@section('body_class', 'new-body-class')
+
+{{-- content class (only main) --}}
+@section('content_class', 'new-content-class')
+
+{{-- footer class --}}
+@section('footer_class', 'new-footer-class')
+
+@section('style')
+  {{-- Link to addition style for this page --}}
+@endsection
 
 @section('script')
   {{-- Link to addition scripts for this page --}}
 @endsection
 
-@section('style')
-  {{-- Link to addition style for this page --}}
+{{-- OG --}}
+@section('og_image', 'url_for_og_image')
+@section('og_image_alt', 'alt_for_og_image')
+
+@section('ldjson')
+  {{-- only inner data --}}
+  "@context": "http://schema.org2",
+  "@type": "WebSite2",
 @endsection
+
 
 
 {{-- ========== Main blocks ========== --}}
@@ -29,6 +45,11 @@
     <span class="h3 mr-5">Section - TOP</span>
     Can be null
     {{ dump($test) }}
+    <br>
+    <br>
+    <h4>Carbon2</h4>
+    {{ dump(Carbon\Carbon::parse('2019-01-01 12:00:00')->diffForHumans()) }}
+    {{ dump(Carbon\Carbon::now()->isoFormat('LLLL')) }}
   </div>
 @endsection
 
