@@ -35,19 +35,19 @@
 - `@section('og_image_alt', 'Альт ОГ изображения')`
 
 ```
-  @section('style')
-    добавление стилей
-  @endsection
+@section('style')
+  добавление стилей
+@endsection
 
-  @section('script')
-    добавление скриптов
-  @endsection
+@section('script')
+  добавление скриптов
+@endsection
 
-  дополнительная разметка ld-json (только данные массивом через запятую)
-  @section('ldjson')
-    "@context": "http://schema.org2",
-    "@type": "WebSite2",
-  @endsection
+дополнительная разметка ld-json (только данные массивом через запятую)
+@section('ldjson')
+  "@context": "http://schema.org2",
+  "@type": "WebSite2",
+@endsection
 ```
 
 Возникнут вопросы или предложения - пишите мне в телеграмм `@neodaan`
