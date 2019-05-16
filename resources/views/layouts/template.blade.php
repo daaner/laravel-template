@@ -13,8 +13,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="{{ mix('css/style.css') }}" rel="stylesheet">
     @yield('style')
-    @include('layouts.meta.metric')
     @include('layouts.meta.ldjson')
+    @include('layouts.meta.metric')
+
+    @if (isset($scripts_top) && !$scripts_top->isEmpty())
+      @foreach ($scripts_top as $top)
+        {!! $top->data !!}
+      @endforeach
+    @endif
   </head>
 
   <body class="@yield('body_class')">
@@ -42,6 +48,12 @@
 
     <script type="text/javascript" src="{{ mix('js/script.js') }}"></script>
     @yield('script')
+
+    @if (isset($scripts_bottom) && !$scripts_bottom->isEmpty())
+      @foreach ($scripts_bottom as $bottom)
+        {!! $bottom->data !!}
+      @endforeach
+    @endif
 
   </body>
 </html>

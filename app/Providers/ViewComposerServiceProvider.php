@@ -6,6 +6,9 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\View\Factory;
 use View;
 
+use App\Http\ViewComposers\ScriptComposer;
+
+//dev
 use App\Http\ViewComposers\DefaultComposer;
 
 
@@ -18,6 +21,9 @@ class ViewComposerServiceProvider extends ServiceProvider
 
     $this->views = $viewFactory;
 
+    $this->compose('layouts.template', ScriptComposer::class);
+
+    //dev
     $this->compose('*', DefaultComposer::class);
 
   }

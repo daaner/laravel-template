@@ -28,6 +28,10 @@ return [
     'google_analytic' => env('GOOGLE_ANALYTIC', ''),
     'yandex_metric' => env('YANDEX_METRIC', ''),
 
+    //60 seccond default
+    'cache_enabled' => env('APP_CACHE_ENABLED', false),
+    'cache_time_forever' => env('APP_CACHE_TIME_FOREVER', 60),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

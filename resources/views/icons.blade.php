@@ -16,8 +16,18 @@
     <li class="p-3 pb-5"><i class="icon chevron_left x4"></i> <br>.chevron_left</li>
     <li class="p-3 pb-5"><i class="icon chevron_right x4"></i> <br>.chevron_right</li>
 
+    <li class="p-3 pb-5"><i class="icon cogs x4"></i> <br>.cogs</li>
+    <li class="p-3 pb-5"><i class="icon exit x4"></i> <br>.exit</li>
+
     <li class="p-3 pb-5"><i class="icon trash x4 icon-primary"></i> <br>.trash</li>
     <li class="p-3 pb-5 text-red"><i class="icon pencil x4"></i> <br>.pencil</li>
+
+    <li class="p-3 pb-5"><i class="icon facebook x4"></i> <br>.facebook</li>
+    <li class="p-3 pb-5"><i class="icon instagram x4"></i> <br>.instagram</li>
+    <li class="p-3 pb-5"><i class="icon linkedin x4"></i> <br>.linkedin</li>
+    <li class="p-3 pb-5"><i class="icon twitter x4"></i> <br>.twitter</li>
+    <li class="p-3 pb-5"><i class="icon vimeo x4"></i> <br>.vimeo</li>
+    <li class="p-3 pb-5"><i class="icon youtube x4"></i> <br>.youtube</li>
   </ul>
 
   <hr>

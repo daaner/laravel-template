@@ -19,7 +19,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'login',
+        'role_id',
+        'email',
+        'password',
+        'active',
     ];
 
     /**
@@ -28,7 +33,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'active',
+        'role_id',
+        'password',
+        'remember_token',
     ];
 
     /**
@@ -39,4 +47,27 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+    public function isAdmin() {
+      return $this->role_id == 3;
+    }
+    public function isModerator() {
+      return $this->role_id == 2;
+    }
+
+
+    public function roles() {
+      return $this->belongsTo(Role::class, 'role_id', 'id');
+    }
+
+
+    //admin password
+    public function setNewPasswordAttribute($value){
+      if($value) {
+        $this->attributes['password'] = bcrypt($value);
+      }
+    }
+
 }

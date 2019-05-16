@@ -2015,6 +2015,7 @@ __webpack_require__(/*! ./vanilla/backtotop */ "./resources/js/vanilla/backtotop
 // });
 //Vue
 // Vue.component('user-auth', require('./components/User.vue'));
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 // Bearer token
 // axios.defaults.headers.common["Authorization"] = "Bearer " + cookies.get('apiToken');
 // == Vue initialization

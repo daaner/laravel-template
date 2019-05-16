@@ -48,6 +48,16 @@
   &.chevron_left {@include url('chevron_left');}
   &.chevron_right {@include url('chevron_right');}
 
+  &.cogs {@include url('cogs');}
+  &.exit {@include url('exit');}
+
+  &.facebook {@include url('facebook');}
+  &.instagram {@include url('instagram');}
+  &.linkedin {@include url('linkedin');}
+  &.twitter {@include url('twitter');}
+  &.vimeo {@include url('vimeo');}
+  &.youtube {@include url('youtube');}
+
 
   // if need
   // \public\images\svg\1.svg

@@ -810,6 +810,7 @@ fieldset {
 
 html {
   width: 100%;
+  min-width: 375px;
   box-sizing: border-box;
   position: relative;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -817,7 +818,6 @@ html {
   font-style: normal;
   font-weight: 400;
   line-height: 1.44;
-  text-align: left;
   text-align: start;
   text-decoration: none;
   text-shadow: none;
@@ -883,6 +883,7 @@ body {
 .main-content {
   min-height: 60vh;
   max-width: 100%;
+  align-items: baseline;
   margin-bottom: 2em;
 }
 
@@ -3053,6 +3054,54 @@ footer .copyright {
 .icon.chevron_right {
   -webkit-mask: url("/images/svg/chevron_right.svg") no-repeat 50% 50%;
   mask: url("/images/svg/chevron_right.svg") no-repeat 50% 50%;
+  display: inline-block;
+}
+
+.icon.cogs {
+  -webkit-mask: url("/images/svg/cogs.svg") no-repeat 50% 50%;
+  mask: url("/images/svg/cogs.svg") no-repeat 50% 50%;
+  display: inline-block;
+}
+
+.icon.exit {
+  -webkit-mask: url("/images/svg/exit.svg") no-repeat 50% 50%;
+  mask: url("/images/svg/exit.svg") no-repeat 50% 50%;
+  display: inline-block;
+}
+
+.icon.facebook {
+  -webkit-mask: url("/images/svg/facebook.svg") no-repeat 50% 50%;
+  mask: url("/images/svg/facebook.svg") no-repeat 50% 50%;
+  display: inline-block;
+}
+
+.icon.instagram {
+  -webkit-mask: url("/images/svg/instagram.svg") no-repeat 50% 50%;
+  mask: url("/images/svg/instagram.svg") no-repeat 50% 50%;
+  display: inline-block;
+}
+
+.icon.linkedin {
+  -webkit-mask: url("/images/svg/linkedin.svg") no-repeat 50% 50%;
+  mask: url("/images/svg/linkedin.svg") no-repeat 50% 50%;
+  display: inline-block;
+}
+
+.icon.twitter {
+  -webkit-mask: url("/images/svg/twitter.svg") no-repeat 50% 50%;
+  mask: url("/images/svg/twitter.svg") no-repeat 50% 50%;
+  display: inline-block;
+}
+
+.icon.vimeo {
+  -webkit-mask: url("/images/svg/vimeo.svg") no-repeat 50% 50%;
+  mask: url("/images/svg/vimeo.svg") no-repeat 50% 50%;
+  display: inline-block;
+}
+
+.icon.youtube {
+  -webkit-mask: url("/images/svg/youtube.svg") no-repeat 50% 50%;
+  mask: url("/images/svg/youtube.svg") no-repeat 50% 50%;
   display: inline-block;
 }
 
