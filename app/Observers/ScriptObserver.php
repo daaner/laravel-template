@@ -13,16 +13,16 @@ class ScriptObserver
   }
 
 
-  public function creating(Model $result) {
-  }
+  // public function creating(Model $result) {
+  // }
 
 
   public function created(Model $result) {
     cache()->forget('scripts');
   }
 
-  public function updating(Model $result) {
-  }
+  // public function updating(Model $result) {
+  // }
 
 
   public function updated(Model $result) {

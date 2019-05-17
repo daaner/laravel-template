@@ -10,33 +10,26 @@ class SettingSeeder extends Seeder
 
       //503
       [
-        'name'        => 'Disable site',
+        'name'        => 'disable_site',
         'description' => 'Disable site or not',
-        'value'       => '0',
+        'value'       => false,
       ],
 
       //403
       [
-        'name'        => 'Admins enter',
-        'description' => 'Allow login for admins',
-        'value'       => '1',
-      ],
-      [
-        'name'        => 'Moderators enter',
+        'name'        => 'moderators_allow',
         'description' => 'Allow login for moderators',
-        'value'       => '1',
+        'value'       => true,
       ],
       [
-        'name'        => 'Registered enter',
-        'description' => 'Allow login only for registered users',
-        'value'       => '0',
+        'name'        => 'registered_allow',
+        'description' => 'Allow site only for registered users',
+        'value'       => false,
       ],
-
-
       [
-        'name'        => 'Allow register',
+        'name'        => 'enable_register',
         'description' => 'Allow register on site',
-        'value'       => '1',
+        'value'       => true,
       ],
 
 
@@ -48,7 +41,7 @@ class SettingSeeder extends Seeder
       if ($newData === null) {
         $newData = Seedmodel::create(array(
           'name'        => $data['name'],
-          'description' => $data['name'],
+          'description' => $data['description'],
           'value'       => $data['value'],
         ));
       }

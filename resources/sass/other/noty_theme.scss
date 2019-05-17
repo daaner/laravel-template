@@ -1,0 +1,51 @@
+.noty_theme__mint.noty_bar {
+  margin: $spacer/2 0;
+  overflow: hidden;
+  border-radius: $radius;
+  position: relative;
+
+  .noty_body {
+	padding: $spacer;
+	font-size: $font-size;
+  }
+
+  .noty_buttons {
+	padding: $spacer /2;
+  }
+
+  .noty_progressbar {
+    height: $font-size /3;
+  }
+}
+
+.noty_theme__mint.noty_type__alert,
+.noty_theme__mint.noty_type__notification {
+  background-color: lighten($alert, 30%);
+  // border-bottom: 1px solid darken($alert, 30%);
+  // color: $black;
+}
+
+.noty_theme__mint.noty_type__warning {
+  background-color: lighten($warning, 30%);
+  // border-bottom: 1px solid darken($warning, 30%);
+  // color: $black;
+}
+
+.noty_theme__mint.noty_type__error {
+  background-color: lighten($red, 30%);
+  // border-bottom: 1px solid darken($red, 30%);
+  // color: $black;
+}
+
+.noty_theme__mint.noty_type__info,
+.noty_theme__mint.noty_type__information {
+  background-color: lighten($info, 30%);
+  // border-bottom: 1px solid darken($info, 30%);
+  // color: $black;
+}
+
+.noty_theme__mint.noty_type__success {
+  background-color: lighten($success, 30%);
+  // border-bottom: 1px solid darken($success, 30%);
+  // color: $black;
+}

@@ -13,7 +13,7 @@ class Setting extends Migration
       $table->bigIncrements('id');
       $table->string('name');
       $table->string('description');
-      $table->string('value')->nullable();
+      $table->boolean('value')->default(0);
       $table->timestamps();
     });
   }

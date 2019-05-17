@@ -4,6 +4,10 @@ require('./bootstrap');
 require('./vanilla/mmenu');
 require('./vanilla/backtotop');
 
+// import Noty from 'noty';
+window.Noty = require('noty');
+
+
 
 // == VueAxios
 // import VueAxios from 'vue-axios'

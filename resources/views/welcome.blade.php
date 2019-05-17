@@ -44,12 +44,12 @@
   <div class="container">
     <span class="h3 mr-5">Section - TOP</span>
     Can be null
-    {{ dump($test) }}
+    {{-- {{ dump($test) }} --}}
     <br>
     <br>
     <h4>Carbon2</h4>
-    {{ dump(Carbon\Carbon::parse('2019-01-01 12:00:00')->diffForHumans()) }}
-    {{ dump(Carbon\Carbon::now()->isoFormat('LLLL')) }}
+    {{-- {{ dump(Carbon\Carbon::parse('2019-01-01 12:00:00')->diffForHumans()) }}
+    {{ dump(Carbon\Carbon::now()->isoFormat('LLLL')) }} --}}
   </div>
 @endsection
 

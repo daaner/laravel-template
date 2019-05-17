@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('/data-cache-clear', 'AdminController@clearCache')->name('cache_clear');
+
 Route::get('/', function () {
     return view('welcome');
 });

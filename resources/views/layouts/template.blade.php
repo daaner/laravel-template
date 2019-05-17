@@ -55,5 +55,6 @@
       @endforeach
     @endif
 
+    @include('layouts.other.errors')
   </body>
 </html>

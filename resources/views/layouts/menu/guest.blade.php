@@ -20,6 +20,9 @@
         <li>
           <a href="{{ URL::to('/content2') }}">{{ __('site.menu.content2') }}</a>
         </li>
+        <li>
+          <a href="{{ route('cache_clear') }}">{{ __('api.cache_clear_btn') }}</a>
+        </li>
       </ul>
   </li>
 

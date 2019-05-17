@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Schema;
 
 use App\Models\Script;
 use App\Observers\ScriptObserver;
+use App\Setting;
+use App\Observers\SettingObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
 
     //Observers
     Script::observe(ScriptObserver::class);
+    Setting::observe(SettingObserver::class);
 
   }
 }

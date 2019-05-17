@@ -3,9 +3,9 @@
     $title = $__env->yieldContent('title');
     // 70 - This number must be set for max Title size
     if ((iconv_strlen($title) + iconv_strlen(__('site.title'))) >= 70) {
-      $title .= " - ". __('site.title2');
-    } else {
       $title .= " - ". __('site.title');
+    } else {
+      $title .= " - ". __('site.title2');
     }
   @endphp
 

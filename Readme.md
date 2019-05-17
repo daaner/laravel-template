@@ -50,6 +50,14 @@
 @endsection
 ```
 
+## Пакеты NPM
+- Noty (https://github.com/needim/noty)
+
+
+## Пакеты Composer
+
+
+
 Возникнут вопросы или предложения - пишите мне в телеграмм `@neodaan`
 
 ПР приветствуется)
