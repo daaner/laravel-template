@@ -76,9 +76,6 @@ li.tab-delete a {
   background: #efefef!important;
 }
 
-.form-element-files__image > img {
-  height: 100%;
-}
 
 .form-element-date .input-group,
 .form-element-timestamp .input-group {
@@ -92,3 +89,4 @@ li.tab-delete a {
   }
 }
 @import "widget";
+@import "fix";

@@ -19,6 +19,8 @@ if (!mix.inProduction() && enabledSourceMap) {
 
 
 mix.sass('resources/sass/app.scss', 'public/css/style.css');
+mix.sass('resources/sass/admin/admin.scss', 'public/css/admin_so.css');
+
 mix.js('resources/js/app.js', 'public/js/script.js');
 
 mix.version().disableNotifications();

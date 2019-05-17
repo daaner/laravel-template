@@ -14,6 +14,6 @@ class AdminController extends Controller
     cache()->flush();
     return redirect()
       ->back()
-      ->with(['success_message' => __('api.cache_clear')]);
+      ->with(['success_message' => __('api.admin.cache_clear')]);
   }
 }
