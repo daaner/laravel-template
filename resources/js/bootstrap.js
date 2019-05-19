@@ -1,21 +1,20 @@
 
 // == Vue
-// window.Vue = require("vue");
-
+window.Vue = require("vue");
 
 // == VueX
-// import Vuex from 'vuex'
-// import state from "./store/state";
-// import mutations from "./store/mutations";
-// import actions from "./store/actions";
-//
-// const store = new Vuex.Store({
-//     state,
-//     getters: {},
-//     mutations,
-//     actions
-// });
-// window.store = store;
+import Vuex from 'vuex'
+import state from "./store/state";
+import mutations from "./store/mutations";
+import actions from "./store/actions";
+
+const store = new Vuex.Store({
+    state,
+    getters: {},
+    mutations,
+    actions
+});
+window.store = store;
 
 
 // == lodash

@@ -43,8 +43,8 @@
     </a>
   </li>
   <li>
-    <a href="#">
-      {{ __('site.menu.help') }} (#)
+    <a @click="$modal.show('login')">
+      {{ __('site.menu.login') }}
     </a>
   </li>
 

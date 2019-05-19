@@ -39,3 +39,10 @@
     @include('layouts.footer')
   </footer>
 @endsection
+
+{{-- Vue all components --}}
+@section('vue')
+  <login-component></login-component>
+
+
+@endsection

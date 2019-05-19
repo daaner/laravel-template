@@ -34,6 +34,9 @@
       @yield('body')
 
       @yield('footer')
+
+      {{-- Load components --}}
+      @yield('vue')
     </div>
 
     @include('layouts.other.backtotop')

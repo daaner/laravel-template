@@ -52,10 +52,11 @@
 
 ## Пакеты NPM
 - Noty (https://github.com/needim/noty)
+- Vue-js-modal (https://github.com/euvl/vue-js-modal)
 
 
 ## Пакеты Composer
-
+- SleepingOwl (https://github.com/LaravelRUS/SleepingOwlAdmin)
 
 
 Возникнут вопросы или предложения - пишите мне в телеграмм `@neodaan`
