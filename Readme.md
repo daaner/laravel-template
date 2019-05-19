@@ -9,20 +9,24 @@
 - Использую как скелет в новых проектах. Сокращает время на построение структуры и основных моментов
 - Не используется фронтальный фреймворк (типа Bootstrap)
 - Не все переводы локализации на EN
-- Добавлен CDN jquery + локальная замена ему
+- Добавлен CDN jquery + локальная замена ему (отключен комментарием)
+- Добавлена локализация в Vue (можно использовать `{{ __('api.db_data') }}` или `{{ trans('api.db_data') }}`), но не работает нормально множественность
 
 - Добавлено и закомментировано (нужно подтянуть модуль yarn или npm)
-  * Vue -- `npm i vue --save`
-  * VueX и store -- `npm i vuex --save`
-  * VueAxios -- `npm i vue-axios --save`
   * VueTheMask -- `npm i vue-the-mask --save`
-  * cookies -- `npm i js-cookie --save`
   * vue-moment -- `npm i vue-moment --save`
-  * Bearer token
   * Element.io -- `npm i element-ui --save`
   * popper -- `npm i popper --save`
-  * lodash -- `npm i lodash --save`
   * jquery -- `npm i jquery --save`
+
+- Подключено и используется
+  * Vue -- `npm i vue --save`
+  * VueAxios -- `npm i vue-axios --save`
+  * VueX и store -- `npm i vuex --save`
+  * cookies -- `npm i js-cookie --save`
+  * Bearer token
+  * lodash -- `npm i lodash --save`
+
 
 ## Blade секции для разных нужд
 - `@section('title', 'Заголовок страницы')`

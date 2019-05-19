@@ -18,8 +18,11 @@ window.store = store;
 
 
 // == lodash
-// window._ = require("lodash");
+window._ = require("lodash");
 
+//Vue localization
+Vue.prototype.trans = string => _.get(window.i18n, string);
+Vue.prototype.__ = string => _.get(window.i18n, string);
 
 // == popper
 // window.Popper = require("popper.js").default;

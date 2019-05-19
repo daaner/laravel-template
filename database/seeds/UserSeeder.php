@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
         $newData = Seedmodel::create(array(
           'name'      => $data['name'],
           'active'    => true,
-          'login'     => $data['login'],
+          // 'login'     => $data['login'],
           'email'     => $data['email'],
           'role_id'   => $data['role_id'],
           'password'  =>  bcrypt ($data['password']),

@@ -18,7 +18,7 @@ class ScriptRepository extends InitRepository
     return Model::class;
   }
 
-  //Модели авто
+
   public function getScripts() {
     $columns = [
       // 'id',

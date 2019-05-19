@@ -31,3 +31,9 @@ textarea {
   padding: $spacer /3 $spacer /2;
   width: 100%;
 }
+
+.input__error {
+  font-size: 80%;
+  color: $red;
+  margin-bottom: $spacer /2;
+}

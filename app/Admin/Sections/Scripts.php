@@ -59,7 +59,7 @@ class Scripts extends Section implements Initializable
         ->setSearchable(false)->setOrderable(false),
       AdminColumn::boolean('top', 'Header')->setWidth('110px')
         ->setSearchable(false)->setOrderable(false),
-      AdminColumn::text('updated_at', 'Изменен', 'editor.name')->setWidth('160px')
+      AdminColumn::text('updated_at', 'Изменен', 'editors.name')->setWidth('160px')
         ->setSearchable(false)->setOrderable(false),
     ]);
 
@@ -77,10 +77,10 @@ class Scripts extends Section implements Initializable
         AdminFormElement::checkbox('top', 'В шапку сайта (иначе в конец документа)'),
       ], 6)->addColumn([
         AdminFormElement::text('id', '#')->setReadonly(1),
-        AdminFormElement::text('creator.name', 'Создал')->setReadonly(1),
+        AdminFormElement::text('creators.name', 'Создал')->setReadonly(1),
         AdminFormElement::text('updated_at', 'Создано')->setReadonly(1),
         AdminFormElement::html('<hr>'),
-        AdminFormElement::text('editor.name', 'Редактировал')->setReadonly(1),
+        AdminFormElement::text('editors.name', 'Редактировал')->setReadonly(1),
         AdminFormElement::text('updated_at', 'Редакция')->setReadonly(1),
       ]),
     ]);

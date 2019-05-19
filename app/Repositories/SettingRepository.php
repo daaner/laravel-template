@@ -18,7 +18,7 @@ class SettingRepository extends InitRepository
     return Model::class;
   }
 
-  //Модели авто
+
   public function getSsetting() {
     $columns = [
       // 'id',

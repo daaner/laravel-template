@@ -14,14 +14,14 @@ class BaseClearModel extends Model
     return $query->where('active', true);
   }
 
-  
 
-  public function creator() {
+
+  public function creators() {
     return $this->belongsTo(User::class,'created_by','id')
       ->withDefault(['name' => 'None']);
   }
 
-  public function editor() {
+  public function editors() {
     return $this->belongsTo(User::class,'modifed_by','id')
       ->withDefault(['name' => 'None']);
   }
