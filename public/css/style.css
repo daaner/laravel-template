@@ -3562,5 +3562,35 @@ footer .copyright {
   display: inline-block;
 }
 
+.asetting_menu {
+  position: absolute;
+  top: 5em;
+  left: -1.5em;
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+  padding-left: 0;
+  z-index: 99501;
+  transition: 0.5s;
+}
+
+.asetting_menu:hover {
+  left: 0;
+}
+
+.asetting_menu a {
+  background-color: #b72162;
+  color: #ffffff;
+  padding: 0.5em;
+  border-radius: 0 10px 10px 0;
+  margin-bottom: 0.2em;
+  display: flex;
+}
+
+.asetting_menu a:hover {
+  color: #ec942d;
+}
+
 
 /*# sourceMappingURL=style.css.map*/

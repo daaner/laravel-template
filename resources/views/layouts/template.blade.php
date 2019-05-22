@@ -48,7 +48,7 @@
         document.write('<script src="{{ URL::to('/') }}/js/jquery-3.3.1.min.js"><\/script>');
       }
     </script> --}}
-    
+
     <script type="text/javascript" src="{{ URL::to('/js/'. app()->getLocale() .'.js') }}"></script>
     <script type="text/javascript" src="{{ mix('js/script.js') }}"></script>
     @yield('script')
@@ -60,5 +60,6 @@
     @endif
 
     @include('layouts.other.errors')
+    @include('layouts.menu.admin')
   </body>
 </html>

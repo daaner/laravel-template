@@ -57,11 +57,11 @@ class Users extends Section implements Initializable
       AdminColumn::text('id', '#')->setWidth('30px'),
       AdminColumn::link('email', 'Email')->setWidth('230px'),
       AdminColumn::text('name', 'Имя'),
-      AdminColumn::text('roles.description', 'Права')->setWidth('150px')
+      AdminColumn::text('roles.name', 'Права')->setWidth('150px')
       ->setOrderable(false)
       ->setSearchCallback(function($column, $query, $search){
         return $query->orWhereHas('roles', function ($q) use ($search) {
-          $q->where('description', 'like', '%'.$search.'%');
+          $q->where('name', 'like', '%'.$search.'%');
         });
       }),
 
@@ -80,6 +80,8 @@ class Users extends Section implements Initializable
       AdminFormElement::columns()->addColumn([
         AdminFormElement::text('name', 'Имя')->addValidationRule('max:255', 'Не более 250 символов'),
         AdminFormElement::text('email', 'Почта')->required()->unique(),
+        AdminFormElement::select('lang', 'Язык сайта', config('app.locales'))
+          ->required()->setSortable(false),
         AdminFormElement::password('newpassword', 'Пароль')->allowEmptyValue()
           ->addValidationRule('nullable')
           ->addValidationRule('between:8,50', 'От 8 до 50 символов'),
@@ -88,9 +90,13 @@ class Users extends Section implements Initializable
       ], 6)->addColumn([
         AdminFormElement::text('id', '#')->setReadonly(1),
         AdminFormElement::select('role_id', 'Права', Role::class)
-          ->setDisplay('description')->required()->setSortable(false),
+          ->setDisplay('name')->required()->setSortable(false),
         AdminFormElement::text('created_at', 'Создан')->setReadonly(1),
+        AdminFormElement::text('signup_ip', 'IP регистрации')->setReadonly(1),
+        AdminFormElement::text('confirm_ip', 'IP активации почты')->setReadonly(1),
       ]),
+      AdminFormElement::html('<hr>'),
+      AdminFormElement::checkbox('blocked', 'Блокировать пользователя'),
     ]);
 
     $form->getButtons()->setButtons([

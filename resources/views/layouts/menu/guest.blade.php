@@ -20,9 +20,6 @@
         <li>
           <a href="{{ URL::to('/content2') }}">{{ __('site.menu.content2') }}</a>
         </li>
-        <li>
-          <a href="{{ route('clear_cache') }}">{{ __('api.admin.clear_cache') }}</a>
-        </li>
       </ul>
   </li>
 
@@ -37,11 +34,13 @@
       {{ __('site.menu.help') }} (#)
     </a>
   </li>
+
   <li>
     <a @click="$modal.show('login')">
       {{ __('site.menu.login') }}
     </a>
   </li>
+
   <li>
     <a @click="$modal.show('register')">
       {{ __('site.menu.register') }}

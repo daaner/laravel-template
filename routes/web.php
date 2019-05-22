@@ -7,7 +7,8 @@ Route::get('/js/en.js', 'LocaleController@assets_en')->name('assets.lang.en');
 
 
 Route::get('logout', 'Api\AuthController@logout_get')->name('logout_get');
-Route::get('logout', 'Api\AuthController@login_get')->name('login');
+Route::post('logout', 'Api\AuthController@logout_get')->name('logout');
+Route::get('login', 'Api\AuthController@login_get')->name('login');
 
 
 Route::get('/', function () {

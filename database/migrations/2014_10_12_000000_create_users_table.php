@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->bigInteger('role_id')->default(1);
             $table->boolean('active')->default(0);
+            $table->boolean('blocked')->default(0);
+            $table->integer('lang')->default(1);
 
             $table->string('password');
             $table->ipAddress('signup_ip')->nullable();

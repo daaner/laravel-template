@@ -64,24 +64,10 @@ class AuthController extends Controller
       ]);
     }
 
-    $token_data = new TokenRepository;
-    $token = $token_data->setToken($user->id);
-
-    if (isset($token->api_token)) {
-      return response()->json([
-        'success' => true,
-        'user_id' => $user->id,
-        'user_name' => $user->name,
-        'user_email' => $user->email,
-        'api_token' => $token->api_token,
-      ]);
-    }
-
     return response()->json([
       'success' => false,
-      'error' => __('api.errors.login')
-    ]);
-
+      'error' => __('auth.needactive')
+    ], 403);
   }
 
 
@@ -89,7 +75,7 @@ class AuthController extends Controller
     return redirect('/');
   }
 
-  
+
   public function login(UserLoginRequest $request) {
 
     if($this->robot()) {
@@ -101,12 +87,18 @@ class AuthController extends Controller
 
     $credentials = [
       'email' => $request->email,
-      'password' => $request->password,
-      'active' => 1
+      'password' => $request->password
     ];
 
     if (Auth::attempt($credentials)) {
       $user = User::find(Auth::id());
+      Auth::logout();
+      if(!$user->active) {
+        return response()->json([
+          'success' => false,
+          'error' => __('auth.deactive')
+        ], 403);
+      }
 
       $token_data = new TokenRepository;
       $token = $token_data->setToken($user->id);
