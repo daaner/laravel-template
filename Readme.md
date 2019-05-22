@@ -50,10 +50,14 @@
   добавление скриптов
 @endsection
 
-дополнительная разметка ld-json (только данные массивом через запятую)
+дополнительная разметка ld-json (можно использовать для других скриптов и стилей)
 @section('ldjson')
-  "@context": "http://schema.org2",
-  "@type": "WebSite2",
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org2",
+      "@type": "WebSite2",
+    }
+  </script>
 @endsection
 ```
 

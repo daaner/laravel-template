@@ -41,9 +41,5 @@
 </script>
 
 @hasSection ('ldjson')
-  <script type="application/ld+json">
-    {
-      @yield('ldjson')
-    }
-  </script>
+  @yield('ldjson')
 @endif
