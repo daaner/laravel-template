@@ -32,9 +32,12 @@
 @section('og_image_alt', 'alt_for_og_image')
 
 @section('ldjson')
-  {{-- only inner data --}}
-  "@context": "http://schema.org2",
-  "@type": "WebSite2",
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org2",
+    "@type": "WebSite2",
+  }
+  </script>
 @endsection
 
 
