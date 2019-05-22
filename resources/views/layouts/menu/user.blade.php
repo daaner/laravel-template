@@ -20,6 +20,9 @@
         <li>
           <a href="URL::to('/content2')">{{ __('site.menu.content2') }}</a>
         </li>
+        <li>
+          <a href="{{ route('clear_cache') }}">{{ __('api.admin.clear_cache') }}</a>
+        </li>
       </ul>
   </li>
 
@@ -32,6 +35,12 @@
   <li>
     <a href="#">
       {{ __('site.menu.admin') }} (#)
+    </a>
+  </li>
+
+  <li>
+    <a href="{{ route('logout_get') }}" title="{{ __('site.menu.logout') }}">
+      {{ __('site.menu.logout') }}
     </a>
   </li>
 

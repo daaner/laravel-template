@@ -13,6 +13,8 @@ return [
     'profile' => 'Личный кабинет',
     'about' => 'О нас',
     'login' => 'Войти',
+    'logout' => 'Выйти',
+    'register' => 'Регистрация',
     'admin' => 'Админка',
     'icons' => 'Иконки',
     'information' => 'Информация',
@@ -22,6 +24,7 @@ return [
 
   'header' => [
     'register' => 'Регистрация',
+    'login' => 'Вход на сайт',
     'forgot' => 'Забыли пароль?',
     'password_reset' => 'Сброс пароля',
   ],
@@ -31,7 +34,7 @@ return [
     'name' => 'Имя',
     'email' => 'Ваш E-mail',
     'subscribe' => 'Подписаться',
-    'login' => 'Логин',
+    'login' => 'Вход',
     'login_again' => 'Войти снова',
     'login_or_pass' => 'Логин или пароль',
     'password' => 'Пароль',

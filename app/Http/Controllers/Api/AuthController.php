@@ -3,186 +3,143 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-// use Illuminate\Http\Request;
 use App\User;
-use App\Token;
+
 use Hash;
 use Validator;
 use App\Traits\CaptureIpTrait;
 use Illuminate\Support\Str;
 
-// use Carbon\Carbon;
+use Illuminate\Http\Request;
 
+
+use Auth;
+use Jenssegers\Agent\Agent;
+use App\Repositories\TokenRepository;
 
 use App\Http\Requests\UserRegisterRequest;
-use Request;
+use App\Http\Requests\UserLoginRequest;
+
 
 //mail
 // use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
+
+
   public function __construct() {
-    // $this->middleware('apitoken')
-    // ->only('logout');
+    $this->middleware('auth')
+      ->only(['logout_get', 'logout']);
   }
 
-  // protected function formatErrors(Validator $validator)
-  // {
-  //   dd($validator->errors()->all());
-  //   return $validator->errors()->all();
-  // }
+  public function robot() {
+    $agent = new Agent();
 
-//UserRegisterRequest
+    if($agent->isRobot()) {
+      return __('api.errors.robot');
+    }
+  }
+
   public function register(UserRegisterRequest $request) {
-    // $validator = Validator::make($request->all(), [
-    //   'name' => 'max:255',
-    //   'email' => 'required|email|unique:users',
-    //   'password' => 'required|between:8,25|confirmed'
-    // ]);
 
-    dd($request);
+    if($this->robot()) {
+      return response()->json([
+        'success' => false,
+        'error' => $this->robot()
+      ], 403);
+    }
 
-    // if ($validator->fails()) {
-    //   return response()->json([
-    //     'success' => false,
-    //     'error' => $validator->errors()
-    //   ]);
-    // }
-
-    dd($request->all());
-
-
-
-    $user = new User($request->all());
+    $user = new User();
+    $user->name = $request->name;
+    $user->email = $request->email;
     $user->password = bcrypt($request->password);
     $ipAddress = new CaptureIpTrait;
     $user->signup_ip = $ipAddress->getClientIp();
 
-    $user->last_ip = $user->signup_ip;
-    $user->save();
-
-
-    $token = new Token();
-    $token->user_id = $user->id;
-    $token->last_ip = $ipAddress->getClientIp();
-    $unique_token = str_random(60);
-
-    do {
-      $unique_token = str_random(60);
-    } while (!empty(Token::where('api_token', $unique_token)->first()));
-
-    $token->api_token = $unique_token;
-    $token->save();
-
-    return response()->json([
-      'success' => true,
-      'user_id' => $token->user_id,
-      'api_token' => $unique_token,
-    ]);
-
-  }
-
-
-  public function login(Request $request) {
-
-    $validator = Validator::make($request->all(), [
-      'email' => 'required|email',
-      'password' => 'required|between:6,25'
-    ]);
-
-    if ($validator->fails()) {
+    if (!$user->save()) {
       return response()->json([
         'success' => false,
-        'error' => $validator->errors()
+        'error' => __('api.errors.register')
       ]);
     }
 
-    $user = User::whereEmail($request->email)->first();
+    $token_data = new TokenRepository;
+    $token = $token_data->setToken($user->id);
 
-    if($user && Hash::check($request->password, $user->password)) {
-      $ipAddress = new CaptureIpTrait;
-
-      $token = new Token();
-      $token->user_id = $user->id;
-      $token->last_ip = $ipAddress->getClientIp();
-      $unique_token = str_random(32);
-
-      do {
-        $unique_token = str_random(32);
-      } while (!empty(Token::where('api_token', $unique_token)->first()));
-
-      $token->api_token = $unique_token;
-      $token->save();
-
+    if (isset($token->api_token)) {
       return response()->json([
         'success' => true,
-        'user' => $token->user_id,
-        'api_token' => $unique_token,
+        'user_id' => $user->id,
+        'user_name' => $user->name,
+        'user_email' => $user->email,
+        'api_token' => $token->api_token,
       ]);
     }
 
     return response()->json([
       'success' => false,
-      'error' => [
-        'email' => __('auth.failed')]
+      'error' => __('api.errors.login')
     ]);
+
   }
 
 
-  public function forgot(Request $request) {
+  public function login_get() {
+    return redirect('/');
+  }
 
-    $validator = Validator::make($request->all(), [
-      'email' => 'required|email'
-    ]);
+  
+  public function login(UserLoginRequest $request) {
 
-    if ($validator->fails()) {
+    if($this->robot()) {
       return response()->json([
         'success' => false,
-        'error' => $validator->errors()
-      ]);
+        'error' => $this->robot()
+      ], 403);
     }
 
-    $user = User::whereEmail($request->email)->first();
+    $credentials = [
+      'email' => $request->email,
+      'password' => $request->password,
+      'active' => 1
+    ];
 
-    if($user) {
-      //create token
-      $remember_token = Str::random(32);
+    if (Auth::attempt($credentials)) {
+      $user = User::find(Auth::id());
 
-      $user->remember_token = $remember_token;
-      $user->update();
+      $token_data = new TokenRepository;
+      $token = $token_data->setToken($user->id);
 
-
-      //send mail
-      // Mail::to($user->email)->send(new ForgotPassword($user));
-      // return response()->json([
-      //   'success' => true,
-      //   'info' => __('auth.forgot')
-      // ]);
+      if (isset($token->api_token)) {
+        return response()->json([
+          'success' => true,
+          'user_id' => $user->id,
+          'user_name' => $user->name,
+          'user_email' => $user->email,
+          'api_token' => $token->api_token,
+        ]);
+      }
     }
 
     return response()->json([
       'success' => false,
-      'error' => [
-        'email' => __('auth.failed')]
-    ]);
+      'error' => __('auth.failed')
+    ], 403);
+  }
+
+
+  public function logout_get(Request $request) {
+    $token_data = new TokenRepository;
+    $token_data->clear_token($request->token_data);
+
+    return redirect('/')->with(['success_message' => __('auth.logout')]);
   }
 
 
   public function logout(Request $request) {
-    $apiKey = $request->bearerToken();
-
-    $token_user = Token::where('api_token', $apiKey)->first();
-
-    //на всякий случай проверка
-    if(!$token_user) {
-      return response()->json([
-        'success' => false,
-        'error' => __('passwords.token'),
-      ], 401);
-    }
-
-    $token_user->delete();
+    $token_data = new TokenRepository;
+    $token_data->clear_token($request->bearerToken());
 
     return response()->json([
       'success' => true,

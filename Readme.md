@@ -61,6 +61,8 @@
 
 ## Пакеты Composer
 - SleepingOwl (https://github.com/LaravelRUS/SleepingOwlAdmin)
+- Laravel IDE Helper (https://github.com/barryvdh/laravel-ide-helper)
+- Agent (https://github.com/jenssegers/agent)
 
 
 Возникнут вопросы или предложения - пишите мне в телеграмм `@neodaan`

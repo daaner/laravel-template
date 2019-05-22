@@ -43,6 +43,7 @@
 {{-- Vue all components --}}
 @section('vue')
   <login-component></login-component>
+  <register-component></register-component>
 
 
 @endsection

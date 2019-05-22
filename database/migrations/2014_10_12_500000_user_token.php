@@ -17,8 +17,11 @@ class UserToken extends Migration
         $table->bigIncrements('id');
         $table->biginteger('user_id')->unsigned();
         $table->string('api_token');
-        $table->dateTime('sync_at')->nullable();
         $table->ipAddress('last_ip')->nullable();
+        $table->string('device')->nullable();
+        $table->string('browser')->nullable();
+        $table->string('system')->nullable();
+        $table->timestamp('login_at')->nullable();
       });
     }
 

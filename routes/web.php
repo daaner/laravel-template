@@ -1,21 +1,13 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-// $lang = config('app.locale');
 
 //localization Vue
 Route::get('/js/ru.js', 'LocaleController@assets_ru')->name('assets.lang.ru');
 Route::get('/js/en.js', 'LocaleController@assets_en')->name('assets.lang.en');
 
+
+Route::get('logout', 'Api\AuthController@logout_get')->name('logout_get');
+Route::get('logout', 'Api\AuthController@login_get')->name('login');
 
 
 Route::get('/', function () {
@@ -33,6 +25,7 @@ Route::get('/content', function () {
 Route::get('/content2', function () {
     return view('content2');
 });
+
 
 // Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');

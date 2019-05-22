@@ -38,13 +38,13 @@
     </a>
   </li>
   <li>
-    <a href="#">
-      {{ __('site.menu.help') }} (#)
+    <a @click="$modal.show('login')">
+      {{ __('site.menu.login') }}
     </a>
   </li>
   <li>
-    <a @click="$modal.show('login')">
-      {{ __('site.menu.login') }}
+    <a @click="$modal.show('register')">
+      {{ __('site.menu.register') }}
     </a>
   </li>
 

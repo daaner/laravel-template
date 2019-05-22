@@ -1,16 +1,16 @@
 <template>
   <modal
-    name="login"
+    name="register"
     transition="nice-modal-fade"
     height="auto"
     :adaptive="true"
     @before-close="beforeClose">
 
-    <button class="close" aria-hidden="true" @click="$modal.hide('login')">&times;</button>
+    <button class="close" aria-hidden="true" @click="$modal.hide('register')">&times;</button>
 
     <div class="login-component">
       <h3>
-        {{ __('site.header.login') }}
+        {{ __('site.header.register') }}
       </h3>
 
       <transition name="fade">
@@ -20,6 +20,9 @@
       </transition>
 
       <form ref="form" :model="form">
+        <label>{{ __('site.form.name') }}</label>
+        <input type="text" name="name" v-model="form.name.value">
+        <div class="input__error" v-if="form.name.errors" v-for="error in form.name.errors">{{error}}</div>
 
         <label>{{ __('site.form.email') }}</label>
         <input type="text" name="email" v-model="form.email.value">
@@ -29,9 +32,11 @@
         <input type="password" name="password" v-model="form.password.value">
         <div class="input__error" v-if="form.password.errors" v-for="error in form.password.errors">{{error}}</div>
 
+        <label>{{ __('site.form.password_confirmation') }}</label>
+        <input type="password" name="password_confirmation" v-model="form.password_confirmation.value">
         <br>
 
-        <a class="btn btn-primary" @click="onSubmit">{{ __('site.form.login') }}</a>
+        <a class="btn btn-primary" @click="onSubmit">{{ __('site.form.register') }}</a>
       </form>
     </div>
 
@@ -42,14 +47,14 @@
 import cookies from 'js-cookie';
 
 export default {
-  name: 'LoginComponent',
+  name: 'RegisterComponent',
   // props: ['value'],
 
   // created() {
   // },
 
   // mounted() {
-  //   console.log('LoginComponent')
+  //   console.log('RegisterComponent')
   // },
 
   data(){
@@ -57,8 +62,10 @@ export default {
       mainError: '',
 
       form: {
+        name: {value:'', errors: []},
         email: {value:'', errors: []},
         password: {value:'', errors: []},
+        password_confirmation: {value:'', errors: []},
       },
 
     }
@@ -92,27 +99,32 @@ export default {
       });
     },
 
-
     onSubmit() {
       this.clearError();
 
       const [
+        name,
         email,
         password,
+        password_confirmation
       ] = [
+        this.form.name.value,
         this.form.email.value,
-        this.form.password.value
+        this.form.password.value,
+        this.form.password_confirmation.value
       ];
 
-      this.axios.post('/api/login', {
+      this.axios.post('/api/register', {
+        name,
         email,
-        password
+        password,
+        password_confirmation
       }).then(res=>{
-        if (res.data.success) {
+        if (res) {
           cookies.set('apiToken', res.data.api_token);
           setTimeout(()=>{
             window.location.reload();
-          }, 500)
+          }, 500);
         } else {
           window.location.replace('/');
         }

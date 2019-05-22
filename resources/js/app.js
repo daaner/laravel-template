@@ -44,6 +44,7 @@ import cookies from 'js-cookie'
 
 //Vue
 Vue.component('login-component', require('./components/LoginComponent.vue').default)
+Vue.component('register-component', require('./components/RegisterComponent.vue').default)
 
 
 // Bearer token
