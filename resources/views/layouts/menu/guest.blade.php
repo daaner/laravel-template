@@ -41,10 +41,12 @@
     </a>
   </li>
 
-  <li>
-    <a @click="$modal.show('register')">
-      {{ __('site.menu.register') }}
-    </a>
-  </li>
+  @if ($settings['enable_register'])
+    <li>
+      <a @click="$modal.show('register')">
+        {{ __('site.menu.register') }}
+      </a>
+    </li>
+  @endif
 
 </ul>

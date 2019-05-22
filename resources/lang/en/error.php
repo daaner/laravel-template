@@ -57,4 +57,7 @@ return [
   '504t' => 'Error 504',
   '504' => 'Gateway Timeout',
 
+  '521t' => 'Service is in the process of updating',
+  '521' => 'The service is in the process of being updated and is temporarily unavailable. We apologize for any inconvenience caused',
+
 ];

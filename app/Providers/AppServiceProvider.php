@@ -4,10 +4,12 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Gate;
 
 use App\Models\Script;
 use App\Observers\ScriptObserver;
 use App\Setting;
+use App\User;
 use App\Observers\SettingObserver;
 
 class AppServiceProvider extends ServiceProvider
@@ -34,6 +36,14 @@ class AppServiceProvider extends ServiceProvider
     //Observers
     Script::observe(ScriptObserver::class);
     Setting::observe(SettingObserver::class);
+
+
+    Gate::define('admin-only', function ($user) {
+      if($user->isAdmin() || $user->isModerator()) {
+        return true;
+      }
+      return false;
+    });
 
   }
 }

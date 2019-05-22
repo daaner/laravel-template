@@ -71,7 +71,7 @@ class Scripts extends Section implements Initializable
     $form = AdminForm::panel()->addBody([
       AdminFormElement::columns()->addColumn([
         AdminFormElement::text('name', 'Название скрипта')->addValidationRule('max:255', 'Не более 250 символов')->required(),
-        AdminFormElement::textarea('data', 'Данные')->setRows(8)->required(),
+        AdminFormElement::textarea('data', 'Данные')->setRows(8),
         AdminFormElement::checkbox('active', 'Включен или выключен на сайте'),
         AdminFormElement::html('<hr>'),
         AdminFormElement::checkbox('top', 'В шапку сайта (иначе в конец документа)'),

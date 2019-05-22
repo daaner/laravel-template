@@ -10,6 +10,7 @@ return [
     'clear_cache_title' => 'Очистить кеш на сайте',
     'clear_cache' => 'Очистить кеш',
     'cache_clear' => 'Кеш успешно очищен',
+    'noreg' => 'Регистрация отключена',
   ],
 
   'errors' => [

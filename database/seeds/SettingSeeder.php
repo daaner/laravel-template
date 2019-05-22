@@ -8,27 +8,24 @@ class SettingSeeder extends Seeder
   public function run() {
     $datas = [
 
-      //503
+      //521
       [
         'name'        => 'disable_site',
-        'description' => 'Disable site or not',
+        'description' => 'Отключить сайт (обновление / изменение). Доступ только для админов',
         'value'       => false,
       ],
 
       //403
       [
-        'name'        => 'moderators_allow',
-        'description' => 'Allow login for moderators',
-        'value'       => true,
-      ],
-      [
         'name'        => 'registered_allow',
-        'description' => 'Allow site only for registered users',
+        'description' => 'Доступ к сайту только для зарегистрированных пользователей',
         'value'       => false,
       ],
+
+      // disabled
       [
         'name'        => 'enable_register',
-        'description' => 'Allow register on site',
+        'description' => 'Включить возможность регистрации',
         'value'       => true,
       ],
 

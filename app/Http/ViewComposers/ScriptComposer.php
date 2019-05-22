@@ -5,7 +5,7 @@ namespace App\Http\ViewComposers;
 use Illuminate\View\View;
 
 use App\Repositories\ScriptRepository;
-use App\Repositories\SettingRepository;
+
 
 class ScriptComposer
 {
@@ -18,10 +18,6 @@ class ScriptComposer
 
     $this->scripts_top = collect();
     $this->scripts_bottom = collect();
-
-    $set_data = new SettingRepository;
-    $setting = $set_data->getCacheSetting();
-
 
     $data = new ScriptRepository;
     // $scripts = $data->getScripts();

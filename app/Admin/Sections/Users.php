@@ -78,7 +78,8 @@ class Users extends Section implements Initializable
   public function onEdit($id) {
     $form = AdminForm::panel()->addBody([
       AdminFormElement::columns()->addColumn([
-        AdminFormElement::text('name', 'Имя')->addValidationRule('max:255', 'Не более 250 символов'),
+        AdminFormElement::text('name', 'Имя')
+          ->addValidationRule('max:255', 'Не более 250 символов')->required(),
         AdminFormElement::text('email', 'Почта')->required()->unique(),
         AdminFormElement::select('lang', 'Язык сайта', config('app.locales'))
           ->required()->setSortable(false),

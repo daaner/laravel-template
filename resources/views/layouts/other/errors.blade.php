@@ -33,3 +33,31 @@
     }).show();
   </script>
 @endif
+
+
+{{-- Admin Errors --}}
+@if (Gate::allows('admin-only', auth()->user()))
+
+  @if ($settings['disable_site'])
+    <script type="text/javascript">
+      new Noty({
+        type: 'error',
+        layout: 'bottom',
+        text: '{{ __('error.521') }}'
+      }).show();
+    </script>
+  @endif
+
+  @if (!$settings['enable_register'])
+    <script type="text/javascript">
+      new Noty({
+        type: 'error',
+        layout: 'bottom',
+        text: '{{ __('api.admin.noreg') }}',
+        timeout: 3000,
+        progressBar: true,
+      }).show();
+    </script>
+  @endif
+
+@endif

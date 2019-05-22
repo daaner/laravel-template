@@ -43,7 +43,10 @@
 {{-- Vue all components --}}
 @section('vue')
   <login-component></login-component>
-  <register-component></register-component>
+
+  @if (isset($settings['enable_register']) && $settings['enable_register'])
+    <register-component></register-component>
+  @endif
 
 
 @endsection

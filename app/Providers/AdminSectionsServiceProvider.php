@@ -12,6 +12,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
     \App\User::class              => 'App\Admin\Sections\Users',
     \App\Role::class              => 'App\Admin\Sections\Roles',
     \App\Models\Script::class     => 'App\Admin\Sections\Scripts',
+    \App\Setting::class           => 'App\Admin\Sections\Settings',
 
 
   ];
