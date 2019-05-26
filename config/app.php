@@ -185,6 +185,7 @@ return [
 
         //ViewComposer
         App\Providers\ViewComposerServiceProvider::class,
+        Modules\ModulesServiceProvider::class,
 
         /*
          * Package Service Providers...

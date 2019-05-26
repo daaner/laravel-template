@@ -47,6 +47,9 @@ Vue.component('login-component', require('./components/LoginComponent.vue').defa
 Vue.component('register-component', require('./components/RegisterComponent.vue').default)
 
 
+require('./modules')
+
+
 // Bearer token
 axios.defaults.headers.common["Authorization"] = "Bearer " + cookies.get('apiToken')
 

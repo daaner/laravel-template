@@ -25,10 +25,25 @@ class LocaleRepository extends InitRepository
 
     $files   = glob(resource_path('lang/' . $lang . '/*.php'));
     $strings = [];
+
     foreach ($files as $file) {
       $name           = basename($file, '.php');
       $strings[$name] = require $file;
     }
+
+    //=== from modules
+    $modules = config("module.modules");
+    foreach ($modules as $module) {
+      $module_files= glob(base_path('Modules/'.$module.'/resources/lang/' . $lang . '/*.php'));
+
+      //add
+      foreach ($module_files as $mfile) {
+        $name           = basename($mfile, '.php');
+        $strings[$name] = require $mfile;
+      }
+    }
+    //=== end modules
+
 
     $lng = 'window.i18n = ' . json_encode($strings) . ';';
 
