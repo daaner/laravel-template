@@ -9,7 +9,7 @@ return [
      |
      | Debugbar is enabled by default, when debug is set to true in app.php.
      | You can override the value by setting enable to true or false instead of null.
-     | 
+     |
      | You can provide an array of URI's that must be ignored (eg. 'api/*')
      |
      */
@@ -79,7 +79,7 @@ return [
      |
      */
     'error_handler' => false,
-    
+
     /*
      |--------------------------------------------------------------------------
      | Clockwork integration
@@ -101,7 +101,7 @@ return [
      */
 
     'collectors' => [
-        'phpinfo'         => true,  // Php version
+        'phpinfo'         => false,  // Php version
         'messages'        => true,  // Messages
         'time'            => true,  // Time Datalogger
         'memory'          => true,  // Memory usage
@@ -118,10 +118,10 @@ return [
         'laravel'         => false, // Laravel version and environment
         'events'          => false, // All events fired
         'default_request' => false, // Regular or special Symfony request logger
-        'logs'            => false, // Add the latest log messages
+        'logs'            => true, // Add the latest log messages
         'files'           => false, // Show the included files
         'config'          => false, // Display config settings
-        'cache'           => false, // Display cache events
+        'cache'           => true, // Display cache events
     ],
 
     /*
