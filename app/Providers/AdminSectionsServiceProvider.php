@@ -14,7 +14,6 @@ class AdminSectionsServiceProvider extends ServiceProvider
     \App\Models\Script::class     => 'App\Admin\Sections\Scripts',
     \App\Setting::class           => 'App\Admin\Sections\Settings',
 
-
   ];
 
 

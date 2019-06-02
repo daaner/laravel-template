@@ -54,4 +54,11 @@ class UsersSectionModelPolicy
     return false;
   }
 
+  // public function destroy(User $user, Users $section, User $item) {
+  //   if ($user->isAdmin()) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
+
 }

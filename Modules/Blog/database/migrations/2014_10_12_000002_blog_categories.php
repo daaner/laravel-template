@@ -4,18 +4,20 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class BlogTable extends Migration
+class BlogCategories extends Migration
 {
 
   public function up()
   {
-    Schema::create('blogs', function (Blueprint $table) {
+    Schema::create('blog_categories', function (Blueprint $table) {
       $table->bigIncrements('id');
 
       $table->string('name');
       $table->string('slug')->unique();
       $table->text('info_preview')->nullable();
-      $table->text('info_full')->nullable();
+      // $table->text('info_full')->nullable();
+
+      $table->string('icon')->nullable();
       $table->string('image')->nullable();
 
       //meta
@@ -25,9 +27,6 @@ class BlogTable extends Migration
 
       $table->integer('lang')->default(1);
       $table->biginteger('category_id')->unsigned()->nullable();
-
-      $table->timestamp('published_at')->nullable();
-      $table->timestamp('published_to')->nullable();
 
       $table->boolean('active')->default(1);
       $table->bigInteger('created_by')->nullable();
@@ -39,6 +38,6 @@ class BlogTable extends Migration
 
   public function down()
   {
-    Schema::dropIfExists('blogs');
+    Schema::dropIfExists('blog_categories');
   }
 }

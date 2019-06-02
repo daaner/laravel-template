@@ -21,6 +21,7 @@
 
     <li class="p-3 pb-5"><i class="icon trash x4 icon-primary"></i> <br>.trash</li>
     <li class="p-3 pb-5 text-red"><i class="icon pencil x4"></i> <br>.pencil</li>
+    <li class="p-3 pb-5"><i class="icon eraser x4"></i> <br>.eraser</li>
 
     <li class="p-3 pb-5"><i class="icon facebook x4"></i> <br>.facebook</li>
     <li class="p-3 pb-5"><i class="icon instagram x4"></i> <br>.instagram</li>

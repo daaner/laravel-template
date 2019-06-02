@@ -7,6 +7,7 @@ return [
     'title' => 'Панель',
     'icon'  => 'fa fa-dashboard',
     'url'   => route('admin.dashboard'),
+    'priority' => 50,
   ],
 
   // [

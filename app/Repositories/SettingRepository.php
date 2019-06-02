@@ -19,7 +19,7 @@ class SettingRepository extends InitRepository
   }
 
 
-  public function getSsetting() {
+  public function getSetting() {
     $columns = [
       // 'id',
       'name',
@@ -46,7 +46,7 @@ class SettingRepository extends InitRepository
       $data_cache = Cache::get($cache_name);
     } else {
       $data_cache = Cache::remember($cache_name, $this->cache_time_forever, function () {
-        return $this->getSsetting();
+        return $this->getSetting();
       });
     }
 

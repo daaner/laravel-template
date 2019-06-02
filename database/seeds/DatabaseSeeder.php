@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
+
 class DatabaseSeeder extends Seeder
 {
   /**
@@ -16,6 +17,11 @@ class DatabaseSeeder extends Seeder
     $this->call(RoleSeeder::class);
     $this->call(SettingSeeder::class);
     $this->call(ScriptCodeSeeder::class);
+
+
+    //modules seeder
+    $this->call(Modules\Blog\database\seeds\BlogCategorySeeder::class);
+
   }
 
 }

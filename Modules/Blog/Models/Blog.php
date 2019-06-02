@@ -2,13 +2,21 @@
 
 namespace Modules\Blog\Models;
 
-use App\BaseClearModel;
 
-
-class Blog extends BaseClearModel
+class Blog extends Base
 {
 
   protected $table = 'blogs';
 
+
+  protected $casts = [
+    'published_at' => 'datetime',
+    'published_to' => 'datetime',
+  ];
+
+
+  public function setSlugAttribute($value) {
+    $this->EasySlugCheck($value, 'slug');
+  }
 
 }

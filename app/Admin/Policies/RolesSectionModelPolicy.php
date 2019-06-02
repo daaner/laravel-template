@@ -57,4 +57,11 @@ class RolesSectionModelPolicy
     return false;
   }
 
+  public function destroy(User $user, Section $section, Model $item) {
+    if ($user->isAdmin()) {
+      return true;
+    }
+    return false;
+  }
+
 }

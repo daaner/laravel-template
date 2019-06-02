@@ -12,6 +12,15 @@
   </p>
 
   <br>
-  
+
+  <pre>
+    Для Laravel
+    __('Blog::blog.title')
+
+    Для Vue
+    __('blog.title')
+  </pre>
+
+
   <blog-index></blog-index>
 @endsection

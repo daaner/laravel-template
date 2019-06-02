@@ -3,6 +3,7 @@
 namespace Modules;
 
 use \Illuminate\Support\ServiceProvider;
+use App;
 
 
 class ModulesServiceProvider extends ServiceProvider
@@ -30,7 +31,8 @@ class ModulesServiceProvider extends ServiceProvider
         }
 
         //load locales
-        //__('Test::messages.welcome')
+        //__('Test::file.welcome') - Laravel
+        //__('file.welcome')       - Vue
         if(is_dir( base_path('Modules/'.$module.'/resources/lang') )) {
           $this->loadTranslationsFrom(base_path('Modules/'.$module.'/resources/lang'), $module);
         }
@@ -41,6 +43,30 @@ class ModulesServiceProvider extends ServiceProvider
 
   public function register() {
 
+    //register provider and adminprovider
+    $modules = config("module.modules");
+
+    if($modules) {
+      foreach ($modules as $module) {
+        $dir = base_path('Modules\\'. $module .'\\Providers\\');
+
+        if(is_dir($dir)) {
+          $prov = 'Modules\\' .$module. '\\Providers\\' . $module. 'AdminServiceProvider';
+          $admin = 'Modules\\' .$module. '\\Providers\\' . $module. 'ServiceProvider';
+
+          if(file_exists($prov).'.php') {
+            App::register($prov);
+          }
+
+          if(file_exists($admin).'.php') {
+            App::register($admin);
+          }
+        }
+
+      }
+    }
+
   }
+
 
  }

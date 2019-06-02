@@ -3550,6 +3550,12 @@ footer .copyright {
   display: inline-block;
 }
 
+.icon.eraser {
+  -webkit-mask: url("/images/svg/eraser.svg") no-repeat 50% 50%;
+  mask: url("/images/svg/eraser.svg") no-repeat 50% 50%;
+  display: inline-block;
+}
+
 .icon.icon1 {
   -webkit-mask: url("/images/svg/1.svg") no-repeat 50% 50%;
   mask: url("/images/svg/1.svg") no-repeat 50% 50%;

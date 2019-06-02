@@ -1,6 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
+/public/images/uploads
 /public/*.html
 /public/*.htm
 /public/sitemap.xml

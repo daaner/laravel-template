@@ -4,6 +4,7 @@ namespace Modules\Blog\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Modules\Blog\Repositories\BlogCategoryRepository;
 
 class BlogController extends Controller
 {
@@ -12,6 +13,15 @@ class BlogController extends Controller
   }
 
   public function index() {
+    return view('Blog::index');
+  }
+
+  public function test() {
+
+    $data = new BlogCategoryRepository;
+    $cat = $data->getBlogCategory();
+
+    dd('test page', $cat);
     return view('Blog::index');
   }
 }
