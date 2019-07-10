@@ -36684,10 +36684,9 @@ Vue.use(vue_axios__WEBPACK_IMPORTED_MODULE_0___default.a, axios); // == VModal
 
  // import VModal from 'vue-js-modal'
 
-Vue.use(vue_js_modal_dist_ssr_nocss__WEBPACK_IMPORTED_MODULE_1___default.a); //Vanilla
+Vue.use(vue_js_modal_dist_ssr_nocss__WEBPACK_IMPORTED_MODULE_1___default.a); //Vanilla вне экземпляра Vue
 
-__webpack_require__(/*! ./vanilla/backtotop */ "./resources/js/vanilla/backtotop.js"); // require('./vanilla/mmenu')
-
+__webpack_require__(/*! ./vanilla/backtotop */ "./resources/js/vanilla/backtotop.js");
 
 window.Noty = __webpack_require__(/*! noty */ "./node_modules/noty/lib/noty.js"); // == VueTheMask
 // import VueTheMask from 'vue-the-mask'
@@ -36719,29 +36718,9 @@ axios.defaults.headers.common["Authorization"] = "Bearer " + js_cookie__WEBPACK_
 var app = new Vue({
   el: '#app',
   store: store,
-  //костыль для вуя по гамбургеру
+  //Vanilla в экземпляре Vue
   mounted: function mounted() {
-    var hamburger = document.querySelector('.menu-button');
-    var menu = document.querySelector('#mobilemenu');
-
-    var toggleMenu = function toggleMenu() {
-      menu.classList.toggle('show');
-    };
-
-    hamburger.addEventListener('click', function (e) {
-      e.stopPropagation();
-      toggleMenu();
-    });
-    document.addEventListener('click', function (e) {
-      var target = e.target;
-      var its_menu = target == menu || menu.contains(target);
-      var its_hamburger = target == hamburger;
-      var menu_is_active = menu.classList.contains('show');
-
-      if (!its_menu && !its_hamburger && menu_is_active) {
-        toggleMenu();
-      }
-    });
+    __webpack_require__(/*! ./vanilla/mmenu */ "./resources/js/vanilla/mmenu.js");
   }
 });
 
@@ -37052,6 +37031,37 @@ function scrollToTop() {
 
 $scrollButton.addEventListener('click', scrollToTop);
 window.addEventListener('scroll', trackScroll);
+
+/***/ }),
+
+/***/ "./resources/js/vanilla/mmenu.js":
+/*!***************************************!*\
+  !*** ./resources/js/vanilla/mmenu.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var hamburger = document.querySelector('.menu-button');
+var menu = document.querySelector('#mobilemenu');
+
+var toggleMenu = function toggleMenu() {
+  menu.classList.toggle('show');
+};
+
+hamburger.addEventListener('click', function (e) {
+  e.stopPropagation();
+  toggleMenu();
+});
+document.addEventListener('click', function (e) {
+  var target = e.target;
+  var its_menu = target == menu || menu.contains(target);
+  var its_hamburger = target == hamburger;
+  var menu_is_active = menu.classList.contains('show');
+
+  if (!its_menu && !its_hamburger && menu_is_active) {
+    toggleMenu();
+  }
+});
 
 /***/ }),
 

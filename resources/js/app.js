@@ -10,9 +10,8 @@ import VModal from 'vue-js-modal/dist/ssr.nocss'
 Vue.use(VModal)
 
 
-//Vanilla
+//Vanilla вне экземпляра Vue
 require('./vanilla/backtotop')
-// require('./vanilla/mmenu')
 
 window.Noty = require('noty')
 
@@ -59,29 +58,9 @@ const app = new Vue({
   el: '#app',
   store,
 
-  //костыль для вуя по гамбургеру
+  //Vanilla в экземпляре Vue
   mounted() {
-    const hamburger = document.querySelector('.menu-button');
-    const menu = document.querySelector('#mobilemenu');
+    require('./vanilla/mmenu');
 
-    const toggleMenu = () => {
-      menu.classList.toggle('show');
-    }
-
-    hamburger.addEventListener('click', e => {
-      e.stopPropagation();
-      toggleMenu();
-    });
-
-    document.addEventListener('click', e => {
-      const target = e.target;
-      const its_menu = target == menu || menu.contains(target);
-      const its_hamburger = target == hamburger;
-      const menu_is_active = menu.classList.contains('show');
-
-      if (!its_menu && !its_hamburger && menu_is_active) {
-        toggleMenu();
-      }
-    })
   }
 });

@@ -10,11 +10,15 @@ header {
   .menu-button {
     display: none;
     padding: $spacer /2;
+    order: 2;
     margin-left: auto;
     line-height: 1;
   }
 
   .logo {
+    display: flex;
+    justify-content: center;
+
     img {
       height: 45px;
     }
@@ -22,14 +26,12 @@ header {
 
   .mmenu {
     display: flex;
-    justify-content: space-between;
     flex: 1;
-
-    ul {
-      flex-wrap: wrap;
-    }
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
-  @media (max-width: 812px) {
+
+  @media (max-width: $break-sm) {
     .mmenu {
       position: absolute;
       top: 100%;
@@ -53,7 +55,6 @@ header {
 
         a {
           width: 100%;
-          text-align: left;
           padding-top: $spacer;
           padding-bottom: $spacer;
         }
@@ -67,19 +68,20 @@ header {
 
   ul {
     text-align: right;
-    // display: flex;
-    // flex-direction: row;
     margin: 0;
     padding-left: 0;
 
     li {
       display: inline-flex;
       align-items: center;
-      // line-height: 1;
-      a {
+      align-self: center;
+
+      a,
+      a:visited {
         padding: 0.4em $btn-padding-side;
         white-space: nowrap;
-        @media (max-width: 1024px) {
+
+        @media (max-width: $break-xl) {
           padding: 0.4em $btn-padding-side /2;
           text-align: center;
         }

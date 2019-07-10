@@ -15,30 +15,22 @@ footer {
     flex-direction: row;
   }
 
-  @include media-breakpoint-down(xs) {
-    background-color: red!important;
-
-  // }
-  //
-  // @media screen and (max-width: grid-breakpoint(sm)) {
+  a,
+  a:visited {
+    color: $black;
+  }
+  @media (max-width: $break-sm) {
     padding: $spacer*2 0 $spacer;
 
     .footer_bottom {
       flex-direction: column;
       text-align: center;
+
       .copyright {
         font-size: 10px;
         flex-direction: column;
         justify-content: space-between;
       }
-    }
-
-  }
-
-  @media screen and (max-width: 414px) {
-    .footer_bottom {
-      flex-direction: row;
-      justify-content: center;
     }
   }
 }

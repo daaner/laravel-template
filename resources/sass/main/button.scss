@@ -1,3 +1,4 @@
+a.btn,
 .btn {
     padding: $spacer/2 $btn-padding-side;
     display: inline-block;
@@ -8,7 +9,7 @@
     border-radius: $radius;
     background-color: transparent;
     transition: $trans;
-    color: $primary;
+    color: $link-color;
     position: relative;
     min-width: 8em;
     line-height: 1.5;
@@ -24,84 +25,85 @@
     &:disabled {
         opacity: 0.5;
         cursor: no-drop;
-        // color: $white;
     }
 
-  @media screen and (max-width: 736px) {
+  @media (max-width: $break-sm) {
     min-width: 100%;
     margin-bottom: 1em;
-  }
-
-  @media screen and (max-width: 667px) {
     white-space: inherit;
   }
 
-}
-//btn-colors
-@each $key, $value in $colors_palette {
-  .btn-outline-#{"" + $key} {
-    color: #{$value};
-    border-color: #{$value};
-    border: 1px solid;
+
+  //btn-colors
+  @each $key, $value in $colors_palette {
+    &.btn-outline-#{"" + $key} {
+      color: #{$value};
+      border-color: #{$value};
+      border: 1px solid;
       &:hover {
-          color: darken($value, 20%);
+        color: darken($value, 20%);
       }
-  }
-
-  .btn-#{"" + $key} {
-    background-color: #{$value};
-    color: $white;
-    // border-color: #{$value};
-
-    &:not(:disabled):not(.disabled):focus,
-    &:not(:disabled):not(.disabled):hover {
-      background-color: darken($value, 10%);
-      color: $white;
     }
 
-    &:not(:disabled):not(.disabled).active,
-    &:not(:disabled):not(.disabled):active {
-      background-color: desaturate($value, 10%);
-      border-color: transparent;
+    &.btn-#{"" + $key} {
+      background-color: #{$value};
+      color: $white;
 
-      &:focus,
-      &:hover {
+      &:not(:disabled):not(.disabled):focus,
+      &:not(:disabled):not(.disabled):hover {
+        background-color: darken($value, 10%);
         color: $white;
       }
+
+      &:not(:disabled):not(.disabled).active,
+      &:not(:disabled):not(.disabled):active {
+        background-color: desaturate($value, 10%);
+        border-color: transparent;
+
+        &:focus,
+        &:hover {
+          color: $white;
+        }
+      }
     }
   }
-}
 
-.btn-white {
-  color: $primary;
-
-  .btn-after,
-  .btn-pre {
-    background-color: darken($white, 5%)!important;
-  }
-
-  &:hover {
-    color: transparentize($primary, .2);
-    background-color: $white !important;
-  }
-
-  &.disabled,
-  &:disabled {
+  &.btn-white {
     color: $primary;
-  }
-}
 
-.btn-black {
-  &:hover {
-    background-color: lighten($black, 10%)!important;
-  }
-}
+    .btn-after,
+    .btn-pre {
+      background-color: darken($white, 5%) !important;
+    }
 
-.btn-outline-white {
-  &:hover {
-    color: darken($white, 20%);
+    &:hover {
+      color: transparentize($primary, .2) !important;
+      background-color: $white !important;
+    }
+
+    &.disabled,
+    &:disabled {
+      color: $primary;
+    }
   }
+
+  &.btn-black {
+    color: $white;
+
+    &:hover {
+      background-color: lighten($black, 10%)!important;
+    }
+  }
+
+  &.btn-outline-white {
+    &:hover {
+      color: darken($white, 20%);
+    }
+  }
+
 }
+//end .btn
+
 
 .btn-block {
   display: block;

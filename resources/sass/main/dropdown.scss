@@ -1,5 +1,6 @@
 .dropdown-menu {
   position: relative;
+  margin-right: 1em;
 
   ul {
     position: absolute;
@@ -31,12 +32,20 @@
     }
 
   }
-  @media (max-width: 812px) {
+
+  @media (max-width: $break-sm) {
     flex-direction: column;
+    margin-right: 0;
+    width: 100%;
+
     ul {
       max-width: 100%;
       width: 100%;
       position: relative;
+
+      li {
+        flex-direction: column;
+      }
     }
   }
 
@@ -46,7 +55,7 @@
       position: absolute;
       content: '';
       top: 50%;
-      margin-left: 1em;
+      margin-left: 0.7em;
       width: 1em;
       height: 1em;
       margin-top: -0.5em;
