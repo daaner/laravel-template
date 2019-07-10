@@ -9,8 +9,9 @@ use Gate;
 use App\Models\Script;
 use App\Observers\ScriptObserver;
 use App\Setting;
-use App\User;
 use App\Observers\SettingObserver;
+
+use App\User;
 
 class AppServiceProvider extends ServiceProvider
 {

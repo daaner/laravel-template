@@ -24,7 +24,6 @@ header {
     display: flex;
     justify-content: space-between;
     flex: 1;
-    width: calc(100% - 210px);
 
     ul {
       flex-wrap: wrap;
@@ -65,10 +64,11 @@ header {
       display: block;
     }
   }
-  
+
   ul {
-    display: flex;
-    flex-direction: row;
+    text-align: right;
+    // display: flex;
+    // flex-direction: row;
     margin: 0;
     padding-left: 0;
 

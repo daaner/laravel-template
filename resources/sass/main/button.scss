@@ -32,6 +32,10 @@
     margin-bottom: 1em;
   }
 
+  @media screen and (max-width: 667px) {
+    white-space: inherit;
+  }
+
 }
 //btn-colors
 @each $key, $value in $colors_palette {

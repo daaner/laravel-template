@@ -1,5 +1,5 @@
 {{-- User menu --}}
-<ul id="mobilemenu">
+
   <li>
     <span class="strong">
       {{ Auth::user()->name }}
@@ -40,5 +40,3 @@
       {{ __('site.menu.logout') }}
     </a>
   </li>
-
-</ul>

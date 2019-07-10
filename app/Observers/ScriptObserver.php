@@ -34,4 +34,11 @@ class ScriptObserver
     cache()->forget('scripts');
   }
 
+  // public function restoring(Model $result) {
+  //   cache()->forget('scripts');
+  // }
+  // public function restored(Model $result) {
+  //   cache()->forget('scripts');
+  // }
+
 }

@@ -1,5 +1,5 @@
 {{-- Guest menu --}}
-<ul id="mobilemenu">
+
   <li>
     <a href="{{ URL::to('/') }}">Guest menu -
       {{ __('site.menu.main') }}
@@ -48,5 +48,3 @@
       </a>
     </li>
   @endif
-
-</ul>

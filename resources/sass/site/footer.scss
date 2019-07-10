@@ -15,7 +15,12 @@ footer {
     flex-direction: row;
   }
 
-  @media screen and (max-width: 736px) {
+  @include media-breakpoint-down(xs) {
+    background-color: red!important;
+
+  // }
+  //
+  // @media screen and (max-width: grid-breakpoint(sm)) {
     padding: $spacer*2 0 $spacer;
 
     .footer_bottom {

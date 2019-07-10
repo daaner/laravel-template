@@ -19,6 +19,10 @@ class RoleSeeder extends Seeder
         'name'          => 'Admin',
         'description'   => 'All administrators',
       ],
+      [
+        'name'          => 'Creator',
+        'description'   => 'All creators',
+      ],
     ];
 
     foreach ($datas as $data) {
