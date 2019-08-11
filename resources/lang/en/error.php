@@ -60,4 +60,7 @@ return [
   '521t' => 'Service is in the process of updating',
   '521' => 'The service is in the process of being updated and is temporarily unavailable. We apologize for any inconvenience caused',
 
+  '524t' => 'A timeout occurred',
+  '524' => 'A connection to the web server was established, but it did not respond for the set connection timeout',
+
 ];

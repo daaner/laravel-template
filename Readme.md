@@ -18,8 +18,8 @@
   * для добавления модуля нужно сдублировать папку модуля
   * в конфиге добавить имя папки в массив `config\module.php`
   * поменять главный роут модуля
-  * добавить SASS для билда `@import '../../Modules/Blog/resources/sass/app.scss';`
-  * добавить JS для билда `require('../../Modules/Blog/resources/js/module.js')`
+  * [front] добавить SASS для билда `@import '../../Modules/Blog/resources/sass/app.scss';`
+  * [front] добавить JS для билда `require('../../Modules/Blog/resources/js/module.js')`
   * добавить сидер `$this->call(Modules\Blog\database\seeds\BlogCategorySeeder::class);`
   * локализация модулей в фреймворке `{{ __('Module::file.key') }}`
   * локализация модулей в Vue остается прежней `{{ __('file.key') }}` (внимательно относится к именованию файлов, чтоб не переименовать ключи)
