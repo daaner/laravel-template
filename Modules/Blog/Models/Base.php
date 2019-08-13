@@ -5,22 +5,24 @@ namespace Modules\Blog\Models;
 use App\BaseModel;
 use EasySlug\EasySlug;
 
-
 class Base extends BaseModel
 {
 
   use EasySlug;
 
   public function categories() {
+
     if($this->category_id) {
       $default_value = '<span class="text-muted">'. __('Blog::blog.deleted_category') .'</span>';
     } else {
       $default_value = __('Blog::blog.empty_category');
     }
+
     $cat = $this->belongsTo(BlogCategory::class,'category_id','id');
+
     return $cat->withDefault([
-        'name' => $default_value,
-      ]);
+      'name' => $default_value,
+    ]);
   }
 
 

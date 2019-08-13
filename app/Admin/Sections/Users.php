@@ -23,13 +23,6 @@ use SleepingOwl\Admin\Form\Buttons\Cancel;
 class Users extends Section implements Initializable
 {
   public function initialize() {
-    $this->addToNavigation()
-      ->setAccessLogic(function() {
-        if(Auth::check() && auth()->user()->isAdmin()) {
-          return true;
-        }
-      })
-      ->setPriority(1000);
   }
 
   protected $checkAccess = true;
@@ -51,24 +44,29 @@ class Users extends Section implements Initializable
 
   public function onDisplay() {
 
-    $display = AdminDisplay::datatables()->setHtmlAttribute('class', 'table-primary table-hover')->setDisplaySearch(true);
+    $display = AdminDisplay::datatables()
+      ->setHtmlAttribute('class', 'table-primary table-hover')
+      ->setDisplaySearch(true);
 
     $display->setColumns([
-      AdminColumn::text('id', '#')->setWidth('30px'),
-      AdminColumn::link('email', 'Email')->setWidth('230px'),
+      AdminColumn::text('id', '#')
+        ->setWidth('50px'),
+      AdminColumn::gravatar('email', 'Ava'),
+      AdminColumn::link('email', 'Email'),
       AdminColumn::text('name', 'Имя'),
-      AdminColumn::text('roles.name', 'Права')->setWidth('150px')
-      ->setOrderable(false)
-      ->setSearchCallback(function($column, $query, $search){
-        return $query->orWhereHas('roles', function ($q) use ($search) {
-          $q->where('name', 'like', '%'.$search.'%');
-        });
-      }),
-
-      AdminColumn::boolean('active', 'Вход')->setWidth('80px')
-        ->setSearchable(false)->setOrderable(false),
-      AdminColumn::text('created_at', 'Создан')->setWidth('160px')
-        ->setSearchable(false)->setOrderable(false),
+      AdminColumn::text('roles.name', 'Права')
+        ->setWidth('150px')
+        ->setOrderable(false)
+        ->setSearchCallback(function($column, $query, $search){
+          return $query->orWhereHas('roles', function ($q) use ($search) {
+            $q->where('name', 'like', '%'.$search.'%');
+          });
+        }),
+      AdminColumn::boolean('active', 'Вход')
+        ->setWidth('80px'),
+      AdminColumn::text('created_at', 'Создан')
+        ->setWidth('160px')
+        ->setSearchable(false),
     ]);
 
     return $display;
@@ -79,25 +77,39 @@ class Users extends Section implements Initializable
     $form = AdminForm::panel()->addBody([
       AdminFormElement::columns()->addColumn([
         AdminFormElement::text('name', 'Имя')
-          ->addValidationRule('max:255', 'Не более 250 символов')->required(),
-        AdminFormElement::text('email', 'Почта')->required()->unique(),
+          ->addValidationRule('max:190', __('adm.valid.max190'))
+          ->required(),
+        AdminFormElement::text('email', 'Почта')
+          ->required()
+          ->unique()
+          ->addValidationRule('max:190', __('adm.valid.max190')),
+        AdminFormElement::select('role_id', 'Права', Role::class)
+          ->setDisplay('name')
+          ->required()
+          ->setSortable(false),
         AdminFormElement::select('lang', 'Язык сайта', config('app.locales'))
-          ->required()->setSortable(false),
-        AdminFormElement::password('newpassword', 'Пароль')->allowEmptyValue()
+          ->required()
+          ->setSortable(false),
+        AdminFormElement::password('newpassword', 'Пароль (не заполнить - не сменится)')
+          ->allowEmptyValue()
           ->addValidationRule('nullable')
           ->addValidationRule('between:8,50', 'От 8 до 50 символов'),
+
+      ], 8)->addColumn([
+        AdminFormElement::text('id', '#')
+          ->setReadonly(1),
+        AdminFormElement::checkbox('blocked', 'Блокировать пользователя'),
         AdminFormElement::html('<hr>'),
-        AdminFormElement::checkbox('active', 'Включен'),
-      ], 6)->addColumn([
-        AdminFormElement::text('id', '#')->setReadonly(1),
-        AdminFormElement::select('role_id', 'Права', Role::class)
-          ->setDisplay('name')->required()->setSortable(false),
-        AdminFormElement::text('created_at', 'Создан')->setReadonly(1),
-        AdminFormElement::text('signup_ip', 'IP регистрации')->setReadonly(1),
-        AdminFormElement::text('confirm_ip', 'IP активации почты')->setReadonly(1),
+        AdminFormElement::text('created_at', 'Создан')
+          ->setReadonly(1),
+        AdminFormElement::text('signup_ip', 'IP регистрации')
+          ->setReadonly(1),
+        AdminFormElement::text('confirm_ip', 'IP активации почты')
+          ->setReadonly(1),
+
       ]),
       AdminFormElement::html('<hr>'),
-      AdminFormElement::checkbox('blocked', 'Блокировать пользователя'),
+      AdminFormElement::checkbox('active', 'Включен'),
     ]);
 
     $form->getButtons()->setButtons([

@@ -1,13 +1,13 @@
 
   <li>
     <a href="{{ route('clear_cache') }}" title="{{ __('api.admin.clear_cache_title') }}">
-      <i class="fa fa-btn fa-eraser"></i> {{ __('api.admin.clear_cache') }}
+      <i class="fas fa-eraser"></i> {{ __('api.admin.clear_cache') }}
     </a>
   </li>
 
   <li>
     <a href="/" target="site">
-      <i class="fa fa-btn fa-external-link"></i> @lang('sleeping_owl::lang.links.index_page')
+      <i class="fas fa-external-link-alt"></i> @lang('sleeping_owl::lang.links.index_page')
     </a>
   </li>
 
@@ -28,7 +28,7 @@
         </li>
         <li class="user-footer">
           <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            <i class="fa fa-btn fa-sign-out"></i> @lang('sleeping_owl::lang.auth.logout')
+            <i class="fas fa-sign-out-alt"></i> @lang('sleeping_owl::lang.auth.logout')
           </a>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}

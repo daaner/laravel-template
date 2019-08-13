@@ -14,6 +14,9 @@ class Setting extends Migration
       $table->string('name');
       $table->string('description');
       $table->boolean('value')->default(0);
+
+      $table->bigInteger('created_by')->nullable();
+      $table->bigInteger('modifed_by')->nullable();
       $table->timestamps();
     });
   }

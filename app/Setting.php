@@ -2,10 +2,10 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\BaseClearModel;
 
 
-class Setting extends Model
+class Setting extends BaseClearModel
 {
 
   protected $table = 'settings';

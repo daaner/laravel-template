@@ -22,21 +22,13 @@ use SleepingOwl\Admin\Form\Buttons\Cancel;
 class Settings extends Section implements Initializable
 {
   public function initialize() {
-    $this->addToNavigation()
-      // ->setAccessLogic(function() {
-      //   // return auth()->user()->isAdmin();
-      //   if(Auth::check() && auth()->user()->isAdmin()) {
-      //   }
-      //   return true;
-      // })
-      ->setPriority(1000);
   }
 
   protected $checkAccess = true;
   protected $alias = 'settings';
 
   public function getIcon() {
-    return 'fa fa-cogs';
+    return 'fas fa-cog';
   }
   public function getTitle() {
     return 'Настройки';
@@ -48,16 +40,22 @@ class Settings extends Section implements Initializable
 
   public function onDisplay() {
 
-    $display = AdminDisplay::datatables()
-      ->setHtmlAttribute('class', 'table-danger table-hover')
-      ->setDisplaySearch(true);
+    $display = AdminDisplay::table()
+      ->setHtmlAttribute('class', 'table-danger table-hover');
 
     $display->setColumns([
-      AdminColumn::text('id', '#')->setWidth('30px'),
-      AdminColumn::link('name', 'Настройка')->setWidth('150px'),
-      AdminColumn::boolean('value', 'Состояние')->setWidth('80px')
-        ->setSearchable(false)->setOrderable(false),
+      // AdminColumn::text('id', '#')
+      //   ->setWidth('50px'),
+      AdminColumn::link('name', 'Настройка')
+        ->setWidth('150px'),
+      AdminColumn::boolean('value', 'Состояние')
+        ->setWidth('130px')
+        ->setOrderable(true),
       AdminColumn::text('description', 'Описание'),
+      AdminColumn::text('updated_at', 'Изменен', 'editors.name')
+        ->setWidth('160px')
+        ->setSearchable(false)
+        ->setOrderable(true),
     ]);
 
     return $display;
@@ -66,12 +64,26 @@ class Settings extends Section implements Initializable
 
   public function onEdit($id) {
     $form = AdminForm::panel()->addBody([
-      // AdminFormElement::text('id', '#')->setReadonly(1),
-      AdminFormElement::text('name', 'Название')->setReadonly(1)->required(),
-      AdminFormElement::textarea('description', 'Описание')->setRows(3)
-        ->addValidationRule('max:255', 'Не более 250 символов'),
-      AdminFormElement::html('<hr>'),
-      AdminFormElement::checkbox('value', 'Состояние настройки'),
+      AdminFormElement::columns()->addColumn([
+        AdminFormElement::text('name', 'Название')
+          ->setReadonly(1)
+          ->required(),
+        AdminFormElement::textarea('description', 'Описание')
+          ->setRows(3)
+          ->addValidationRule('max:190', __('adm.valid.max190')),
+        AdminFormElement::html('<hr>'),
+        AdminFormElement::checkbox('value', 'Состояние настройки'),
+      ], 8)->addColumn([
+        AdminFormElement::text('creators.name', 'Создал')
+          ->setReadonly(1),
+        AdminFormElement::text('updated_at', 'Создано')
+          ->setReadonly(1),
+        AdminFormElement::html('<hr>'),
+        AdminFormElement::text('editors.name', 'Редактировал')
+          ->setReadonly(1),
+        AdminFormElement::text('updated_at', 'Редакция')
+          ->setReadonly(1),
+      ]),
     ]);
 
     $form->getButtons()->setButtons([

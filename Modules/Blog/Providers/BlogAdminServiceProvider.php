@@ -32,7 +32,7 @@ class BlogAdminServiceProvider extends ServiceProvider
     \AdminNavigation::setFromArray([
       [
         'title' => __('adm.modules.blog'),
-        'icon' => 'fa fa-book',
+        'icon' => 'fab fa-blogger-b',
         'priority' => 100,
         'pages' => [
           (new Page(BlogCategory::class))->setPriority(100),

@@ -27,15 +27,13 @@ use Modules\Blog\Repositories\BlogCategoryRepository;
 class BlogCategories extends Section implements Initializable
 {
   public function initialize() {
-    // $this->addToNavigation()
-    //   ->setPriority(2000);
   }
 
   protected $checkAccess = true;
   protected $alias = 'blog-categories';
 
   public function getIcon() {
-    return 'fa fa-th-list';
+    return 'fas fa-th-list';
   }
   public function getTitle() {
     return __('Blog::admin_blog.get_title_category');
@@ -55,7 +53,9 @@ class BlogCategories extends Section implements Initializable
       ->setDisplaySearch(true);
 
     $columns = [
-      AdminColumn::text('id', '#')->setWidth('30px'),
+      AdminColumn::text('id', '#')
+        ->setWidth('50px')
+        ->setHtmlAttribute('class', 'text-center'),
       AdminColumn::link('name', __('adm.title'), 'slug'),
       AdminColumn::text('categories.name', __('adm.edit.category'))
         ->setOrderable(false)
@@ -69,10 +69,12 @@ class BlogCategories extends Section implements Initializable
           $lang = config('app.locales')[$model->lang];
         } else { $lang = '-'; }
         return $lang;
-      })->setWidth('30px'),
-      AdminColumn::boolean('active', __('adm.show'))->setWidth('30px'),
-      AdminColumn::text('updated_at', __('adm.edited'), 'editors.name')->setWidth('160px')
-        ->setSearchable(false)->setOrderable(false),
+      })
+        ->setWidth('50px')
+        ->setHtmlAttribute('class', 'text-center'),
+      AdminColumn::text('updated_at', __('adm.edited'), 'editors.name')
+        ->setWidth('160px')
+        ->setSearchable(false),
     ];
 
     $tableActive =  AdminDisplay::datatablesAsync()
@@ -91,7 +93,7 @@ class BlogCategories extends Section implements Initializable
       ->paginate(30)
       ->getScopes()->set('Draft')
       ->setColumns($columns)
-      ->setHtmlAttribute('class', 'table-info table-hover th-center');
+      ->setHtmlAttribute('class', 'table-hover th-center');
 
     $tableDeleted =  AdminDisplay::datatablesAsync()
       ->setName('deleted')
@@ -106,22 +108,24 @@ class BlogCategories extends Section implements Initializable
     $tabs->setElements([
       AdminDisplay::tab($tableActive)
         ->setLabel(__('adm.all'))
-        ->seticon('<i class="fa fa-eye"></i>')
+        ->seticon('<i class="fas fa-eye"></i>')
         ->setBadge(function () {
           return BlogCategory::Active()->count();
         }),
 
       AdminDisplay::tab($tableInactive)
         ->setLabel(__('adm.drafted'))
-        ->seticon('<i class="fa fa-eye-slash"></i>')
+        ->seticon('<i class="fas fa-eye-slash"></i>')
+        ->seticon('<i class="fas fa-eye-slash"></i>')
+        ->setHtmlAttribute('class', 'text-black-50')
         ->setBadge(function () {
           return BlogCategory::Draft()->count();
         }),
 
       AdminDisplay::tab($tableDeleted)
         ->setLabel(__('adm.deleted'))
-        ->setIcon('<i class="fa fa-trash"></i>')
-        ->setHtmlAttribute('class', 'tab-delete'),
+        ->setIcon('<i class="fas fa-trash"></i>')
+        ->setHtmlAttribute('class', 'last text-danger'),
     ]);
 
     return $tabs;
@@ -144,40 +148,50 @@ class BlogCategories extends Section implements Initializable
 
     $tabs = AdminDisplay::tabbed([
       __('Blog::admin_blog.main_tab') => new FormElements([
-        AdminFormElement::text('id', '#')->setReadonly(1),
         AdminFormElement::select('lang', __('adm.edit.lang_site'), config('app.locales'))
-          ->required()->setDefaultValue($def_lang),
-
-
-        AdminFormElement::dependentselect('category_id', __('adm.edit.category'))
-          // ->setOptions($cat)
-          ->setModelForOptions(BlogCategory::class, 'name')
-          ->setDataDepends(['lang'])
-          ->exclude($id)
-          ->setDisplay('name')
+          ->required()
           ->setSortable(false)
-          ->setLoadOptionsQueryPreparer(function($item, $query) use ($cat) {
+          ->setDefaultValue($def_lang),
+        AdminFormElement::text('id', '#')
+          ->setReadonly(1),
 
-            return ($query->where('lang', $item->getDependValue('lang'))
-              ->where('active', true)
-            );
-          })
-          ,
+
+        // AdminFormElement::dependentselect('category_id', __('adm.edit.category'))
+        //   // ->setOptions($cat)
+        //   ->setModelForOptions(BlogCategory::class, 'name')
+        //   ->setDataDepends(['lang'])
+        //   ->exclude($id)
+        //   ->setDisplay('name')
+        //   ->setSortable(false)
+        //   ->setLoadOptionsQueryPreparer(function($item, $query) use ($cat) {
+        //
+        //     return ($query->where('lang', $item->getDependValue('lang'))
+        //       ->where('active', true)
+        //     );
+        //   })
+        //   ,
 
 
         AdminFormElement::html('<hr>'),
-        AdminFormElement::text('creators.name', __('adm.edit.creators'))->setReadonly(1),
-        AdminFormElement::text('created_at', __('adm.edit.created_at'))->setReadonly(1),
+        AdminFormElement::text('creators.name', __('adm.edit.creators'))
+          ->setReadonly(1),
+        AdminFormElement::text('created_at', __('adm.edit.created_at'))
+          ->setReadonly(1),
         AdminFormElement::html('<hr>'),
-        AdminFormElement::text('editors.name', __('adm.edit.editors'))->setReadonly(1),
-        AdminFormElement::text('updated_at', __('adm.edit.updated_at'))->setReadonly(1),
+        AdminFormElement::text('editors.name', __('adm.edit.editors'))
+          ->setReadonly(1),
+        AdminFormElement::text('updated_at', __('adm.edit.updated_at'))
+          ->setReadonly(1),
       ]),
 
       __('Blog::admin_blog.meta_tab') => new FormElements([
-        AdminFormElement::text('meta_title', __('adm.edit.meta_title')),
-        AdminFormElement::textarea('meta_description', __('adm.edit.meta_description'))->setRows(5)
-          ->addValidationRule('max:255', __('adm.valid.max250')),
-        AdminFormElement::textarea('ldjson', 'LD-Json Script')->setRows(10),
+        AdminFormElement::text('meta_title', __('adm.edit.meta_title'))
+          ->addValidationRule('max:190', __('adm.valid.max190')),
+        AdminFormElement::textarea('meta_description', __('adm.edit.meta_description'))
+          ->setRows(5)
+          ->addValidationRule('max:190', __('adm.valid.max190')),
+        AdminFormElement::textarea('ldjson', 'LD-Json Script')
+          ->setRows(10),
       ]),
     ]);
 
@@ -186,15 +200,16 @@ class BlogCategories extends Section implements Initializable
       AdminFormElement::columns()->addColumn([
 
         AdminFormElement::text('name', __('adm.name'))
-          ->addValidationRule('max:255', __('adm.valid.max250'))->required(),
+          ->addValidationRule('max:190', __('adm.valid.max190'))
+          ->required(),
         AdminFormElement::text('slug', __('adm.slug'))
-          ->addValidationRule('max:255', __('adm.valid.max250')),
-
+          ->addValidationRule('max:190', __('adm.valid.max190')),
         AdminFormElement::columns()->addColumn([
-          AdminFormElement::image('image', __('adm.edit.image')),
+          AdminFormElement::image('image', __('adm.edit.image'))
+            ->addValidationRule('max:190', __('adm.valid.max190')),
         ], 6)->addColumn([
           AdminFormElement::text('icon', __('adm.edit.icon'))
-            ->addValidationRule('max:255', __('adm.valid.max250')),
+            ->addValidationRule('max:190', __('adm.valid.max190')),
         ]),
 
         AdminFormElement::wysiwyg('info_preview', __('adm.text_preview')),

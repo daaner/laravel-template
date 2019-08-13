@@ -22,21 +22,14 @@ use SleepingOwl\Admin\Form\Buttons\Cancel;
 class Roles extends Section implements Initializable
 {
   public function initialize() {
-    $this->addToNavigation()
-      ->setAccessLogic(function() {
-        // return auth()->user()->isAdmin();
-        if(Auth::check() && auth()->user()->isAdmin()) {
-          return true;
-        }
-      })
-      ->setPriority(1000);
+
   }
 
   protected $checkAccess = true;
   protected $alias = 'roles';
 
   public function getIcon() {
-    return 'fa fa-group';
+    return 'fas fa-user-shield';
   }
   public function getTitle() {
     return 'Роли';
@@ -48,11 +41,14 @@ class Roles extends Section implements Initializable
 
   public function onDisplay() {
 
-    $display = AdminDisplay::datatables()->setHtmlAttribute('class', 'table-danger table-hover')->setDisplaySearch(true);
+    $display = AdminDisplay::table()
+      ->setHtmlAttribute('class', 'table-danger table-hover');
 
     $display->setColumns([
-      AdminColumn::text('id', '#')->setWidth('30px'),
-      AdminColumn::link('name', 'Название')->setWidth('150px'),
+      AdminColumn::text('id', '#')
+        ->setWidth('50px'),
+      AdminColumn::link('name', 'Название')
+        ->setWidth('150px'),
       AdminColumn::text('description', 'Описание'),
     ]);
 
@@ -62,10 +58,14 @@ class Roles extends Section implements Initializable
 
   public function onEdit($id) {
     $form = AdminForm::panel()->addBody([
-      AdminFormElement::text('id', '#')->setReadonly(1),
-      AdminFormElement::text('name', 'Название')->required(),
-      AdminFormElement::textarea('description', 'Описание')->setRows(3)
-        ->addValidationRule('max:255', 'Не более 250 символов'),
+      AdminFormElement::text('id', '#')
+        ->setReadonly(1),
+      AdminFormElement::text('name', 'Название')
+        ->required()
+        ->addValidationRule('max:190', __('adm.valid.max190')),
+      AdminFormElement::textarea('description', 'Описание')
+        ->setRows(3)
+        ->addValidationRule('max:190', __('adm.valid.max190')),
     ]);
 
     $form->getButtons()->setButtons([
