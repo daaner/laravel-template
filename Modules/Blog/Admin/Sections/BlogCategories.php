@@ -7,6 +7,9 @@ use AdminDisplay;
 use AdminForm;
 use AdminFormElement;
 
+use AdminColumnFilter;
+use AdminDisplayFilter;
+
 use SleepingOwl\Admin\Contracts\Initializable;
 
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
@@ -52,18 +55,23 @@ class BlogCategories extends Section implements Initializable
       ->setHtmlAttribute('class', 'table-primary table-hover')
       ->setDisplaySearch(true);
 
+
     $columns = [
       AdminColumn::text('id', '#')
         ->setWidth('50px')
         ->setHtmlAttribute('class', 'text-center'),
       AdminColumn::link('name', __('adm.title'), 'slug'),
       AdminColumn::text('categories.name', __('adm.edit.category'))
-        ->setOrderable(false)
+        ->setOrderable(true)
+        ->setOrderable(function($query, $direction) {
+          $query->orderBy('category_id', $direction);
+        })
         ->setSearchCallback(function($column, $query, $search){
           return $query->orWhereHas('categories', function ($q) use ($search) {
             $q->where('name', 'like', '%'.$search.'%');
           });
-        }),
+        })
+        ->append(AdminColumn::filter('category_id')),
       AdminColumn::custom(__('adm.lang'), function($model) {
         if(isset(config('app.locales')[$model->lang])) {
           $lang = config('app.locales')[$model->lang];
@@ -85,6 +93,10 @@ class BlogCategories extends Section implements Initializable
       ->getScopes()->set('Active')
       ->setColumns($columns)
       ->setHtmlAttribute('class', 'table-primary table-hover th-center');
+
+    $tableActive->setFilters(
+        AdminDisplayFilter::related('category_id', __('adm.edit.category'))->setModel(BlogCategory::class)
+      );
 
     $tableInactive =  AdminDisplay::datatablesAsync()
       ->setName('draft')

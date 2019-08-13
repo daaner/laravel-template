@@ -49,10 +49,10 @@ class Scripts extends Section implements Initializable
 
     $display->setColumns([
       AdminColumn::text('id', '#')
-        ->setWidth('50px'),
+        ->setWidth('50px')
+        ->setHtmlAttribute('class', 'text-center'),
       AdminColumn::link('name', 'Название'),
-      AdminColumn::boolean('active', 'ВКЛ')
-        ->setWidth('80px'),
+      AdminColumn::boolean('active', 'ВКЛ'),
       AdminColumn::boolean('top', 'Header')
         ->setWidth('110px')
         ->setOrderable(true),

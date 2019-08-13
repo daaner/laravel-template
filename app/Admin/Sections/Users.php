@@ -50,7 +50,8 @@ class Users extends Section implements Initializable
 
     $display->setColumns([
       AdminColumn::text('id', '#')
-        ->setWidth('50px'),
+        ->setWidth('50px')
+        ->setHtmlAttribute('class', 'text-center'),
       AdminColumn::gravatar('email', 'Ava'),
       AdminColumn::link('email', 'Email'),
       AdminColumn::text('name', 'Имя'),
@@ -62,8 +63,7 @@ class Users extends Section implements Initializable
             $q->where('name', 'like', '%'.$search.'%');
           });
         }),
-      AdminColumn::boolean('active', 'Вход')
-        ->setWidth('80px'),
+      AdminColumn::boolean('active', 'Вход'),
       AdminColumn::text('created_at', 'Создан')
         ->setWidth('160px')
         ->setSearchable(false),
@@ -94,7 +94,6 @@ class Users extends Section implements Initializable
           ->allowEmptyValue()
           ->addValidationRule('nullable')
           ->addValidationRule('between:8,50', 'От 8 до 50 символов'),
-
       ], 8)->addColumn([
         AdminFormElement::text('id', '#')
           ->setReadonly(1),

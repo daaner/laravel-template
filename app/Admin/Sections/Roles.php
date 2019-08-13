@@ -46,7 +46,8 @@ class Roles extends Section implements Initializable
 
     $display->setColumns([
       AdminColumn::text('id', '#')
-        ->setWidth('50px'),
+        ->setWidth('50px')
+        ->setHtmlAttribute('class', 'text-center'),
       AdminColumn::link('name', 'Название')
         ->setWidth('150px'),
       AdminColumn::text('description', 'Описание'),
