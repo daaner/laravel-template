@@ -12,14 +12,13 @@ class ScriptsSectionModelPolicy
     use HandlesAuthorization;
 
     /**
-     * @param User $user
-     * @param string $ability
+     * @param User    $user
+     * @param string  $ability
      * @param Scripts $section
-     * @param Script $item
+     * @param Script  $item
      *
      * @return bool
      */
-
     public function before(User $user, $ability, Section $section, Model $item = null)
     {
         if ($user->isAdmin()) {

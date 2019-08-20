@@ -11,14 +11,13 @@ class UsersSectionModelPolicy
     use HandlesAuthorization;
 
     /**
-     * @param User $user
+     * @param User   $user
      * @param string $ability
-     * @param Users $section
-     * @param User $item
+     * @param Users  $section
+     * @param User   $item
      *
      * @return bool
      */
-
     public function before(User $user, $ability, Users $section, User $item = null)
     {
         // if ($user->isAdmin()) {
