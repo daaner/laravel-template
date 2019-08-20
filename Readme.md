@@ -1,17 +1,21 @@
 # Удобный шаблон для Laravel (laravel-template)
 
-[![StyleCI](https://styleci.io/repos/167434921/shield?branch=master)](https://styleci.io/repos/167434921)
+<p align="center">
+  [![StyleCI](https://styleci.io/repos/167434921/shield?branch=master)](https://styleci.io/repos/167434921)
+  [![Scrutinizer](https://scrutinizer-ci.com/g/daaner/laravel-template/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/daaner/laravel-template/inspections)
+  [![Laravel Support](https://img.shields.io/badge/Laravel-5.5--5.8-brightgreen.svg)]()
+  [![PHP Support](https://img.shields.io/badge/PHP-7.x-brightgreen.svg)]()
+
+  [![Total Downloads](https://poser.pugx.org/daaner/laravel-template/downloads)](https://packagist.org/packages/daaner/laravel-template)
+  [![Telegram Chat](https://img.shields.io/badge/telegram-chat-blue.svg)](https://t.me/neodaan)
+  [![License](https://poser.pugx.org/daaner/laravel-template/license)](https://packagist.org/packages/daaner/laravel-template)
+</p>
 
 ## Install
-Для установки выполните команду `composer create-project --prefer-dist --stability=dev daaner/laravel-template dt` 
+Для установки выполните команду `composer create-project --prefer-dist --stability=dev daaner/laravel-template dt`
 
-
-## .env
-Требуется добавить 2 параметра (закинуто в конфиг)
-`GOOGLE_ANALYTIC` и `YANDEX_METRIC`
 
 ## Info
-
 - Использую как скелет в новых проектах. Сокращает время на построение структуры и основных моментов
 - Не используется фронтальный фреймворк (типа Bootstrap)
 - Не все переводы локализации на EN
