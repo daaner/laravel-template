@@ -128,7 +128,6 @@ class BlogCategories extends Section implements Initializable
       AdminDisplay::tab($tableInactive)
         ->setLabel(__('adm.drafted'))
         ->seticon('<i class="fas fa-eye-slash"></i>')
-        ->seticon('<i class="fas fa-eye-slash"></i>')
         ->setHtmlAttribute('class', 'text-black-50')
         ->setBadge(function () {
           return BlogCategory::Draft()->count();

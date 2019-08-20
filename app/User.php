@@ -13,6 +13,8 @@ class User extends Authenticatable
     use Notifiable;
     use GravatarTrait;
 
+    protected $table = 'users';
+
     /**
      * The attributes that are mass assignable.
      *
