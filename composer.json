@@ -10,7 +10,7 @@
     "laravel api",
     "laravel vue",
     "laravel admin",
-    "laravel blog",
+    "laravel blog"
   ],
   "license": "MIT",
   "require": {
