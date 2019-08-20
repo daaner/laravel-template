@@ -3,6 +3,7 @@
 
   [![StyleCI](https://styleci.io/repos/167434921/shield?branch=master)](https://styleci.io/repos/167434921)
   [![Scrutinizer](https://scrutinizer-ci.com/g/daaner/laravel-template/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/daaner/laravel-template/inspections)
+  [![Build Status](https://travis-ci.org/daaner/laravel-template.svg?branch=master)](https://travis-ci.org/daaner/laravel-template)
   [![Laravel Support](https://img.shields.io/badge/Laravel-5.5--5.8-brightgreen.svg)](https://laravel.com/)
   [![PHP Support](https://img.shields.io/badge/PHP-7.x-brightgreen.svg)](https://www.php.net/)
 
