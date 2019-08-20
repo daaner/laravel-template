@@ -1,10 +1,16 @@
 {
-  "name": "laravel/laravel",
+  "name": "daaner/laravel-template",
   "type": "project",
-  "description": "The Laravel Framework.",
+  "description": "BestPractics on laravel assets and view 5.8",
   "keywords": [
     "framework",
-    "laravel"
+    "laravel",
+    "laravel template",
+    "laravel modules",
+    "laravel api",
+    "laravel vue",
+    "laravel admin",
+    "laravel blog",
   ],
   "license": "MIT",
   "require": {
