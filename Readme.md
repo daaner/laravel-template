@@ -1,20 +1,15 @@
 # Удобный шаблон для Laravel (laravel-template)
 
-<p align="center">
+
   [![StyleCI](https://styleci.io/repos/167434921/shield?branch=master)](https://styleci.io/repos/167434921)
-
   [![Scrutinizer](https://scrutinizer-ci.com/g/daaner/laravel-template/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/daaner/laravel-template/inspections)
-
-  [![Laravel Support](https://img.shields.io/badge/Laravel-5.5--5.8-brightgreen.svg)]()
-
-  [![PHP Support](https://img.shields.io/badge/PHP-7.x-brightgreen.svg)]()
+  [![Laravel Support](https://img.shields.io/badge/Laravel-5.5--5.8-brightgreen.svg)](https://laravel.com/)
+  [![PHP Support](https://img.shields.io/badge/PHP-7.x-brightgreen.svg)](https://www.php.net/)
 
   [![Total Downloads](https://poser.pugx.org/daaner/laravel-template/downloads)](https://packagist.org/packages/daaner/laravel-template)
-
   [![Telegram Chat](https://img.shields.io/badge/telegram-chat-blue.svg)](https://t.me/neodaan)
-
   [![License](https://poser.pugx.org/daaner/laravel-template/license)](https://packagist.org/packages/daaner/laravel-template)
-</p>
+
 
 ## Install
 Для установки выполните команду `composer create-project --prefer-dist --stability=dev daaner/laravel-template dt`
