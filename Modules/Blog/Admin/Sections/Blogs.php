@@ -6,51 +6,52 @@ use AdminColumn;
 use AdminDisplay;
 use AdminForm;
 use AdminFormElement;
-use SleepingOwl\Admin\Contracts\Initializable;
-
-use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
-use SleepingOwl\Admin\Contracts\Form\FormInterface;
-use SleepingOwl\Admin\Section;
-use SleepingOwl\Admin\Form\FormElements;
-
-use Modules\Blog\Models\BlogCategory;
 use Modules\Blog\Models\Blog;
-
-//use SleepingOwl\Admin\Form\Buttons\Save;
-use SleepingOwl\Admin\Form\Buttons\SaveAndClose;
-use SleepingOwl\Admin\Form\Buttons\SaveAndCreate;
+use Modules\Blog\Models\BlogCategory;
+use SleepingOwl\Admin\Contracts\Initializable;
 use SleepingOwl\Admin\Form\Buttons\Cancel;
-
+use SleepingOwl\Admin\Form\Buttons\SaveAndClose;
+//use SleepingOwl\Admin\Form\Buttons\Save;
+use SleepingOwl\Admin\Form\Buttons\SaveAndCreate;
+use SleepingOwl\Admin\Form\FormElements;
+use SleepingOwl\Admin\Section;
 
 class Blogs extends Section implements Initializable
 {
-  public function initialize() {
-  }
+    public function initialize()
+    {
+    }
 
-  protected $checkAccess = true;
-  protected $alias = 'blog';
+    protected $checkAccess = true;
+    protected $alias = 'blog';
 
-  public function getIcon() {
-    return 'fas fa-text-height';
-  }
-  public function getTitle() {
-    return __('Blog::admin_blog.get_title_blog');
-  }
-  public function getEditTitle() {
-    return __('Blog::admin_blog.get_edit_blog');
-  }
-  public function getCreateTitle() {
-    return __('Blog::admin_blog.get_create_blog');
-  }
+    public function getIcon()
+    {
+        return 'fas fa-text-height';
+    }
 
+    public function getTitle()
+    {
+        return __('Blog::admin_blog.get_title_blog');
+    }
 
-  public function onDisplay() {
+    public function getEditTitle()
+    {
+        return __('Blog::admin_blog.get_edit_blog');
+    }
 
-    $display = AdminDisplay::datatables()
+    public function getCreateTitle()
+    {
+        return __('Blog::admin_blog.get_create_blog');
+    }
+
+    public function onDisplay()
+    {
+        $display = AdminDisplay::datatables()
       ->setHtmlAttribute('class', 'table-primary table-hover')
       ->setDisplaySearch(true);
 
-    $columns = [
+        $columns = [
       AdminColumn::checkbox()
         ->setWidth('30px'),
       AdminColumn::text('id', '#')
@@ -61,17 +62,20 @@ class Blogs extends Section implements Initializable
       AdminColumn::link('name', __('adm.title'), 'slug'),
       AdminColumn::text('categories.name', __('adm.edit.category'))
         ->setOrderable(false)
-        ->setSearchCallback(function($column, $query, $search){
-          return $query->orWhereHas('categories', function ($q) use ($search) {
-            $q->where('name', 'like', '%'.$search.'%');
-          });
+        ->setSearchCallback(function ($column, $query, $search) {
+            return $query->orWhereHas('categories', function ($q) use ($search) {
+                $q->where('name', 'like', '%'.$search.'%');
+            });
         })
         ->setWidth('250px'),
-      AdminColumn::custom(__('adm.lang'), function($model) {
-        if(isset(config('app.locales')[$model->lang])) {
-          $lang = config('app.locales')[$model->lang];
-        } else { $lang = '-'; }
-        return $lang;
+      AdminColumn::custom(__('adm.lang'), function ($model) {
+          if (isset(config('app.locales')[$model->lang])) {
+              $lang = config('app.locales')[$model->lang];
+          } else {
+              $lang = '-';
+          }
+
+          return $lang;
       })
         ->setWidth('50px')
         ->setHtmlAttribute('class', 'text-center'),
@@ -80,7 +84,7 @@ class Blogs extends Section implements Initializable
         ->setSearchable(false),
     ];
 
-    $tableActive =  AdminDisplay::datatablesAsync()
+        $tableActive = AdminDisplay::datatablesAsync()
       ->setName('active')
       ->setOrder([[1, 'desc']])
       ->setDisplaySearch(true)
@@ -89,7 +93,7 @@ class Blogs extends Section implements Initializable
       ->setColumns($columns)
       ->setHtmlAttribute('class', 'table-primary table-hover th-center');
 
-    $tableInactive =  AdminDisplay::datatablesAsync()
+        $tableInactive = AdminDisplay::datatablesAsync()
       ->setName('draft')
       ->setOrder([[1, 'desc']])
       ->paginate(30)
@@ -97,7 +101,7 @@ class Blogs extends Section implements Initializable
       ->setColumns($columns)
       ->setHtmlAttribute('class', 'table-hover th-center');
 
-    $tableDeleted =  AdminDisplay::datatablesAsync()
+        $tableDeleted = AdminDisplay::datatablesAsync()
       ->setName('deleted')
       ->setOrder([[1, 'desc']])
       ->paginate(30)
@@ -105,15 +109,14 @@ class Blogs extends Section implements Initializable
       ->setColumns($columns)
       ->setHtmlAttribute('class', 'table-danger table-hover th-center');
 
+        $tabs = AdminDisplay::tabbed();
 
-    $tabs = AdminDisplay::tabbed();
-
-    $tabs->setElements([
+        $tabs->setElements([
       AdminDisplay::tab($tableActive)
         ->setLabel(__('adm.all'))
         ->seticon('<i class="fas fa-eye"></i>')
         ->setBadge(function () {
-          return Blog::Active()->count();
+            return Blog::Active()->count();
         }),
 
       AdminDisplay::tab($tableInactive)
@@ -121,7 +124,7 @@ class Blogs extends Section implements Initializable
         ->seticon('<i class="fas fa-eye-slash"></i>')
         ->setHtmlAttribute('class', 'text-black-50')
         ->setBadge(function () {
-          return Blog::Draft()->count();
+            return Blog::Draft()->count();
         }),
 
       AdminDisplay::tab($tableDeleted)
@@ -130,13 +133,13 @@ class Blogs extends Section implements Initializable
         ->setHtmlAttribute('class', 'last text-danger'),
     ]);
 
-    return $tabs;
-  }
+        return $tabs;
+    }
 
-
-  public function onEdit($id) {
-    //== tabs
-    $tabs = AdminDisplay::tabbed([
+    public function onEdit($id)
+    {
+        //== tabs
+        $tabs = AdminDisplay::tabbed([
       __('Blog::admin_blog.main_tab') => new FormElements([
         AdminFormElement::text('id', '#')
           ->setReadonly(1),
@@ -182,8 +185,8 @@ class Blogs extends Section implements Initializable
       ]),
     ]);
 
-    //== main form
-    $form = AdminForm::panel()->addBody([
+        //== main form
+        $form = AdminForm::panel()->addBody([
       AdminFormElement::columns()->addColumn([
         AdminFormElement::text('name', __('adm.name'))
           ->addValidationRule('max:190', __('adm.valid.max190'))
@@ -199,20 +202,22 @@ class Blogs extends Section implements Initializable
       AdminFormElement::checkbox('active', __('adm.edit.actived')),
     ]);
 
-    $form->getButtons()->setButtons([
+        $form->getButtons()->setButtons([
       // 'save'  => new Save(),
-      'save_and_close'  => new SaveAndClose(),
+      'save_and_close'   => new SaveAndClose(),
       'save_and_create'  => new SaveAndCreate(),
-      'cancel'  => (new Cancel()),
+      'cancel'           => (new Cancel()),
     ]);
 
-    return $form;
-  }
+        return $form;
+    }
 
-  public function onCreate() {
-    return $this->onEdit(null);
-  }
+    public function onCreate()
+    {
+        return $this->onEdit(null);
+    }
 
-  public function onDelete($id) {}
-
+    public function onDelete($id)
+    {
+    }
 }

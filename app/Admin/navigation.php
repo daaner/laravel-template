@@ -4,9 +4,9 @@ use SleepingOwl\Admin\Navigation\Page;
 
 return [
   [
-    'title' => 'Панель',
-    'icon'  => 'fas fa-tachometer-alt',
-    'url'   => route('admin.dashboard'),
+    'title'    => 'Панель',
+    'icon'     => 'fas fa-tachometer-alt',
+    'url'      => route('admin.dashboard'),
     'priority' => 50,
   ],
 
@@ -30,11 +30,10 @@ return [
   // ],
 
   [
-    'title' => 'Настройки',
-    'icon' => 'fas fa-cogs',
+    'title'    => 'Настройки',
+    'icon'     => 'fas fa-cogs',
     'priority' => 5000,
-    'pages' =>
-    [
+    'pages'    => [
       (new Page(\App\Setting::class))
         ->setPriority(100),
       (new Page(\App\Models\Script::class))

@@ -1,12 +1,13 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Setting as Seedmodel;
+use Illuminate\Database\Seeder;
 
 class SettingSeeder extends Seeder
 {
-  public function run() {
-    $datas = [
+    public function run()
+    {
+        $datas = [
 
       //521
       [
@@ -29,19 +30,17 @@ class SettingSeeder extends Seeder
         'value'       => true,
       ],
 
-
     ];
 
-
-    foreach ($datas as $data) {
-      $newData = Seedmodel::where('name', '=', $data['name'])->first();
-      if ($newData === null) {
-        $newData = Seedmodel::create(array(
+        foreach ($datas as $data) {
+            $newData = Seedmodel::where('name', '=', $data['name'])->first();
+            if ($newData === null) {
+                $newData = Seedmodel::create([
           'name'        => $data['name'],
           'description' => $data['description'],
           'value'       => $data['value'],
-        ));
-      }
+        ]);
+            }
+        }
     }
-  }
 }

@@ -7,47 +7,47 @@ use AdminDisplay;
 use AdminForm;
 use AdminFormElement;
 use SleepingOwl\Admin\Contracts\Initializable;
-
-use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
-use SleepingOwl\Admin\Contracts\Form\FormInterface;
-use SleepingOwl\Admin\Section;
-
-use Auth;
-
+use SleepingOwl\Admin\Form\Buttons\Cancel;
 //use SleepingOwl\Admin\Form\Buttons\Save;
 use SleepingOwl\Admin\Form\Buttons\SaveAndClose;
-use SleepingOwl\Admin\Form\Buttons\Cancel;
-
+use SleepingOwl\Admin\Section;
 
 class Scripts extends Section implements Initializable
 {
-  public function initialize() {
-  }
+    public function initialize()
+    {
+    }
 
-  protected $checkAccess = true;
-  protected $alias = 'scripts';
+    protected $checkAccess = true;
+    protected $alias = 'scripts';
 
-  public function getIcon() {
-    return 'fas fa-file-code';
-  }
-  public function getTitle() {
-    return 'Виджеты';
-  }
-  public function getEditTitle() {
-    return 'Редактирование виджета (скрипта)';
-  }
-  public function getCreateTitle() {
-      return 'Создание нового виджета (скрипта)';
-  }
+    public function getIcon()
+    {
+        return 'fas fa-file-code';
+    }
 
+    public function getTitle()
+    {
+        return 'Виджеты';
+    }
 
-  public function onDisplay() {
+    public function getEditTitle()
+    {
+        return 'Редактирование виджета (скрипта)';
+    }
 
-    $display = AdminDisplay::datatables()
+    public function getCreateTitle()
+    {
+        return 'Создание нового виджета (скрипта)';
+    }
+
+    public function onDisplay()
+    {
+        $display = AdminDisplay::datatables()
       ->setHtmlAttribute('class', 'table-success table-hover')
       ->setDisplaySearch(true);
 
-    $display->setColumns([
+        $display->setColumns([
       AdminColumn::text('id', '#')
         ->setWidth('50px')
         ->setHtmlAttribute('class', 'text-center'),
@@ -62,12 +62,12 @@ class Scripts extends Section implements Initializable
         ->setOrderable(false),
     ]);
 
-    return $display;
-  }
+        return $display;
+    }
 
-
-  public function onEdit($id) {
-    $form = AdminForm::panel()->addBody([
+    public function onEdit($id)
+    {
+        $form = AdminForm::panel()->addBody([
       AdminFormElement::columns()->addColumn([
         AdminFormElement::text('name', 'Название скрипта')
           ->addValidationRule('max:190', __('adm.valid.max190'))
@@ -92,19 +92,21 @@ class Scripts extends Section implements Initializable
       ]),
     ]);
 
-    $form->getButtons()->setButtons([
+        $form->getButtons()->setButtons([
       // 'save'  => new Save(),
       'save_and_close'  => new SaveAndClose(),
-      'cancel'  => (new Cancel()),
+      'cancel'          => (new Cancel()),
     ]);
 
-    return $form;
-  }
+        return $form;
+    }
 
-  public function onCreate() {
-    return $this->onEdit(null);
-  }
+    public function onCreate()
+    {
+        return $this->onEdit(null);
+    }
 
-  public function onDelete($id) {}
-
+    public function onDelete($id)
+    {
+    }
 }

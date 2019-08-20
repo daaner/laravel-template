@@ -7,44 +7,41 @@ use AdminDisplay;
 use AdminForm;
 use AdminFormElement;
 use SleepingOwl\Admin\Contracts\Initializable;
-
-use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
-use SleepingOwl\Admin\Contracts\Form\FormInterface;
-use SleepingOwl\Admin\Section;
-
-use Auth;
-
+use SleepingOwl\Admin\Form\Buttons\Cancel;
 //use SleepingOwl\Admin\Form\Buttons\Save;
 use SleepingOwl\Admin\Form\Buttons\SaveAndClose;
-use SleepingOwl\Admin\Form\Buttons\Cancel;
-
+use SleepingOwl\Admin\Section;
 
 class Roles extends Section implements Initializable
 {
-  public function initialize() {
+    public function initialize()
+    {
+    }
 
-  }
+    protected $checkAccess = true;
+    protected $alias = 'roles';
 
-  protected $checkAccess = true;
-  protected $alias = 'roles';
+    public function getIcon()
+    {
+        return 'fas fa-user-shield';
+    }
 
-  public function getIcon() {
-    return 'fas fa-user-shield';
-  }
-  public function getTitle() {
-    return 'Роли';
-  }
-  public function getEditTitle() {
-    return 'Редактирование роли';
-  }
+    public function getTitle()
+    {
+        return 'Роли';
+    }
 
+    public function getEditTitle()
+    {
+        return 'Редактирование роли';
+    }
 
-  public function onDisplay() {
-
-    $display = AdminDisplay::table()
+    public function onDisplay()
+    {
+        $display = AdminDisplay::table()
       ->setHtmlAttribute('class', 'table-danger table-hover');
 
-    $display->setColumns([
+        $display->setColumns([
       AdminColumn::text('id', '#')
         ->setWidth('50px')
         ->setHtmlAttribute('class', 'text-center'),
@@ -53,12 +50,12 @@ class Roles extends Section implements Initializable
       AdminColumn::text('description', 'Описание'),
     ]);
 
-    return $display;
-  }
+        return $display;
+    }
 
-
-  public function onEdit($id) {
-    $form = AdminForm::panel()->addBody([
+    public function onEdit($id)
+    {
+        $form = AdminForm::panel()->addBody([
       AdminFormElement::text('id', '#')
         ->setReadonly(1),
       AdminFormElement::text('name', 'Название')
@@ -69,13 +66,12 @@ class Roles extends Section implements Initializable
         ->addValidationRule('max:190', __('adm.valid.max190')),
     ]);
 
-    $form->getButtons()->setButtons([
+        $form->getButtons()->setButtons([
       // 'save'  => new Save(),
       'save_and_close'  => new SaveAndClose(),
-      'cancel'  => (new Cancel()),
+      'cancel'          => (new Cancel()),
     ]);
 
-    return $form;
-  }
-
+        return $form;
+    }
 }

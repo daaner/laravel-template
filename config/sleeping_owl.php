@@ -158,9 +158,9 @@ return [
          */
         'ckeditor'  => [
             'defaultLanguage' => config('app.locale'),
-            'height'       => 200,
-            'allowedContent' => true,
-            'extraPlugins' => 'uploadimage,image2,justify,youtube,uploadfile',
+            'height'          => 200,
+            'allowedContent'  => true,
+            'extraPlugins'    => 'uploadimage,image2,justify,youtube,uploadfile',
             /*
              * WARNING!!!! CKEDITOR on D & D and UploadImageDialog
              * BY DEFAULT IMAGES WILL STORE TO imagesUploadDirectory = /images/uploads
@@ -206,10 +206,10 @@ return [
     | dt_autoupdate_color - color ProgressBar (can be null)
     |
     */
-    'dt_autoupdate' => false,
+    'dt_autoupdate'          => false,
     'dt_autoupdate_interval' => 5, //minutes
-    'dt_autoupdate_class' => '',
-    'dt_autoupdate_color' => '#dc3545',
+    'dt_autoupdate_class'    => '',
+    'dt_autoupdate_color'    => '#dc3545',
 
     /*
     |--------------------------------------------------------------------------
