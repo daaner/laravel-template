@@ -18,7 +18,7 @@ class CheckSite
         // cache()->forget('check');
 
         if (!Cache::has('check')) {
-            $data_cache = Cache::remember('check', $time, function () use ($error) {
+            Cache::remember('check', $time, function () use ($error) {
                 try {
                     DB::connection()->table(DB::raw('settings'))->first([DB::raw(1)]);
                     if (!DB::connection()->table(DB::raw('settings'))->count()) {

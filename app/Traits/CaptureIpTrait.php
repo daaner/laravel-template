@@ -4,7 +4,7 @@ namespace App\Traits;
 
 class CaptureIpTrait
 {
-    private $ipAddress = null;
+    // private $ipAddress = null;
 
     public function getClientIp()
     {

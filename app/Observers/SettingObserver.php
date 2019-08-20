@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Setting as Model;
+// use App\Setting as Model;
 
 class SettingObserver
 {
@@ -10,7 +10,7 @@ class SettingObserver
     {
     }
 
-    public function updated(Model $result)
+    public function updated()
     {
         cache()->forget('setting');
     }

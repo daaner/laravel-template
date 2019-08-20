@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Models\Script as Model;
+// use App\Models\Script as Model;
 
 class ScriptObserver
 {
@@ -13,20 +13,20 @@ class ScriptObserver
     // public function creating(Model $result) {
     // }
 
-    public function created(Model $result)
+    public function created()
     {
         cache()->forget('scripts');
     }
 
-    // public function updating(Model $result) {
+    // public function updating(Model) {
     // }
 
-    public function updated(Model $result)
+    public function updated()
     {
         cache()->forget('scripts');
     }
 
-    public function deleted(Model $result)
+    public function deleted()
     {
         cache()->forget('scripts');
     }
