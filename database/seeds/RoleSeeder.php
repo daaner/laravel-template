@@ -1,12 +1,13 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Role as Seedmodel;
+use Illuminate\Database\Seeder;
 
 class RoleSeeder extends Seeder
 {
-  public function run() {
-    $datas = [
+    public function run()
+    {
+        $datas = [
       [
         'name'          => 'User',
         'description'   => 'All users',
@@ -25,14 +26,14 @@ class RoleSeeder extends Seeder
       ],
     ];
 
-    foreach ($datas as $data) {
-      $newData = Seedmodel::where('name', '=', $data['name'])->first();
-      if ($newData === null) {
-        $newData = Seedmodel::create(array(
+        foreach ($datas as $data) {
+            $newData = Seedmodel::where('name', '=', $data['name'])->first();
+            if ($newData === null) {
+                $newData = Seedmodel::create([
           'name'          => $data['name'],
           'description'	  => $data['description'],
-        ));
-      }
+        ]);
+            }
+        }
     }
-  }
 }

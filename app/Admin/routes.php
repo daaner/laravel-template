@@ -1,14 +1,14 @@
 <?php
 
 Route::get('', ['as' => 'admin.dashboard', function () {
-	$content = 'Тут информация';
-	return AdminSection::view($content, 'Панель');
+    $content = 'Тут информация';
+
+    return AdminSection::view($content, 'Панель');
 }]);
 
-
 Route::namespace('App\Http\Controllers')->group(function () {
-	// Route::post('service/exel', 'AdminServiceController@exportExel')->name('export_exel');
-	Route::get('service/clearcache', 'AdminController@clearCache')->name('clear_cache');
+    // Route::post('service/exel', 'AdminServiceController@exportExel')->name('export_exel');
+    Route::get('service/clearcache', 'AdminController@clearCache')->name('clear_cache');
 });
 
 // Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'admin']], function () {

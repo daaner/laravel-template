@@ -6,49 +6,49 @@ use AdminColumn;
 use AdminDisplay;
 use AdminForm;
 use AdminFormElement;
-use SleepingOwl\Admin\Contracts\Initializable;
-
-use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
-use SleepingOwl\Admin\Contracts\Form\FormInterface;
-use SleepingOwl\Admin\Section;
-
 use App\Role;
-use Auth;
-
+use SleepingOwl\Admin\Contracts\Initializable;
+use SleepingOwl\Admin\Form\Buttons\Cancel;
 //use SleepingOwl\Admin\Form\Buttons\Save;
 use SleepingOwl\Admin\Form\Buttons\SaveAndClose;
-use SleepingOwl\Admin\Form\Buttons\Cancel;
-
+use SleepingOwl\Admin\Section;
 
 class Users extends Section implements Initializable
 {
-  public function initialize() {
-  }
+    public function initialize()
+    {
+    }
 
-  protected $checkAccess = true;
-  protected $alias = 'users';
+    protected $checkAccess = true;
+    protected $alias = 'users';
 
-  public function getIcon() {
-    return 'fa fa-user';
-  }
-  public function getTitle() {
-    return 'Пользователи';
-  }
-  public function getEditTitle() {
-    return 'Редактирование пользователя';
-  }
-  public function getCreateTitle() {
-    return 'Добавление пользователя';
-  }
+    public function getIcon()
+    {
+        return 'fa fa-user';
+    }
 
+    public function getTitle()
+    {
+        return 'Пользователи';
+    }
 
-  public function onDisplay() {
+    public function getEditTitle()
+    {
+        return 'Редактирование пользователя';
+    }
 
-    $display = AdminDisplay::datatables()
+    public function getCreateTitle()
+    {
+        return 'Добавление пользователя';
+    }
+
+    public function onDisplay()
+    {
+        $display = AdminDisplay::datatables()
       ->setHtmlAttribute('class', 'table-primary table-hover')
       ->setDisplaySearch(true);
 
-    $display->setColumns([
+        $display->setColumns([
       AdminColumn::text('id', '#')
         ->setWidth('50px')
         ->setHtmlAttribute('class', 'text-center'),
@@ -58,10 +58,10 @@ class Users extends Section implements Initializable
       AdminColumn::text('roles.name', 'Права')
         ->setWidth('150px')
         ->setOrderable(false)
-        ->setSearchCallback(function($column, $query, $search){
-          return $query->orWhereHas('roles', function ($q) use ($search) {
-            $q->where('name', 'like', '%'.$search.'%');
-          });
+        ->setSearchCallback(function ($column, $query, $search) {
+            return $query->orWhereHas('roles', function ($q) use ($search) {
+                $q->where('name', 'like', '%'.$search.'%');
+            });
         }),
       AdminColumn::boolean('active', 'Вход'),
       AdminColumn::text('created_at', 'Создан')
@@ -69,12 +69,12 @@ class Users extends Section implements Initializable
         ->setSearchable(false),
     ]);
 
-    return $display;
-  }
+        return $display;
+    }
 
-
-  public function onEdit($id) {
-    $form = AdminForm::panel()->addBody([
+    public function onEdit($id)
+    {
+        $form = AdminForm::panel()->addBody([
       AdminFormElement::columns()->addColumn([
         AdminFormElement::text('name', 'Имя')
           ->addValidationRule('max:190', __('adm.valid.max190'))
@@ -111,18 +111,21 @@ class Users extends Section implements Initializable
       AdminFormElement::checkbox('active', 'Включен'),
     ]);
 
-    $form->getButtons()->setButtons([
+        $form->getButtons()->setButtons([
       // 'save'  => new Save(),
       'save_and_close'  => new SaveAndClose(),
-      'cancel'  => (new Cancel()),
+      'cancel'          => (new Cancel()),
     ]);
 
-    return $form;
-  }
+        return $form;
+    }
 
-  public function onCreate() {
-    return $this->onEdit(null);
-  }
-  public function onDelete($id) {}
+    public function onCreate()
+    {
+        return $this->onEdit(null);
+    }
 
+    public function onDelete($id)
+    {
+    }
 }

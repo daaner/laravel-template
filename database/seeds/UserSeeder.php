@@ -1,12 +1,13 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\User as Seedmodel;
+use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
 {
-  public function run() {
-    $datas = [
+    public function run()
+    {
+        $datas = [
       [
         'name'     => 'Administrator',
         'login'    => 'admin',
@@ -31,20 +32,18 @@ class UserSeeder extends Seeder
 
     ];
 
-
-    foreach ($datas as $data) {
-      $newData = Seedmodel::where('email', '=', $data['email'])->first();
-      if ($newData === null) {
-        $newData = Seedmodel::create(array(
+        foreach ($datas as $data) {
+            $newData = Seedmodel::where('email', '=', $data['email'])->first();
+            if ($newData === null) {
+                $newData = Seedmodel::create([
           'name'      => $data['name'],
           'active'    => true,
           // 'login'     => $data['login'],
           'email'     => $data['email'],
           'role_id'   => $data['role_id'],
-          'password'  =>  bcrypt ($data['password']),
-        ));
-      }
+          'password'  => bcrypt($data['password']),
+        ]);
+            }
+        }
     }
-
-  }
 }

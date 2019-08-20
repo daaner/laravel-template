@@ -6,19 +6,15 @@ use Illuminate\View\View;
 
 class DefaultComposer
 {
+    private $test;
 
-  private $test;
+    public function __construct()
+    {
+        $this->test = 'test';
+    }
 
-
-  public function __construct() {
-
-    $this->test = 'test';
-
-  }
-
-
-  public function compose(View $view) {
-    $view->with('test', $this->test);
-  }
-
+    public function compose(View $view)
+    {
+        $view->with('test', $this->test);
+    }
 }

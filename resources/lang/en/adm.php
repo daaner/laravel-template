@@ -9,22 +9,22 @@ return [
 
   //display
   'title' => 'Название',
-  'lang' => 'Язык',
-  'show' => 'Отображать',
-  'edit' => 'Изменен',
+  'lang'  => 'Язык',
+  'show'  => 'Отображать',
+  'edit'  => 'Изменен',
 
   'edit' => [
-    'lang_site' => 'Язык сайта',
-    'category' => 'Категория',
+    'lang_site'    => 'Язык сайта',
+    'category'     => 'Категория',
     'published_at' => 'Показывать с...',
     'published_to' => 'Показывать до...',
 
-    'creators' => 'Создал',
+    'creators'   => 'Создал',
     'created_at' => 'Создано',
-    'editors' => 'Редактировал',
+    'editors'    => 'Редактировал',
     'updated_at' => 'Редакция',
 
-    'meta_title' => 'Meta заголовок',
+    'meta_title'       => 'Meta заголовок',
     'meta_description' => 'Meta описание',
   ],
 

@@ -2,11 +2,9 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-
 use App\Traits\GravatarTrait;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -50,26 +48,26 @@ class User extends Authenticatable
       'email_verified_at' => 'datetime',
     ];
 
-
-
-    public function isAdmin() {
-      return $this->role_id == 3;
-    }
-    public function isModerator() {
-      return $this->role_id == 2;
+    public function isAdmin()
+    {
+        return $this->role_id == 3;
     }
 
-
-    public function roles() {
-      return $this->belongsTo(Role::class, 'role_id', 'id');
+    public function isModerator()
+    {
+        return $this->role_id == 2;
     }
 
+    public function roles()
+    {
+        return $this->belongsTo(Role::class, 'role_id', 'id');
+    }
 
     //admin password
-    public function setNewPasswordAttribute($value){
-      if($value) {
-        $this->attributes['password'] = bcrypt($value);
-      }
+    public function setNewPasswordAttribute($value)
+    {
+        if ($value) {
+            $this->attributes['password'] = bcrypt($value);
+        }
     }
-
 }

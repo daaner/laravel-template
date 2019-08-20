@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class Role extends Migration
 {
@@ -13,12 +13,12 @@ class Role extends Migration
      */
     public function up()
     {
-      Schema::create('roles', function (Blueprint $table) {
-        $table->bigIncrements('id');
-        $table->string('name')->unique();
-        $table->string('description')->nullable();
-        $table->timestamps();
-      });
+        Schema::create('roles', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name')->unique();
+            $table->string('description')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -28,6 +28,6 @@ class Role extends Migration
      */
     public function down()
     {
-      Schema::dropIfExists('roles');
+        Schema::dropIfExists('roles');
     }
 }

@@ -23,6 +23,7 @@ class CaptureIpTrait
         } else {
             $ipAddress = 'UNKNOWN';
         }
+
         return $ipAddress;
     }
 }
