@@ -2,6 +2,9 @@
 
 [![StyleCI](https://styleci.io/repos/167434921/shield?branch=master)](https://styleci.io/repos/167434921)
 
+## Install
+Для установки выполните команду `composer create-project --prefer-dist --stability=dev daaner/laravel-template dt` 
+
 
 ## .env
 Требуется добавить 2 параметра (закинуто в конфиг)
