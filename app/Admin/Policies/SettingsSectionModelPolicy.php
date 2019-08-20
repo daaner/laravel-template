@@ -11,6 +11,15 @@ class SettingsSectionModelPolicy
 {
     use HandlesAuthorization;
 
+    /**
+     * @param User $user
+     * @param string $ability
+     * @param Settings $section
+     * @param Setting $item
+     *
+     * @return bool
+     */
+
     public function before(User $user, $ability, Section $section, Model $item = null)
     {
         // if ($user->isAdmin()) {

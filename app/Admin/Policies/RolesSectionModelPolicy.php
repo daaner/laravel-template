@@ -11,6 +11,15 @@ class RolesSectionModelPolicy
 {
     use HandlesAuthorization;
 
+    /**
+     * @param User $user
+     * @param string $ability
+     * @param Roles $section
+     * @param Role $item
+     *
+     * @return bool
+     */
+
     public function before(User $user, $ability, Section $section, Model $item = null)
     {
         if ($user->isAdmin()) {
