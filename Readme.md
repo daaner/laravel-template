@@ -1,5 +1,8 @@
 # Удобный шаблон для Laravel (laravel-template)
 
+[![StyleCI](https://styleci.io/repos/167434921/shield?branch=master)](https://styleci.io/repos/167434921)
+
+
 ## .env
 Требуется добавить 2 параметра (закинуто в конфиг)
 `GOOGLE_ANALYTIC` и `YANDEX_METRIC`
