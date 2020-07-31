@@ -16,12 +16,12 @@ class BlogCategorySeeder extends Seeder
             $nameSeed = $faker->Realtext(30);
 
             $newData = Seedmodel::create([
-        'name'         => $nameSeed,
-        'slug'         => $nameSeed,
-        'lang'	        => rand(1, 2),
-        'category_id'	 => rand(0, 10),
-        'active'	      => rand(0, 1),
-      ]);
+                'name'         => $nameSeed,
+                'slug'         => $nameSeed,
+                'lang'	        => rand(1, 2),
+                'category_id'	 => rand(0, 10),
+                'active'	      => rand(0, 1),
+            ]);
         }
     }
 }

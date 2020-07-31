@@ -20,11 +20,11 @@ class ScriptRepository extends InitRepository
     public function getScripts()
     {
         $columns = [
-      // 'id',
-      // 'name',
-      'data',
-      'top',
-    ];
+            // 'id',
+            // 'name',
+            'data',
+            'top',
+        ];
 
         $result = $this->startConditions()
       ->active()
