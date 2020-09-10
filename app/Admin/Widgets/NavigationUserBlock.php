@@ -10,8 +10,8 @@ class NavigationUserBlock extends Widget
     public function toHtml()
     {
         return view('admin::auth.navbar', [
-      'user' => auth()->user(),
-    ])->render();
+            'user' => auth()->user(),
+        ])->render();
     }
 
     public function template()
