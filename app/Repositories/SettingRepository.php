@@ -20,10 +20,10 @@ class SettingRepository extends InitRepository
     public function getSetting()
     {
         $columns = [
-      // 'id',
-      'name',
-      'value',
-    ];
+            // 'id',
+            'name',
+            'value',
+        ];
 
         $result = $this->startConditions()
       ->select($columns)
