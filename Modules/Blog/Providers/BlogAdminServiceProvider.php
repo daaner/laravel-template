@@ -10,9 +10,9 @@ use SleepingOwl\Admin\Providers\AdminSectionsServiceProvider as ServiceProvider;
 class BlogAdminServiceProvider extends ServiceProvider
 {
     protected $sections = [
-    Blog::class          => 'Modules\Blog\Admin\Sections\Blogs',
-    BlogCategory::class  => 'Modules\Blog\Admin\Sections\BlogCategories',
-  ];
+        Blog::class          => 'Modules\Blog\Admin\Sections\Blogs',
+        BlogCategory::class  => 'Modules\Blog\Admin\Sections\BlogCategories',
+    ];
 
     public function boot(\SleepingOwl\Admin\Admin $admin)
     {
@@ -25,15 +25,15 @@ class BlogAdminServiceProvider extends ServiceProvider
     private function registerNavigation()
     {
         \AdminNavigation::setFromArray([
-      [
-        'title'    => __('adm.modules.blog'),
-        'icon'     => 'fab fa-blogger-b',
-        'priority' => 100,
-        'pages'    => [
-          (new Page(BlogCategory::class))->setPriority(100),
-          (new Page(Blog::class))->setPriority(200),
-        ],
-      ],
-    ]);
+            [
+                'title'    => __('adm.modules.blog'),
+                'icon'     => 'fab fa-blogger-b',
+                'priority' => 100,
+                'pages'    => [
+                    (new Page(BlogCategory::class))->setPriority(100),
+                    (new Page(Blog::class))->setPriority(200),
+                ],
+            ],
+        ]);
     }
 }
