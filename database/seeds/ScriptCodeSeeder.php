@@ -8,44 +8,44 @@ class ScriptCodeSeeder extends Seeder
     public function run()
     {
         $datas = [
-      //Facebook Pixel
-      [
-        'name' => 'Facebook Pixel',
-        'top'  => false,
-        'data' => '<!-- Facebook Pixel Code --><!-- End Facebook Pixel Code -->',
-      ],
+            //Facebook Pixel
+            [
+                'name' => 'Facebook Pixel',
+                'top'  => false,
+                'data' => '<!-- Facebook Pixel Code --><!-- End Facebook Pixel Code -->',
+            ],
 
-      //Google Tag
-      [
-        'name' => 'Google Tag',
-        'top'  => false,
-        'data' => '<!-- Global site tag (gtag.js) - Google Analytics -->',
-      ],
+            //Google Tag
+            [
+                'name' => 'Google Tag',
+                'top'  => false,
+                'data' => '<!-- Global site tag (gtag.js) - Google Analytics -->',
+            ],
 
-      //JivoSite
-      [
-        'name' => 'JivoSite',
-        'top'  => false,
-        'data' => '<!-- BEGIN JIVOSITE CODE {literal} --><!-- {/literal} END JIVOSITE CODE -->',
-      ],
+            //JivoSite
+            [
+                'name' => 'JivoSite',
+                'top'  => false,
+                'data' => '<!-- BEGIN JIVOSITE CODE {literal} --><!-- {/literal} END JIVOSITE CODE -->',
+            ],
 
-      //Yandex Verification
-      [
-        'name' => 'Yandex Verification',
-        'top'  => true,
-        'data' => '<meta name="yandex-verification" content="">',
-      ],
-    ];
+            //Yandex Verification
+            [
+                'name' => 'Yandex Verification',
+                'top'  => true,
+                'data' => '<meta name="yandex-verification" content="">',
+            ],
+        ];
 
         foreach ($datas as $data) {
             $newData = Seedmodel::where('name', '=', $data['name'])->first();
             if ($newData === null) {
                 $newData = Seedmodel::create([
-          'name'    => $data['name'],
-          'active'  => false,
-          'top'     => $data['top'],
-          'data'	   => $data['data'],
-        ]);
+                    'name'    => $data['name'],
+                    'active'  => false,
+                    'top'     => $data['top'],
+                    'data'	   => $data['data'],
+                ]);
             }
         }
     }
