@@ -52,37 +52,37 @@ class Blogs extends Section implements Initializable
       ->setDisplaySearch(true);
 
         $columns = [
-      AdminColumn::checkbox()
-        ->setWidth('30px'),
-      AdminColumn::text('id', '#')
-        ->setWidth('50px')
-        ->setHtmlAttribute('class', 'text-center'),
-      AdminColumn::image('image')
-        ->setSearchable(false),
-      AdminColumn::link('name', __('adm.title'), 'slug'),
-      AdminColumn::text('categories.name', __('adm.edit.category'))
-        ->setOrderable(false)
-        ->setSearchCallback(function ($column, $query, $search) {
-            return $query->orWhereHas('categories', function ($q) use ($search) {
-                $q->where('name', 'like', '%'.$search.'%');
-            });
-        })
-        ->setWidth('250px'),
-      AdminColumn::custom(__('adm.lang'), function ($model) {
-          if (isset(config('app.locales')[$model->lang])) {
-              $lang = config('app.locales')[$model->lang];
-          } else {
-              $lang = '-';
-          }
+            AdminColumn::checkbox()
+              ->setWidth('30px'),
+            AdminColumn::text('id', '#')
+              ->setWidth('50px')
+              ->setHtmlAttribute('class', 'text-center'),
+            AdminColumn::image('image')
+              ->setSearchable(false),
+            AdminColumn::link('name', __('adm.title'), 'slug'),
+            AdminColumn::text('categories.name', __('adm.edit.category'))
+              ->setOrderable(false)
+              ->setSearchCallback(function ($column, $query, $search) {
+                  return $query->orWhereHas('categories', function ($q) use ($search) {
+                      $q->where('name', 'like', '%'.$search.'%');
+                  });
+              })
+              ->setWidth('250px'),
+            AdminColumn::custom(__('adm.lang'), function ($model) {
+                if (isset(config('app.locales')[$model->lang])) {
+                    $lang = config('app.locales')[$model->lang];
+                } else {
+                    $lang = '-';
+                }
 
-          return $lang;
-      })
-        ->setWidth('50px')
-        ->setHtmlAttribute('class', 'text-center'),
-      AdminColumn::text('updated_at', __('adm.edited'), 'editors.name')
-        ->setWidth('160px')
-        ->setSearchable(false),
-    ];
+                return $lang;
+            })
+              ->setWidth('50px')
+              ->setHtmlAttribute('class', 'text-center'),
+            AdminColumn::text('updated_at', __('adm.edited'), 'editors.name')
+              ->setWidth('160px')
+              ->setSearchable(false),
+        ];
 
         $tableActive = AdminDisplay::datatablesAsync()
       ->setName('active')
@@ -112,26 +112,26 @@ class Blogs extends Section implements Initializable
         $tabs = AdminDisplay::tabbed();
 
         $tabs->setElements([
-      AdminDisplay::tab($tableActive)
-        ->setLabel(__('adm.all'))
-        ->seticon('<i class="fas fa-eye"></i>')
-        ->setBadge(function () {
-            return Blog::Active()->count();
-        }),
+            AdminDisplay::tab($tableActive)
+              ->setLabel(__('adm.all'))
+              ->seticon('<i class="fas fa-eye"></i>')
+              ->setBadge(function () {
+                  return Blog::Active()->count();
+              }),
 
-      AdminDisplay::tab($tableInactive)
-        ->setLabel(__('adm.drafted'))
-        ->seticon('<i class="fas fa-eye-slash"></i>')
-        ->setHtmlAttribute('class', 'text-black-50')
-        ->setBadge(function () {
-            return Blog::Draft()->count();
-        }),
+            AdminDisplay::tab($tableInactive)
+              ->setLabel(__('adm.drafted'))
+              ->seticon('<i class="fas fa-eye-slash"></i>')
+              ->setHtmlAttribute('class', 'text-black-50')
+              ->setBadge(function () {
+                  return Blog::Draft()->count();
+              }),
 
-      AdminDisplay::tab($tableDeleted)
-        ->setLabel(__('adm.deleted'))
-        ->setIcon('<i class="fas fa-trash"></i>')
-        ->setHtmlAttribute('class', 'last text-danger'),
-    ]);
+            AdminDisplay::tab($tableDeleted)
+              ->setLabel(__('adm.deleted'))
+              ->setIcon('<i class="fas fa-trash"></i>')
+              ->setHtmlAttribute('class', 'last text-danger'),
+        ]);
 
         return $tabs;
     }
@@ -140,74 +140,74 @@ class Blogs extends Section implements Initializable
     {
         //== tabs
         $tabs = AdminDisplay::tabbed([
-      __('Blog::admin_blog.main_tab') => new FormElements([
-        AdminFormElement::text('id', '#')
-          ->setReadonly(1),
-        AdminFormElement::select('lang', __('adm.edit.lang_site'), config('app.locales'))
-          ->required()
-          ->setSortable(false)
-          ->setDefaultValue(1),
+            __('Blog::admin_blog.main_tab') => new FormElements([
+                AdminFormElement::text('id', '#')
+                  ->setReadonly(1),
+                AdminFormElement::select('lang', __('adm.edit.lang_site'), config('app.locales'))
+                  ->required()
+                  ->setSortable(false)
+                  ->setDefaultValue(1),
 
-        // AdminFormElement::dependentselect('category_id', __('adm.edit.category'))
-        //   ->setModelForOptions(BlogCategory::class, 'name')
-        //   ->setDataDepends(['lang'])
-        //   ->setLoadOptionsQueryPreparer(function($item, $query) {
-        //     return ( $query->where('lang', $item->getDependValue('lang')));
-        //   }),
+                // AdminFormElement::dependentselect('category_id', __('adm.edit.category'))
+                //   ->setModelForOptions(BlogCategory::class, 'name')
+                //   ->setDataDepends(['lang'])
+                //   ->setLoadOptionsQueryPreparer(function($item, $query) {
+                //     return ( $query->where('lang', $item->getDependValue('lang')));
+                //   }),
 
-        AdminFormElement::html('<hr>'),
-        AdminFormElement::image('image', __('adm.edit.image')),
-        AdminFormElement::html('<hr>'),
+                AdminFormElement::html('<hr>'),
+                AdminFormElement::image('image', __('adm.edit.image')),
+                AdminFormElement::html('<hr>'),
 
-        AdminFormElement::datetime('published_at', __('adm.edit.published_at')),
-        AdminFormElement::datetime('published_to', __('adm.edit.published_to')),
+                AdminFormElement::datetime('published_at', __('adm.edit.published_at')),
+                AdminFormElement::datetime('published_to', __('adm.edit.published_to')),
 
-        AdminFormElement::html('<hr>'),
-        AdminFormElement::text('creators.name', __('adm.edit.creators'))
-          ->setReadonly(1),
-        AdminFormElement::text('created_at', __('adm.edit.created_at'))
-          ->setReadonly(1),
-        AdminFormElement::html('<hr>'),
-        AdminFormElement::text('editors.name', __('adm.edit.editors'))
-          ->setReadonly(1),
-        AdminFormElement::text('updated_at', __('adm.edit.updated_at'))
-          ->setReadonly(1),
-      ]),
+                AdminFormElement::html('<hr>'),
+                AdminFormElement::text('creators.name', __('adm.edit.creators'))
+                  ->setReadonly(1),
+                AdminFormElement::text('created_at', __('adm.edit.created_at'))
+                  ->setReadonly(1),
+                AdminFormElement::html('<hr>'),
+                AdminFormElement::text('editors.name', __('adm.edit.editors'))
+                  ->setReadonly(1),
+                AdminFormElement::text('updated_at', __('adm.edit.updated_at'))
+                  ->setReadonly(1),
+            ]),
 
-      __('Blog::admin_blog.meta_tab') => new FormElements([
-        AdminFormElement::text('meta_title', __('adm.edit.meta_title'))
-          ->addValidationRule('max:190', __('adm.valid.max190')),
-        AdminFormElement::textarea('meta_description', __('adm.edit.meta_description'))
-          ->setRows(5)
-          ->addValidationRule('max:190', __('adm.valid.max190')),
-        AdminFormElement::textarea('ldjson', 'LD-Json Script')
-          ->setRows(10),
-      ]),
-    ]);
+            __('Blog::admin_blog.meta_tab') => new FormElements([
+                AdminFormElement::text('meta_title', __('adm.edit.meta_title'))
+                  ->addValidationRule('max:190', __('adm.valid.max190')),
+                AdminFormElement::textarea('meta_description', __('adm.edit.meta_description'))
+                  ->setRows(5)
+                  ->addValidationRule('max:190', __('adm.valid.max190')),
+                AdminFormElement::textarea('ldjson', 'LD-Json Script')
+                  ->setRows(10),
+            ]),
+        ]);
 
         //== main form
         $form = AdminForm::panel()->addBody([
-      AdminFormElement::columns()->addColumn([
-        AdminFormElement::text('name', __('adm.name'))
-          ->addValidationRule('max:190', __('adm.valid.max190'))
-          ->required(),
-        AdminFormElement::text('slug', __('adm.slug'))
-          ->addValidationRule('max:190', __('adm.valid.max190')),
-        AdminFormElement::wysiwyg('info_preview', __('adm.text_preview')),
-        AdminFormElement::wysiwyg('info_full', __('adm.text_full'))
-          ->setHeight(500),
-      ], 8)->addColumn([$tabs]),
+            AdminFormElement::columns()->addColumn([
+                AdminFormElement::text('name', __('adm.name'))
+                  ->addValidationRule('max:190', __('adm.valid.max190'))
+                  ->required(),
+                AdminFormElement::text('slug', __('adm.slug'))
+                  ->addValidationRule('max:190', __('adm.valid.max190')),
+                AdminFormElement::wysiwyg('info_preview', __('adm.text_preview')),
+                AdminFormElement::wysiwyg('info_full', __('adm.text_full'))
+                  ->setHeight(500),
+            ], 8)->addColumn([$tabs]),
 
-      AdminFormElement::html('<hr>'),
-      AdminFormElement::checkbox('active', __('adm.edit.actived')),
-    ]);
+            AdminFormElement::html('<hr>'),
+            AdminFormElement::checkbox('active', __('adm.edit.actived')),
+        ]);
 
         $form->getButtons()->setButtons([
-      // 'save'  => new Save(),
-      'save_and_close'   => new SaveAndClose(),
-      'save_and_create'  => new SaveAndCreate(),
-      'cancel'           => (new Cancel()),
-    ]);
+            // 'save'  => new Save(),
+            'save_and_close'   => new SaveAndClose(),
+            'save_and_create'  => new SaveAndCreate(),
+            'cancel'           => (new Cancel()),
+        ]);
 
         return $form;
     }
