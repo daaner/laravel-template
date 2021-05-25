@@ -2,6 +2,6 @@
 
   return
   ['modules' => [
-    'Blog',
+      'Blog',
   ],
-];
+  ];
