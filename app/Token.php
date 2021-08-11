@@ -10,15 +10,15 @@ class Token extends Model
     public $timestamps = false;
 
     protected $fillable = [
-      'user_id',
-      'api_token',
-      'last_ip',
-      'login_at',
-  ];
+        'user_id',
+        'api_token',
+        'last_ip',
+        'login_at',
+    ];
 
     protected $dates = [
-    'login_at',
-  ];
+        'login_at',
+    ];
 
     public function users()
     {
