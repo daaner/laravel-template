@@ -2,6 +2,6 @@
 
 return [
 
-  'empty_category' => 'Root category',
+    'empty_category' => 'Root category',
 
 ];
