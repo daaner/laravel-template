@@ -20,8 +20,8 @@ class Base extends BaseModel
         $cat = $this->belongsTo(BlogCategory::class, 'category_id', 'id');
 
         return $cat->withDefault([
-      'name' => $default_value,
-    ]);
+            'name' => $default_value,
+        ]);
     }
 
     //setters
