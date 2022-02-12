@@ -21,11 +21,11 @@ class BlogCategoryRepository extends InitRepository
     public function getBlogCategory($lang = null, $id = null)
     {
         $columns = [
-      'id',
-      'name',
-      'lang',
-      'active',
-    ];
+            'id',
+            'name',
+            'lang',
+            'active',
+        ];
 
         $query = $this->startConditions()
       ->active()
@@ -49,8 +49,8 @@ class BlogCategoryRepository extends InitRepository
 
         $blogCat = $result->mapWithKeys(function ($item) {
             return [
-        $item['id'] => '('.config('app.locales')[$item['lang']].') '.$item['name'],
-      ];
+                $item['id'] => '('.config('app.locales')[$item['lang']].') '.$item['name'],
+            ];
         });
 
         $blogCat->prepend(__('Blog::blog.empty_category'), 0);

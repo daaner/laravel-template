@@ -30,8 +30,8 @@ class ScriptComposer
     public function compose(View $view)
     {
         $view->with([
-      'scripts_top'    => $this->scripts_top,
-      'scripts_bottom' => $this->scripts_bottom,
-    ]);
+            'scripts_top'    => $this->scripts_top,
+            'scripts_bottom' => $this->scripts_bottom,
+        ]);
     }
 }
