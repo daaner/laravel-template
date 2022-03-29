@@ -48,19 +48,19 @@ class Scripts extends Section implements Initializable
       ->setDisplaySearch(true);
 
         $display->setColumns([
-      AdminColumn::text('id', '#')
-        ->setWidth('50px')
-        ->setHtmlAttribute('class', 'text-center'),
-      AdminColumn::link('name', 'Название'),
-      AdminColumn::boolean('active', 'ВКЛ'),
-      AdminColumn::boolean('top', 'Header')
-        ->setWidth('110px')
-        ->setOrderable(true),
-      AdminColumn::text('updated_at', 'Изменен', 'editors.name')
-        ->setWidth('160px')
-        ->setSearchable(false)
-        ->setOrderable(false),
-    ]);
+            AdminColumn::text('id', '#')
+              ->setWidth('50px')
+              ->setHtmlAttribute('class', 'text-center'),
+            AdminColumn::link('name', 'Название'),
+            AdminColumn::boolean('active', 'ВКЛ'),
+            AdminColumn::boolean('top', 'Header')
+              ->setWidth('110px')
+              ->setOrderable(true),
+            AdminColumn::text('updated_at', 'Изменен', 'editors.name')
+              ->setWidth('160px')
+              ->setSearchable(false)
+              ->setOrderable(false),
+        ]);
 
         return $display;
     }
@@ -68,35 +68,35 @@ class Scripts extends Section implements Initializable
     public function onEdit($id)
     {
         $form = AdminForm::panel()->addBody([
-      AdminFormElement::columns()->addColumn([
-        AdminFormElement::text('name', 'Название скрипта')
-          ->addValidationRule('max:190', __('adm.valid.max190'))
-          ->required(),
-        AdminFormElement::textarea('data', 'Данные')
-          ->setRows(8),
-        AdminFormElement::checkbox('active', 'ВКЛ'),
-        AdminFormElement::html('<hr>'),
-        AdminFormElement::checkbox('top', 'В шапку сайта (иначе в конец документа)'),
-      ], 8)->addColumn([
-        AdminFormElement::text('id', '#')
-          ->setReadonly(1),
-        AdminFormElement::text('creators.name', 'Создал')
-          ->setReadonly(1),
-        AdminFormElement::text('updated_at', 'Создано')
-          ->setReadonly(1),
-        AdminFormElement::html('<hr>'),
-        AdminFormElement::text('editors.name', 'Редактировал')
-          ->setReadonly(1),
-        AdminFormElement::text('updated_at', 'Редакция')
-          ->setReadonly(1),
-      ]),
-    ]);
+            AdminFormElement::columns()->addColumn([
+                AdminFormElement::text('name', 'Название скрипта')
+                  ->addValidationRule('max:190', __('adm.valid.max190'))
+                  ->required(),
+                AdminFormElement::textarea('data', 'Данные')
+                  ->setRows(8),
+                AdminFormElement::checkbox('active', 'ВКЛ'),
+                AdminFormElement::html('<hr>'),
+                AdminFormElement::checkbox('top', 'В шапку сайта (иначе в конец документа)'),
+            ], 8)->addColumn([
+                AdminFormElement::text('id', '#')
+                  ->setReadonly(1),
+                AdminFormElement::text('creators.name', 'Создал')
+                  ->setReadonly(1),
+                AdminFormElement::text('updated_at', 'Создано')
+                  ->setReadonly(1),
+                AdminFormElement::html('<hr>'),
+                AdminFormElement::text('editors.name', 'Редактировал')
+                  ->setReadonly(1),
+                AdminFormElement::text('updated_at', 'Редакция')
+                  ->setReadonly(1),
+            ]),
+        ]);
 
         $form->getButtons()->setButtons([
-      // 'save'  => new Save(),
-      'save_and_close'  => new SaveAndClose(),
-      'cancel'          => (new Cancel()),
-    ]);
+            // 'save'  => new Save(),
+            'save_and_close'  => new SaveAndClose(),
+            'cancel'          => (new Cancel()),
+        ]);
 
         return $form;
     }
