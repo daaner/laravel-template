@@ -42,13 +42,13 @@ class Roles extends Section implements Initializable
       ->setHtmlAttribute('class', 'table-danger table-hover');
 
         $display->setColumns([
-      AdminColumn::text('id', '#')
-        ->setWidth('50px')
-        ->setHtmlAttribute('class', 'text-center'),
-      AdminColumn::link('name', 'Название')
-        ->setWidth('150px'),
-      AdminColumn::text('description', 'Описание'),
-    ]);
+            AdminColumn::text('id', '#')
+              ->setWidth('50px')
+              ->setHtmlAttribute('class', 'text-center'),
+            AdminColumn::link('name', 'Название')
+              ->setWidth('150px'),
+            AdminColumn::text('description', 'Описание'),
+        ]);
 
         return $display;
     }
@@ -56,21 +56,21 @@ class Roles extends Section implements Initializable
     public function onEdit($id)
     {
         $form = AdminForm::panel()->addBody([
-      AdminFormElement::text('id', '#')
-        ->setReadonly(1),
-      AdminFormElement::text('name', 'Название')
-        ->required()
-        ->addValidationRule('max:190', __('adm.valid.max190')),
-      AdminFormElement::textarea('description', 'Описание')
-        ->setRows(3)
-        ->addValidationRule('max:190', __('adm.valid.max190')),
-    ]);
+            AdminFormElement::text('id', '#')
+              ->setReadonly(1),
+            AdminFormElement::text('name', 'Название')
+              ->required()
+              ->addValidationRule('max:190', __('adm.valid.max190')),
+            AdminFormElement::textarea('description', 'Описание')
+              ->setRows(3)
+              ->addValidationRule('max:190', __('adm.valid.max190')),
+        ]);
 
         $form->getButtons()->setButtons([
-      // 'save'  => new Save(),
-      'save_and_close'  => new SaveAndClose(),
-      'cancel'          => (new Cancel()),
-    ]);
+            // 'save'  => new Save(),
+            'save_and_close'  => new SaveAndClose(),
+            'cancel'          => (new Cancel()),
+        ]);
 
         return $form;
     }
