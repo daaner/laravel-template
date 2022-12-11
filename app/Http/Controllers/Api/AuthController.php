@@ -36,9 +36,9 @@ class AuthController extends Controller
     {
         if ($this->robot()) {
             return response()->json([
-        'success' => false,
-        'error'   => $this->robot(),
-      ], 403);
+                'success' => false,
+                'error'   => $this->robot(),
+            ], 403);
         }
 
         $user = new User();
@@ -50,15 +50,15 @@ class AuthController extends Controller
 
         if (!$user->save()) {
             return response()->json([
-        'success' => false,
-        'error'   => __('api.errors.register'),
-      ]);
+                'success' => false,
+                'error'   => __('api.errors.register'),
+            ]);
         }
 
         return response()->json([
-      'success' => false,
-      'error'   => __('auth.needactive'),
-    ], 403);
+            'success' => false,
+            'error'   => __('auth.needactive'),
+        ], 403);
     }
 
     public function login_get()
@@ -70,24 +70,24 @@ class AuthController extends Controller
     {
         if ($this->robot()) {
             return response()->json([
-        'success' => false,
-        'error'   => $this->robot(),
-      ], 403);
+                'success' => false,
+                'error'   => $this->robot(),
+            ], 403);
         }
 
         $credentials = [
-      'email'    => $request->email,
-      'password' => $request->password,
-    ];
+            'email'    => $request->email,
+            'password' => $request->password,
+        ];
 
         if (Auth::attempt($credentials)) {
             $user = User::find(Auth::id());
             Auth::logout();
             if (!$user->active) {
                 return response()->json([
-          'success' => false,
-          'error'   => __('auth.deactive'),
-        ], 403);
+                    'success' => false,
+                    'error'   => __('auth.deactive'),
+                ], 403);
             }
 
             $token_data = new TokenRepository();
@@ -95,19 +95,19 @@ class AuthController extends Controller
 
             if (isset($token->api_token)) {
                 return response()->json([
-          'success'    => true,
-          'user_id'    => $user->id,
-          'user_name'  => $user->name,
-          'user_email' => $user->email,
-          'api_token'  => $token->api_token,
-        ]);
+                    'success'    => true,
+                    'user_id'    => $user->id,
+                    'user_name'  => $user->name,
+                    'user_email' => $user->email,
+                    'api_token'  => $token->api_token,
+                ]);
             }
         }
 
         return response()->json([
-      'success' => false,
-      'error'   => __('auth.failed'),
-    ], 403);
+            'success' => false,
+            'error'   => __('auth.failed'),
+        ], 403);
     }
 
     public function logout_get(Request $request)
@@ -124,7 +124,7 @@ class AuthController extends Controller
         $token_data->clear_token($request->bearerToken());
 
         return response()->json([
-      'success' => true,
-    ]);
+            'success' => true,
+        ]);
     }
 }
