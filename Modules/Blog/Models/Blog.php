@@ -7,9 +7,9 @@ class Blog extends Base
     protected $table = 'blogs';
 
     protected $casts = [
-    'published_at' => 'datetime',
-    'published_to' => 'datetime',
-  ];
+        'published_at' => 'datetime',
+        'published_to' => 'datetime',
+    ];
 
     public function setSlugAttribute($value)
     {
